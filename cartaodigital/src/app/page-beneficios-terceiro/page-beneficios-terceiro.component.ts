@@ -27,7 +27,7 @@ export class PageBeneficiosTerceiroComponent implements OnInit {
                }
   
   ngOnInit(): void {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;      //Aqui ele irá desabilitar o reuso do link para a função
     this.loginService.validaLogin(this.router.url);
     this.carregaBeneficiario();
     } 

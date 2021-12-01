@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageReloadComponent } from './page-reload.component';
+import { AaEventosTabelaComponent } from './aa-eventos-tabela.component';
 
-describe('PageReloadComponent', () => {
-  let component: PageReloadComponent;
-  let fixture: ComponentFixture<PageReloadComponent>;
+describe('AaEventosTabelaComponent', () => {
+  let component: AaEventosTabelaComponent;
+  let fixture: ComponentFixture<AaEventosTabelaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageReloadComponent ]
+      declarations: [ AaEventosTabelaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageReloadComponent);
+    fixture = TestBed.createComponent(AaEventosTabelaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
