@@ -32,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageBeneficiosTerceiroComponent } from './page-beneficios-terceiro/page-beneficios-terceiro.component';
 import { PageBeneficiosTabelaComponent } from './page-beneficios-tabela/page-beneficios-tabela.component';
 import { PageBeneficiosTerceiroFormComponent } from './page-beneficios-terceiro-form/page-beneficios-terceiro-form.component';
+import { PageReloadComponent } from './page-reload/page-reload.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { PageBeneficiosTerceiroFormComponent } from './page-beneficios-terceiro-
     PageBeneficiosComponent,
     PageBeneficiosTerceiroComponent,
     PageBeneficiosTabelaComponent,
-    PageBeneficiosTerceiroFormComponent
+    PageBeneficiosTerceiroFormComponent,
+    PageReloadComponent
   ],
   imports: [
     BrowserModule,

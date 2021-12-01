@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
-import { FormBuilder } from '@angular/forms';
-import { MatOptionSelectionChange } from '@angular/material/core';
-
 //Para definir o serviço de acesso do banco de dados;
 import { BeneficiosService } from '../dao/beneficios.service';
 import { BeneficiarioJSON } from '../dao/tiposJSON';
@@ -30,6 +27,7 @@ export class PageBeneficiosTerceiroComponent implements OnInit {
                }
   
   ngOnInit(): void {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.loginService.validaLogin(this.router.url);
     this.carregaBeneficiario();
     } 
