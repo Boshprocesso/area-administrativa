@@ -1,0 +1,15 @@
+<div class="limite-header">
+    <mat-toolbar color="primary" autosize>
+        <button mat-icon-button color="white" (click)="toggleSideNav()" aria-label="Icone de Menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <img src='../../assets/img/logo/logo.png' [routerLink]="['/']" class="logo">
+        <span class="example-spacer"></span>
+        
+        <!-- Rendereriza o carrinho de compras com a quantidade comprada até o momento -->
+        <div *ngIf="getQuantidadeBeneficios(); then cartFull else cartEmpty"></div>
+            <ng-template #cartFull><button mat-icon-button class="example-icon"  matBadge="{{getQuantidadeBeneficios()}}" matBadgeColor="warn" [routerLink]="['/beneficios']"><mat-icon>card_giftcard</mat-icon></button></ng-template>
+            <ng-template #cartEmpty><button mat-icon-button class="example-icon" [routerLink]="['/beneficios']"><mat-icon>card_giftcard</mat-icon></button></ng-template>
+
+    </mat-toolbar>
+</div>

@@ -1,0 +1,14 @@
+<div class="body">
+    <div class="pagina">
+        <div *ngIf="getBeneficiario; then temItem else naoTem" id="localCard"></div>
+        <ng-template #temItem>
+            Identificamos o seguinte usuário cadastrado para receber seu beneficio:
+            
+            <app-page-beneficios-terceiro-form [objeto]="getBeneficiario"></app-page-beneficios-terceiro-form>
+
+        </ng-template>
+        <ng-template #naoTem>
+            <app-page-beneficios-terceiro-form></app-page-beneficios-terceiro-form>
+        </ng-template>
+    </div>
+</div>

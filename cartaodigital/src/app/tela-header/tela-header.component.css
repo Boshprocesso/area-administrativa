@@ -1,0 +1,27 @@
+.example-spacer {
+    flex: 1 1 auto;
+    
+  }
+
+.limite-header{
+  width: 700px;
+}
+
+mat-toolbar{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    
+    padding-top: 5px;
+  }
+
+  .logo{
+    height: 100%;
+    color: white;
+    filter: brightness(0) invert(1);  /* Função para inverter a cor para Branco da LOGO */
+  }
+
+  .logo:hover{
+    cursor: pointer;
+  }

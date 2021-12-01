@@ -1,0 +1,83 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div *ngIf="objeto"><mat-card-title>Pessoa cadastrada no sistema</mat-card-title></div>
+        <div *ngIf="!objeto"><mat-card-title>Indicar um Terceiro</mat-card-title></div>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form" [formGroup]="formEnvio" (ngSubmit)="onSubmit()">
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-grid-list cols="9" rowHeight="75px">
+                        <mat-grid-tile [rowspan]="1" class="login-icon">
+                            <mat-icon>person</mat-icon>
+                        </mat-grid-tile>
+                        <mat-grid-tile [colspan]="7">
+                            
+                            <mat-form-field appearance="fill" class="example-full-width">
+                                <mat-select formControlName="opcao" required>
+                                    <mat-option *ngFor="let opcao of opcoesForm" [value]="opcao.value" 
+                                                    (onSelectionChange)="alteraSelecaoColaboradorCPF($event, opcao)">
+                                    {{opcao.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                        </mat-grid-tile>
+                    </mat-grid-list>
+
+                    
+                </td>
+            </tr>
+            <tr>
+            <td>
+                <mat-grid-list cols="9" rowHeight="75px">
+                    <mat-grid-tile [rowspan]="1" class="login-icon">
+                        <mat-icon>person</mat-icon>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="7">
+                        <mat-form-field class="example-full-width">
+
+                                <div *ngIf="opcaoSelecionada=='cpf'; then temItem else naoTem" id="localCard"></div>
+                                <ng-template #temItem>
+                                    <input id="nome" formControlName="nome" matInput placeholder="Nome"  name="matricula" required>
+                                </ng-template>
+                                <ng-template #naoTem>
+                                    <input id="nome" formControlName="nome" matInput placeholder="Nome do Usuário"  name="matricula">
+                                </ng-template>
+                                
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </td>
+            </tr>
+            <tr>
+            <td>
+                <mat-grid-list cols="9" rowHeight="100px">
+                    <mat-grid-tile [rowspan]="1"  class="login-icon">
+                        <mat-icon>person</mat-icon>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="7">
+                        <mat-form-field class="example-full-width">
+                            <input id="edv" formControlName="edv" matInput placeholder="CPF ou EDV"  name="matricula" required>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                
+            </td>
+        </tr></table>
+        
+        <div class="login-spinner">
+            <button mat-raised-button class="example-full-width" type="submit" color="primary">
+                <div *ngIf="objeto"><mat-icon>delete</mat-icon>Remover Indicação</div>
+                <div *ngIf="!objeto"><mat-icon>person_add</mat-icon>Cadastrar Indicação</div>
+            </button> 
+            <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+        </div>
+        </form>
+    </mat-card-content>
+
+    <mat-card-actions>
+            
+    </mat-card-actions>
+</mat-card>

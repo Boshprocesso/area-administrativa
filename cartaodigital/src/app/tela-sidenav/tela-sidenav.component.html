@@ -1,0 +1,32 @@
+<p>
+    <button mat-icon-button color="white" mat-button (click)="toggleSideNav()">
+        <mat-icon>close</mat-icon>
+    </button>
+</p>
+<p>
+    <button mat-icon-button color="white" [routerLink]="['/login']" (click)="toggleSideNav()">
+        <mat-icon>home</mat-icon>
+        Início
+    </button>
+</p>
+
+<p>
+    <button mat-icon-button color="white" [routerLink]="['/beneficios']" (click)="toggleSideNav()">
+        <mat-icon>tag_faces</mat-icon>
+        Meus Beneficios
+    </button>
+</p>
+
+<p>
+    <button mat-icon-button color="white" [routerLink]="['/cadastro_terceiro']" (click)="toggleSideNav()">
+        <mat-icon>group_add</mat-icon>
+        Indicar um Terceiro
+    </button>
+</p>
+
+<p>
+    <button mat-icon-button color="white" [routerLink]="['/login']" (click)="sairSistema()">
+        <mat-icon>power_settings_new</mat-icon>
+        Sair
+    </button>
+</p>
