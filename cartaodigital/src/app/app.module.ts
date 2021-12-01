@@ -32,7 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageBeneficiosTerceiroComponent } from './page-beneficios-terceiro/page-beneficios-terceiro.component';
 import { PageBeneficiosTabelaComponent } from './page-beneficios-tabela/page-beneficios-tabela.component';
 import { PageBeneficiosTerceiroFormComponent } from './page-beneficios-terceiro-form/page-beneficios-terceiro-form.component';
-import { PageReloadComponent } from './page-reload/page-reload.component';
+import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
+import { AaEventosTabelaComponent } from './aa-eventos-tabela/aa-eventos-tabela.component';
+import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { PageReloadComponent } from './page-reload/page-reload.component';
     PageBeneficiosTerceiroComponent,
     PageBeneficiosTabelaComponent,
     PageBeneficiosTerceiroFormComponent,
-    PageReloadComponent
+    AaEventosComponent,
+    AaEventosTabelaComponent,
+    TelaBloqueadaComponent
   ],
   imports: [
     BrowserModule,

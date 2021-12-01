@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
 import { PageBeneficiosTerceiroComponent } from './page-beneficios-terceiro/page-beneficios-terceiro.component';
 import { PageBeneficiosComponent } from './page-beneficios/page-beneficios.component';
 import { PageLoginComponent } from './page-login/page-login.component';
@@ -10,7 +11,9 @@ const routes: Routes = [
   {path: '', component: PageLoginComponent},
   {path: 'login', component: PageLoginComponent },
   {path: 'beneficios', component: PageBeneficiosComponent },
-  {path: 'cadastro_terceiro', component: PageBeneficiosTerceiroComponent }
+  {path: 'cadastro_terceiro', component: PageBeneficiosTerceiroComponent },
+  
+  {path: 'eventos', component: AaEventosComponent }
 ];
 
 @NgModule({
