@@ -1,0 +1,66 @@
+{
+    "beneficios":
+        {
+            "codFuncionario": 1,
+            "nomeFuncionario": "Amadeu Marques",
+            "beneficios": [
+                {
+                    "idProduto": 1,
+                    "beneficio": "Kit Happy Hour",
+                    "status": "OK",
+                    "quantidade": 1
+                },
+                {
+                    "idProduto": 5,
+                    "beneficio": "Kit Natal 2021",
+                    "status": "Pendente",
+                    "quantidade": 1
+                },
+                {
+                    "idProduto": 20,
+                    "beneficio": "Cesta Fria",
+                    "status": "Pendente",
+                    "quantidade": 2
+                }
+            ]
+        }
+    ,
+    "terceiros": [
+        {
+            "codFuncionario": 20,
+            "nomeFuncionario": "Andre Souto",
+            "beneficios": [
+                {
+                    "idProduto": 20,
+                    "beneficio": "Cesta Fria",
+                    "status": "OK",
+                    "quantidade": 1
+                },
+                {
+                    "idProduto": 5,
+                    "beneficio": "Kit Natal 2021",
+                    "status": "Pendente",
+                    "quantidade": 1
+                }
+            ]
+        },
+        {
+            "codFuncionario": 67,
+            "nomeFuncionario": "Vinicius Terres",
+            "beneficios": [
+                {
+                    "idProduto": 1,
+                    "beneficio": "Kit Happy Hour",
+                    "status": "Pendente",
+                    "quantidade": 1
+                },
+                {
+                    "idProduto": 20,
+                    "beneficio": "Cesta Fria",
+                    "status": "OK",
+                    "quantidade": 4
+                }
+            ]
+        }
+    ] 
+}  

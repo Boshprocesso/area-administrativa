@@ -1,0 +1,19 @@
+<div class="body">
+    <div class="pagina">
+
+        <div *ngIf="beneficios; then temItem else naoTem" id="localCard"></div>
+        <ng-template #temItem>
+            <h1>Meus Benefícios</h1>
+            <div *ngFor="let card of beneficios">
+                <p class="tabela">
+                    <app-page-beneficios-tabela [objeto]="card"></app-page-beneficios-tabela>
+                </p>
+            </div>
+
+        </ng-template>
+        <ng-template #naoTem>
+            <img src="../../assets/img/site/cart-empty.png" class="cart-empty">
+        </ng-template>
+
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="over" opened="false">
+      <!-- CONTEUDO DO MENU LATERAL -->
+      <app-tela-sidenav (toggleSlider)="drawer.toggle()"></app-tela-sidenav> <!--Enviando um evento correspondente ao toggle do botão-->
+  </mat-drawer>
+  
+
+  <!-- CABEÇALHO do site com o Toolbar -->
+  <app-tela-header (toggleSlider)="drawer.toggle()"></app-tela-header> 
+
+  <!-- ROTAS do site -->
+  <router-outlet></router-outlet>
+
+  <!-- RODAPÉ do site para ser adicionado abaixo do conteudo -->
+  <app-tela-footer fxFlexOffset="auto"></app-tela-footer>
+</mat-drawer-container>

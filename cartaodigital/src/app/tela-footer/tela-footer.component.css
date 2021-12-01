@@ -1,0 +1,43 @@
+.footer-main{
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #3f51b5;
+    color: white;
+    text-align: left;
+    min-height: 320px;
+    height: 400px;
+}
+.div-33{
+    min-width: 300px;
+    color: white;
+    background-color: #3f51b5;
+    width: 50%;
+    float: left;
+    text-align: center;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-33 *{
+    color: white;
+    text-align: center;
+}
+
+.footer-content{
+    margin-bottom: 20px;
+}
+
+.logo{
+    margin-top: 20px;
+    width:  80%;
+    color: white;
+    filter: brightness(0) invert(1);  /* Função para inverter a cor para Branco da LOGO */
+  }
+
+  .logo:hover{
+    cursor: pointer;
+  }
