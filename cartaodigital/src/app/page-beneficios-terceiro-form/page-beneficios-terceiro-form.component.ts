@@ -44,6 +44,8 @@ export class PageBeneficiosTerceiroFormComponent implements OnInit {
               ) { }
 
   ngOnInit(): void {
+    
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     if(this.objeto){
       this.formEnvio.controls['nome'].setValue(this.objeto.nomeTerceiro);
       this.formEnvio.controls['edv'].setValue(this.objeto.identificacaoTerceiro);
@@ -103,6 +105,7 @@ export class PageBeneficiosTerceiroFormComponent implements OnInit {
             try{
               if(data){
                 console.warn("Terceiro cadastrado com sucesso!");
+                this.router.navigate(["cadastro_terceiro"]);
               }else{
                 console.warn("Falha no cadastro...");
                 this.showSpinner = false;
@@ -136,7 +139,8 @@ export class PageBeneficiosTerceiroFormComponent implements OnInit {
           next: data => {
             try{
               if(data){
-                console.warn("Removido com Sucesso!")                
+                console.warn("Removido com Sucesso!")   
+                this.router.navigate(["cadastro_terceiro"]);             
               }else{
                 console.warn("Falha no cadastro...");
                 this.showSpinner = false;
