@@ -35,6 +35,7 @@ import { PageBeneficiosTerceiroFormComponent } from './page-beneficios-terceiro-
 import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
 import { AaEventosTabelaComponent } from './aa-eventos-tabela/aa-eventos-tabela.component';
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
+import { AaEventosCardComponent } from './aa-eventos-card/aa-eventos-card.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.componen
     PageBeneficiosTerceiroFormComponent,
     AaEventosComponent,
     AaEventosTabelaComponent,
-    TelaBloqueadaComponent
+    TelaBloqueadaComponent,
+    AaEventosCardComponent
   ],
   imports: [
     BrowserModule,

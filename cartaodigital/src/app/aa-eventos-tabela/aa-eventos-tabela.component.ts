@@ -6,16 +6,14 @@ import { BeneficioUsuario } from '../dao/tiposJSON';
 export interface PeriodicElement {
   evento: string;
   position: number;
-  inicio: number;
+  inicio: string;
   fim: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, evento: 'Hydrogen', inicio: 1.0079, fim: 'H'},
-  {position: 2, evento: 'Helium', inicio: 4.0026, fim: 'He'},
-  {position: 3, evento: 'Lithium', inicio: 6.941, fim: 'Li'},
-  {position: 4, evento: 'Beryllium', inicio: 9.0122, fim: 'Be'},
-  {position: 5, evento: 'Boron', inicio: 10.811, fim: 'B'}
+  {position: 1, evento: 'Fim de Ano 2021', inicio: '19-12-2021', fim: '23-12-2021'},
+  {position: 2, evento: 'Natal 2021', inicio: '24-12-2021', fim: '25-12-2021'},
+  {position: 3, evento: 'Festa de Boas Vindas', inicio: '06-01-2022', fim: '08-01-2022'}
 ];
 
 @Component({
