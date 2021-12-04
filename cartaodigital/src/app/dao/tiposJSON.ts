@@ -38,3 +38,9 @@ export type LoginJSON = {
                 entregaproduto: boolean
             }
 }
+
+export type xlsxPayloadJSON = {
+    beneficiarios: Array<any>,
+    beneficios: Array<any>,
+    beneficioBeneficiario: {}
+}
