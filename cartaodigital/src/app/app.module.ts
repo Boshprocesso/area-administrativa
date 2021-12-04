@@ -18,7 +18,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';    
 import {MatTableModule} from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +36,8 @@ import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
 import { AaEventosTabelaComponent } from './aa-eventos-tabela/aa-eventos-tabela.component';
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
 import { AaEventosCardComponent } from './aa-eventos-card/aa-eventos-card.component';
+import { AaEventosBeneficiosComponent } from './aa-eventos-beneficios/aa-eventos-beneficios.component';
+import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { AaEventosCardComponent } from './aa-eventos-card/aa-eventos-card.compon
     AaEventosComponent,
     AaEventosTabelaComponent,
     TelaBloqueadaComponent,
-    AaEventosCardComponent
+    AaEventosCardComponent,
+    AaEventosBeneficiosComponent,
+    AaEventosUsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,8 @@ import { AaEventosCardComponent } from './aa-eventos-card/aa-eventos-card.compon
     MatTableModule,
     HttpClientModule,
     ReactiveFormsModule,       //Para o CRUD
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

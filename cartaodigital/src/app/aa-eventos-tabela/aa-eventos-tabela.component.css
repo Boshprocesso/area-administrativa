@@ -14,3 +14,35 @@ table {
     padding-left: 20px;
     padding-right: 20px;
   }
+
+  .button{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: solid 1px #CCC;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .delete_button{
+    color: rgb(175, 0, 0);
+    border: solid 1px rgb(175, 0, 0);
+  }
+
+  button{
+    width: 30px;
+  }
+
+  @media screen and (max-width: 790px){
+    button{
+      width: 100%;
+    }
+
+    .coluna_botao{
+      width: 30px;
+    }
+    
+    .button{
+      width: 100%;
+    }
+  }
