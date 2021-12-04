@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { xlsxPayloadJSON } from '../dao/tiposJSON';
 import * as XLSX from 'xlsx';
 
@@ -14,6 +14,7 @@ export class AaXlsxConversorComponent implements OnInit {
     beneficios: [],
     beneficioBeneficiario: {}
   }
+  @Output() ArquivoConvertido = new EventEmitter<xlsxPayloadJSON>();
 
   constructor() { }
 
@@ -73,8 +74,11 @@ export class AaXlsxConversorComponent implements OnInit {
       beneficiario => beneficiario.cpf == cpf
     )
 
-    if(beneficioBeneficiario[beneficio] == null) { beneficioBeneficiario[beneficio] = [] }
-    beneficioBeneficiario[beneficio].push( [indexBeneficiario, quantidade] )
+    if(beneficioBeneficiario[beneficio] == null) {
+      beneficioBeneficiario[beneficio] = [[indexBeneficiario, quantidade]]
+    }else {
+      beneficioBeneficiario[beneficio].push( [indexBeneficiario, quantidade] )
+    }
   }
 
   tratarDados(nomePlanilha:string, headers:string[], arraysBeneficios:Array<Array<any>>, verificacoes:boolean[]) {
@@ -158,7 +162,8 @@ export class AaXlsxConversorComponent implements OnInit {
       const wb: XLSX.WorkBook = XLSX.read(ab);
 
       this.criarXlsxPayload(wb)
-      console.log(this.xlsxPayload)
+      
+      this.ArquivoConvertido.emit(this.xlsxPayload)
     };
   }
 }
