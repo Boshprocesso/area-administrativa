@@ -1,0 +1,17 @@
+[
+    {
+        "idEvento": 1,
+        "idProduto": 1,
+        "beneficio": "Kit Happy Hour"
+    },
+    {
+        "idEvento": 1,
+        "idProduto": 5,
+        "beneficio": "Kit Natal 2021"
+    },
+    {
+        "idEvento": 1,
+        "idProduto": 20,
+        "beneficio": "Cesta Fria"
+    }
+]

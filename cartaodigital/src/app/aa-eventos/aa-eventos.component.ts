@@ -10,8 +10,8 @@ export class AaEventosComponent implements OnInit {
   public paginaRH = true;
   
   constructor(
-              private loginService: LoginService,
-  ) {   }
+              private loginService: LoginService
+              ) {   }
 
   ngOnInit(): void {
     try{
@@ -21,5 +21,4 @@ export class AaEventosComponent implements OnInit {
     }
     
   }
-
 }

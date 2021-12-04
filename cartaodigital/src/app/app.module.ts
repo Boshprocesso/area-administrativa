@@ -18,7 +18,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';    
 import {MatTableModule} from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,9 +33,9 @@ import { PageBeneficiosTerceiroComponent } from './page-beneficios-terceiro/page
 import { PageBeneficiosTabelaComponent } from './page-beneficios-tabela/page-beneficios-tabela.component';
 import { PageBeneficiosTerceiroFormComponent } from './page-beneficios-terceiro-form/page-beneficios-terceiro-form.component';
 import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
-import { AaEventosTabelaComponent } from './aa-eventos-tabela/aa-eventos-tabela.component';
+import { AaEventosTabelaComponent, EventosBeneficiosDialog, EventosCadastro } from './aa-eventos-tabela/aa-eventos-tabela.component';
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
-import { AaEventosCardComponent } from './aa-eventos-card/aa-eventos-card.component';
+import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +49,12 @@ import { AaEventosCardComponent } from './aa-eventos-card/aa-eventos-card.compon
     PageBeneficiosTabelaComponent,
     PageBeneficiosTerceiroFormComponent,
     AaEventosComponent,
-    AaEventosTabelaComponent,
     TelaBloqueadaComponent,
-    AaEventosCardComponent
+    AaEventosUsuariosComponent,
+    
+    AaEventosTabelaComponent,
+    EventosBeneficiosDialog,
+    EventosCadastro
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { AaEventosCardComponent } from './aa-eventos-card/aa-eventos-card.compon
     MatTableModule,
     HttpClientModule,
     ReactiveFormsModule,       //Para o CRUD
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
