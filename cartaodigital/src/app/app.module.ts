@@ -36,6 +36,7 @@ import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
 import { AaEventosTabelaComponent } from './aa-eventos-tabela/aa-eventos-tabela.component';
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
 import { AaEventosCardComponent } from './aa-eventos-card/aa-eventos-card.component';
+import { AaXlsxConversorComponent } from './aa-xlsx-conversor/aa-xlsx-conversor.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { AaEventosCardComponent } from './aa-eventos-card/aa-eventos-card.compon
     AaEventosComponent,
     AaEventosTabelaComponent,
     TelaBloqueadaComponent,
-    AaEventosCardComponent
+    AaEventosCardComponent,
+    AaXlsxConversorComponent
   ],
   imports: [
     BrowserModule,
