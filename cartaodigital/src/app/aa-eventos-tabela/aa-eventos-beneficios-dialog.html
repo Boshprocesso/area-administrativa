@@ -1,11 +1,22 @@
 <h1 mat-dialog-title>Beneficios do Evento</h1>
 
 <div mat-dialog-content>
-    <p>Beneficio 1</p>
-    <mat-form-field appearance="fill">
-        
-    </mat-form-field>
-  </div>
+
+    <div *ngIf="beneficio.length>0; then temItem else naoTem" id="localCard"></div>
+    <ng-template #temItem>
+        <p>Beneficios Evento</p>
+        <div *ngFor="let item of beneficio">
+            <p>
+                {{item.idEvento}}x {{item.beneficio}}
+            </p>
+        </div>
+
+    </ng-template>
+    <ng-template #naoTem>
+        Nenhum beneficio cadastrado!
+    </ng-template>
+
+</div>
 
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial>Ok</button>

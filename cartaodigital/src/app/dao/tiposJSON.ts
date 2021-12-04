@@ -38,3 +38,14 @@ export type LoginJSON = {
                 entregaproduto: boolean
             }
 }
+
+
+
+
+export type EventosJSON = {
+    idEvento: number;
+    nomeEvento: string;
+    descricaoEvento: string;
+    dataInicio: string;
+    dataFim: string;
+  }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BeneficiarioJSON, LoginJSON } from './tiposJSON';
+import { BeneficiarioJSON, EventosJSON, LoginJSON } from './tiposJSON';
 import {Router} from '@angular/router';
 import { LoginService } from './login.service';
 
@@ -21,21 +21,35 @@ export class AaEventosService {
 getEvento(){
   var linkJSON = linkBaseAPI + 'evento';
 
-  return this.http.get<BeneficiarioJSON[]>(linkJSON);
+  return this.http.get<EventosJSON[]>(linkJSON);
 }
 
 //Função para editar os eventos
-postEvento(headers: any){
+postEvento(bodyJSON: any){
   var linkJSON = linkBaseAPI + 'evento';
 
-  return this.http.post<BeneficiarioJSON>(linkJSON, headers);
+  return this.http.post<EventosJSON>(linkJSON, bodyJSON);
+}
+
+//Função para editar os eventos
+putEvento(bodyJSON: any, idEvento?:number){
+  var linkJSON = linkBaseAPI + 'evento/' + idEvento;
+
+  return this.http.put<EventosJSON>(linkJSON, bodyJSON);
 }
 
 //Função para efetuar a exclusão do evento no servidor
-deleteEvento(id: number){
+deleteEvento(id?: number){
   var linkJSON = linkBaseAPI + 'evento/' + id;
 
   return this.http.delete(linkJSON);
+}
+
+//Função para coletar todos os eventos do servidor
+getBeneficio(idEvento:number){
+  var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios';
+
+  return this.http.get<any[]>(linkJSON);
 }
 
 }
