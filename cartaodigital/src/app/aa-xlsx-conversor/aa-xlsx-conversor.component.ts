@@ -43,9 +43,81 @@ export class AaXlsxConversorComponent implements OnInit {
     })
   }
 
+  conferirSeNumeroOuTexto(primeiraLinha:Array<Number|String>) {
+    let numero = false, texto = false;
+    let index = 1;
+    while(!(numero || texto) && index < primeiraLinha.length) {
+      if(primeiraLinha[index] != null) {
+        numero = typeof primeiraLinha[index] == 'number'
+        texto = typeof primeiraLinha[index] == 'string'
+      }
+      index++
+    }
+
+    return [numero, texto]
+  }
+
+  tratarDadosComtexto(nomePlanilha:string, headers:string[], arraysBeneficios:Array<Array<any>>) {
+    for (let i = 0; i < arraysBeneficios.length; i++) {
+      const linha = arraysBeneficios[i];
+      for (let j = 1; j < linha.length; j++) {
+        const valor = linha[j];
+
+        if(valor != null) {
+          const type = headers[j] + valor.split("-")[1]
+          const beneficio = nomePlanilha + " " + type
+          
+          if(this.xlsxPayload.beneficios.indexOf(beneficio) == -1) {
+            this.xlsxPayload.beneficios.push(beneficio)
+          }
+        }
+      }
+    }
+  }
+
+  tratarDadosComNumero(nomePlanilha:string, headers:string[], arraysBeneficios:Array<Array<any>>) {
+    for (let i = 1; i < headers.length; i++) {
+      const beneficio = nomePlanilha + " " + headers[i];
+      if(this.xlsxPayload.beneficios.indexOf(beneficio) == -1) {
+        this.xlsxPayload.beneficios.push(beneficio)
+      }
+    }
+  }
+
+  tratarTodosOsDados(wb:XLSX.WorkBook) {
+    wb.SheetNames.forEach(nomePlanilha => {
+      const ws: XLSX.WorkSheet = wb.Sheets[nomePlanilha];
+
+      if(nomePlanilha.toUpperCase() === "COLABORADORES") {
+        let arraysColaboradores:Array<Array<any>> = XLSX.utils.sheet_to_json(ws, {header: 1})
+        this.organizarBeneficiarios(arraysColaboradores)
+      }else {
+        let arraysBeneficios:Array<Array<any>> = (XLSX.utils.sheet_to_json(ws, {header: 1}));
+        let headers:string[] = arraysBeneficios.splice(0,1)[0]
+
+        let apenasUmtipo = headers.length == 2
+        if(apenasUmtipo) {
+          this.xlsxPayload.beneficios.push(nomePlanilha)
+        }else {
+          let primeiraLinha:Array<Number|String> = arraysBeneficios[1]
+          let numero:boolean, texto:boolean
+          [numero, texto] = this.conferirSeNumeroOuTexto(primeiraLinha)
+          
+          if(texto) {
+            this.tratarDadosComtexto(nomePlanilha, headers, arraysBeneficios)
+          }
+
+          if(numero) {
+            this.tratarDadosComNumero(nomePlanilha, headers, arraysBeneficios)
+          }
+        }
+      }
+    })
+  }
+
   onFileSelected(evt: any) {
     const target: DataTransfer = <DataTransfer>(evt.target);
-    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+    if (target.files.length !== 1) throw new Error('Não pode ser mais de um arquivo');
     const reader: FileReader = new FileReader();
     
     reader.readAsArrayBuffer(target.files[0]);
@@ -53,15 +125,7 @@ export class AaXlsxConversorComponent implements OnInit {
       const ab: ArrayBuffer = e.target.result;
       const wb: XLSX.WorkBook = XLSX.read(ab);
 
-      wb.SheetNames.forEach(sheetName => {
-        const ws: XLSX.WorkSheet = wb.Sheets[sheetName];
-
-        if(sheetName.toUpperCase() === "COLABORADORES") {
-          let arraysColaboradores:Array<Array<any>> = XLSX.utils.sheet_to_json(ws, {header: 1})
-          this.organizarBeneficiarios(arraysColaboradores)
-
-        }
-      })
+      this.tratarTodosOsDados(wb)
       console.log(this.xlsxPayload)
     };
   }
