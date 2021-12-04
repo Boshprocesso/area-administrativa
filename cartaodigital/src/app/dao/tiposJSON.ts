@@ -42,5 +42,5 @@ export type LoginJSON = {
 export type xlsxPayloadJSON = {
     beneficiarios: Array<any>,
     beneficios: Array<any>,
-    beneficioBeneficiario: {}
+    beneficioBeneficiario: { [key:string]: Array<any>}
 }

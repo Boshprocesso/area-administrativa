@@ -43,6 +43,57 @@ export class AaXlsxConversorComponent implements OnInit {
     })
   }
 
+  definirDados(verificacoes:boolean[], dados:[nomePlanilha:string, tipo:string, valor:any]) {
+    let [numero, texto] = verificacoes
+    let [nomePlanilha, tipo, valor] = dados
+    let quantidade, beneficio
+
+    if(numero) {
+      quantidade = valor;
+      beneficio = nomePlanilha + " " + tipo;
+    }
+
+    if(texto) {
+      let categoria
+      quantidade = parseInt(valor.split("-")[0])
+      categoria = valor.split("-")[1]
+      beneficio = nomePlanilha + " " + tipo + categoria
+    }
+
+    return [quantidade, beneficio]
+  }
+
+  inserirdados(cpf:string, beneficio:string, quantidade:Number) {
+    if(this.xlsxPayload.beneficios.indexOf(beneficio) == -1) {
+      this.xlsxPayload.beneficios.push(beneficio)
+    }
+    
+    let beneficioBeneficiario = this.xlsxPayload.beneficioBeneficiario
+    let indexBeneficiario = this.xlsxPayload.beneficiarios.findIndex(
+      beneficiario => beneficiario.cpf == cpf
+    )
+
+    if(beneficioBeneficiario[beneficio] == null) { beneficioBeneficiario[beneficio] = [] }
+    beneficioBeneficiario[beneficio].push( [indexBeneficiario, quantidade] )
+  }
+
+  tratarDados(nomePlanilha:string, headers:string[], arraysBeneficios:Array<Array<any>>, verificacoes:boolean[]) {
+    arraysBeneficios.forEach(linha => {
+      const cpf = linha[0]
+      for (let j = 1; j < linha.length; j++) {
+        const valor = linha[j];
+
+        if(valor != null) {
+          const dados:[nomePlanilha:string, tipo:string, valor:any] = [nomePlanilha, headers[j], valor]
+
+          let [quantidade, beneficio] = this.definirDados(verificacoes, dados)
+          
+          this.inserirdados(cpf, beneficio, quantidade)
+        }
+      }
+    })
+  }
+
   conferirSeNumeroOuTexto(primeiraLinha:Array<Number|String>) {
     let numero = false, texto = false;
     let index = 1;
@@ -54,37 +105,14 @@ export class AaXlsxConversorComponent implements OnInit {
       index++
     }
 
-    return [numero, texto]
-  }
-
-  tratarDadosComtexto(nomePlanilha:string, headers:string[], arraysBeneficios:Array<Array<any>>) {
-    for (let i = 0; i < arraysBeneficios.length; i++) {
-      const linha = arraysBeneficios[i];
-      for (let j = 1; j < linha.length; j++) {
-        const valor = linha[j];
-
-        if(valor != null) {
-          const type = headers[j] + valor.split("-")[1]
-          const beneficio = nomePlanilha + " " + type
-          
-          if(this.xlsxPayload.beneficios.indexOf(beneficio) == -1) {
-            this.xlsxPayload.beneficios.push(beneficio)
-          }
-        }
-      }
+    if(numero || texto) {
+      return [numero, texto]
     }
+
+    throw new Error("Dados em formato errado");
   }
 
-  tratarDadosComNumero(nomePlanilha:string, headers:string[], arraysBeneficios:Array<Array<any>>) {
-    for (let i = 1; i < headers.length; i++) {
-      const beneficio = nomePlanilha + " " + headers[i];
-      if(this.xlsxPayload.beneficios.indexOf(beneficio) == -1) {
-        this.xlsxPayload.beneficios.push(beneficio)
-      }
-    }
-  }
-
-  tratarTodosOsDados(wb:XLSX.WorkBook) {
+  criarXlsxPayload(wb:XLSX.WorkBook) {
     wb.SheetNames.forEach(nomePlanilha => {
       const ws: XLSX.WorkSheet = wb.Sheets[nomePlanilha];
 
@@ -97,19 +125,23 @@ export class AaXlsxConversorComponent implements OnInit {
 
         let apenasUmtipo = headers.length == 2
         if(apenasUmtipo) {
-          this.xlsxPayload.beneficios.push(nomePlanilha)
+          arraysBeneficios.forEach(linha => {
+            let beneficio = nomePlanilha
+            let [cpf, quantidade] = linha
+
+            this.inserirdados(cpf, beneficio, quantidade)
+          })
         }else {
           let primeiraLinha:Array<Number|String> = arraysBeneficios[1]
-          let numero:boolean, texto:boolean
-          [numero, texto] = this.conferirSeNumeroOuTexto(primeiraLinha)
-          
-          if(texto) {
-            this.tratarDadosComtexto(nomePlanilha, headers, arraysBeneficios)
+
+          try {
+            let verificacoes = this.conferirSeNumeroOuTexto(primeiraLinha)
+
+            this.tratarDados(nomePlanilha, headers, arraysBeneficios, verificacoes)
+          } catch (error) {
+            console.warn(error)
           }
 
-          if(numero) {
-            this.tratarDadosComNumero(nomePlanilha, headers, arraysBeneficios)
-          }
         }
       }
     })
@@ -125,7 +157,7 @@ export class AaXlsxConversorComponent implements OnInit {
       const ab: ArrayBuffer = e.target.result;
       const wb: XLSX.WorkBook = XLSX.read(ab);
 
-      this.tratarTodosOsDados(wb)
+      this.criarXlsxPayload(wb)
       console.log(this.xlsxPayload)
     };
   }
