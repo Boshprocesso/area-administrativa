@@ -33,7 +33,12 @@ import { PageBeneficiosTerceiroComponent } from './page-beneficios-terceiro/page
 import { PageBeneficiosTabelaComponent } from './page-beneficios-tabela/page-beneficios-tabela.component';
 import { PageBeneficiosTerceiroFormComponent } from './page-beneficios-terceiro-form/page-beneficios-terceiro-form.component';
 import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
-import { AaEventosTabelaComponent, EventosBeneficiosDialog, EventosCadastro } from './aa-eventos-tabela/aa-eventos-tabela.component';
+
+import { AaEventosTabelaComponent } from './aa-eventos-tabela/aa-eventos-tabela.component';
+import { EventosCadastro } from './aa-eventos-tabela/evento-dialog';
+import { EventosBeneficiosDialog, EventosBeneficioCadastro  } from './aa-eventos-tabela/beneficios.dialog';
+import { UsuariosTabela } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
+
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
 import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
 
@@ -54,7 +59,9 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     
     AaEventosTabelaComponent,
     EventosBeneficiosDialog,
-    EventosCadastro
+    EventosBeneficioCadastro,
+    EventosCadastro,
+    UsuariosTabela
   ],
   imports: [
     BrowserModule,

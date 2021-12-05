@@ -49,3 +49,10 @@ export type EventosJSON = {
     dataInicio: string;
     dataFim: string;
   }
+
+
+export type EventosBeneficioJSON = {
+    idEvento: number;
+    idProduto: string;
+    beneficio: string;
+}

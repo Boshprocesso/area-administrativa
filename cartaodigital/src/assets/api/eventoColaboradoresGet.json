@@ -1,6 +1,6 @@
 [
     {
-        "idEvento": 1,
+        "idEvento": "1",
         "codFuncionario": "92617565",
         "nomeFuncionario": "Joelcio Leandro Benvenutti",
         "cpf": "",
@@ -28,8 +28,9 @@
                 "quantidade": 2
             }
         ]
-    },{
-        "idEvento": 1,
+    },
+    {
+        "idEvento": "1",
         "codFuncionario": "12345678",
         "nomeFuncionario": "Amadeu Henrique Moro Marques",
         "cpf": "",

@@ -37,8 +37,8 @@
         <th mat-header-cell *matHeaderCellDef> MENUS </th>
         <td mat-cell *matCellDef="let element" class="coluna_botao"> 
           <div>
-            <button mat-button><mat-icon class="button">person_add</mat-icon></button>
-            <button mat-button (click)="beneficiosDialog(element.idEvento)"><mat-icon class="button">card_giftcard</mat-icon></button>
+            <button mat-button [routerLink]="['/eventos/usuarios/', element.idEvento]"><mat-icon class="button">person</mat-icon></button>
+            <button mat-button (click)="beneficiosDialog(element)"><mat-icon class="button">card_giftcard</mat-icon></button>
             <button mat-button (click)="EventoDialog('editar', element)"><mat-icon class="button">create</mat-icon></button>
           </div>
         </td>

@@ -1,17 +1,27 @@
 [
     {
-        "idEvento": 1,
-        "idProduto": 1,
-        "beneficio": "Kit Happy Hour"
+      "beneficio": "Kit Happy Hour",
+      "idEvento": "1",
+      "idProduto": "1"
     },
     {
-        "idEvento": 1,
-        "idProduto": 5,
-        "beneficio": "Kit Natal 2021"
+      "beneficio": "Kit Natal 2021",
+      "idEvento": "1",
+      "idProduto": "2"
     },
     {
-        "idEvento": 1,
-        "idProduto": 20,
-        "beneficio": "Cesta Fria"
+      "beneficio": "Kit Feijoada",
+      "idProduto": "3",
+      "idEvento": "5"
+    },
+    {
+      "beneficio": "Kit Panetone 2021",
+      "idProduto": "5",
+      "idEvento": "1"
+    },
+    {
+      "beneficio": "Kit de Papai Noel",
+      "idProduto": "6",
+      "idEvento": "2"
     }
-]
+  ]
