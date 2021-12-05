@@ -37,7 +37,7 @@ import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
 import { AaEventosTabelaComponent } from './aa-eventos-tabela/aa-eventos-tabela.component';
 import { EventosCadastro } from './aa-eventos-tabela/evento-dialog';
 import { EventosBeneficiosDialog, EventosBeneficioCadastro  } from './aa-eventos-tabela/beneficios.dialog';
-import { UsuariosTabela } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
+import { UsuariosTabela } from './aa-eventos-usuarios/usuarios-tabela'; 
 
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
 import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';

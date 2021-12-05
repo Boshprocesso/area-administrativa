@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BeneficiarioJSON, EventosBeneficioJSON, EventosJSON, LoginJSON } from './tiposJSON';
+import { BeneficiarioJSON, EventosBeneficioJSON, EventosJSON, EventosUsuariosJSON, LoginJSON } from './tiposJSON';
 import {Router} from '@angular/router';
 import { LoginService } from './login.service';
 
@@ -76,4 +76,12 @@ export class AaEventosService {
     return this.http.put<EventosBeneficioJSON>(linkJSON, bodyJSON);
   }
 
+
+  //SERVICES PARA OS BENEFICIOS DOS EVENTOS
+  //Função para coletar todos os eventos do servidor
+  getColaboradores(idEvento?:number){
+    var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores';
+
+    return this.http.get<EventosUsuariosJSON[]>(linkJSON);
+  }
 }
