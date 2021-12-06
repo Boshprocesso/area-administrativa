@@ -16,7 +16,8 @@ const routes: Routes = [
   {path: 'cadastro_terceiro', component: PageBeneficiosTerceiroComponent },
   {path: 'eventos', component: AaEventosComponent },
   {path: 'entrega_beneficios', component: PageEntregaBeneficioComponent},
-  {path: 'entrega_beneficios/filtro_beneficios', component: PageFiltroBeneficiosComponent}
+  {path: 'filtro_beneficios', component: PageEntregaBeneficioComponent},
+  {path: 'filtro_beneficios/:edvOuCpf', component: PageFiltroBeneficiosComponent}
 ];
 
 @NgModule({
