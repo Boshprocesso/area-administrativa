@@ -8,11 +8,11 @@
   
     <!-- Weight Column -->
     <ng-container matColumnDef="excluir">
-        <th mat-header-cell *matHeaderCellDef> Excluir </th>
-        <td mat-cell *matCellDef="let element; let posicao = index" class="coluna_botao"> 
-          <button mat-button (click)="EventoDialog('excluir', element)"><mat-icon class="button delete_button">delete_sweep</mat-icon></button>
-        </td>
-      </ng-container>
+      <th mat-header-cell *matHeaderCellDef> Excluir </th>
+      <td mat-cell *matCellDef="let element" class="coluna_botao"> 
+        
+      </td>
+    </ng-container>
 
     <ng-container matColumnDef="evento">
       <th mat-header-cell *matHeaderCellDef> Nome </th>
@@ -40,6 +40,7 @@
             <button mat-button [routerLink]="['/eventos/usuarios/', element.idEvento]"><mat-icon class="button">person</mat-icon></button>
             <button mat-button (click)="beneficiosDialog(element)"><mat-icon class="button">card_giftcard</mat-icon></button>
             <button mat-button (click)="EventoDialog('editar', element)"><mat-icon class="button">create</mat-icon></button>
+            <button mat-button (click)="EventoDialog('excluir', element)"><mat-icon class="button delete_button">delete_sweep</mat-icon></button>
           </div>
         </td>
       </ng-container>

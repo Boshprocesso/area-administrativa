@@ -1,0 +1,43 @@
+<form class="example-form" [formGroup]="formEnvio">
+<div *ngIf="data.tipo=='cadastro'"><h1 mat-dialog-title>Cadastro de Colaborador</h1></div>
+<div *ngIf="data.tipo=='editar'"><h1 mat-dialog-title>Editar o Colaborador</h1></div>
+<div *ngIf="data.tipo=='excluir'"><h1 mat-dialog-title>Você tem certeza que quer excluir o Colaborador?</h1></div>
+
+<div *ngIf="formulario">
+  <mat-form-field class="form-full-width">
+      <input formControlName="evento" matInput placeholder="Nome do Evento" required>         
+  </mat-form-field>
+  <mat-form-field class="form-full-width">
+      <input formControlName="descricao" matInput placeholder="Descricao do Evento" required>         
+  </mat-form-field>
+  <mat-form-field class="form-full-width">
+    <input matInput placeholder="Data de Inicio" type="date" formControlName="dataInicio"required>
+  </mat-form-field>
+  <mat-form-field class="form-full-width">
+    <input matInput placeholder="Data de Fim" type="date" formControlName="dataFim"required>
+  </mat-form-field>
+</div>
+
+
+<div *ngIf="data.tipo=='cadastro'">   
+    <div mat-dialog-actions>
+      <button mat-button (click)="postUsuario()" cdkFocusInitial>Cadastrar</button>
+      <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial><mat-icon>cancel</mat-icon>Cancelar</button>
+    </div>
+</div>
+
+<div *ngIf="data.tipo=='editar'">
+    <div mat-dialog-actions>
+      <button mat-button (click)="editarUsuario()" cdkFocusInitial>Editar</button>
+      <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial><mat-icon>cancel</mat-icon>Cancelar</button>
+    </div>
+</div>
+
+<div *ngIf="data.tipo=='excluir'">
+  <div mat-dialog-actions>
+    <button mat-button (click)="deleteUsuario()" cdkFocusInitial><mat-icon>delete</mat-icon>Excluir</button>
+    <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial><mat-icon>cancel</mat-icon>Cancelar</button>
+  </div>
+</div>
+
+</form>

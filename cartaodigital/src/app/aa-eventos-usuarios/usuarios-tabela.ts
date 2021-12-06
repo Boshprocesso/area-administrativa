@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { first } from "rxjs/operators";
 import { AaEventosService } from "../dao/aa-eventos.service";
 import { EventosUsuariosJSON } from "../dao/tiposJSON";
+import { UsuarioDialog } from "./usuarios-dialog";
 
 @Component({
     selector: 'app-usuarios-tabela',
@@ -15,6 +17,7 @@ import { EventosUsuariosJSON } from "../dao/tiposJSON";
     dataSource = Array<EventosUsuariosJSON>();
     
     constructor(
+                public dialog: MatDialog,
                 private eventosService: AaEventosService
                 ) { }
   
@@ -37,5 +40,19 @@ import { EventosUsuariosJSON } from "../dao/tiposJSON";
         }
       );
     }
+
+    //Função que irá chamar o Objeto de EVENTO DIALOG
+  UsuarioDialog(acao:string, objEvento?:EventosUsuariosJSON): void {
+    const dialogRef = this.dialog.open( UsuarioDialog, 
+                                        {
+                                          width: '350px',
+                                          data: {tipo: acao, evento: objEvento}
+                                        }
+                                      );
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getColaboradores();                          //Atualiza a página de Usuarios Novamente
+    });
+  }
   }
   

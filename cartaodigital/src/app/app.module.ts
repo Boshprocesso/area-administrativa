@@ -38,6 +38,7 @@ import { AaEventosTabelaComponent } from './aa-eventos-tabela/aa-eventos-tabela.
 import { EventosCadastro } from './aa-eventos-tabela/evento-dialog';
 import { EventosBeneficiosDialog, EventosBeneficioCadastro  } from './aa-eventos-tabela/beneficios.dialog';
 import { UsuariosTabela } from './aa-eventos-usuarios/usuarios-tabela'; 
+import { UsuarioDialog } from './aa-eventos-usuarios/usuarios-dialog';
 
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
 import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
@@ -61,7 +62,8 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     EventosBeneficiosDialog,
     EventosBeneficioCadastro,
     EventosCadastro,
-    UsuariosTabela
+    UsuariosTabela,
+    UsuarioDialog
   ],
   imports: [
     BrowserModule,

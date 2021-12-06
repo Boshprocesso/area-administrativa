@@ -8,8 +8,12 @@
     margin: 5px;
 }
 
-.tabela{
-    min-width: 700px;
+@media screen and (max-width: 900px) {
+.body{
+    margin: 10px;
     width: 100%;
-    margin-bottom: 50px;
+}
+.pagina{
+    width: 100%;
+}
 }

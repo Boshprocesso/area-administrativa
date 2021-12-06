@@ -57,7 +57,7 @@ export type EventosJSON = {
 
 export type EventosBeneficioJSON = {
     idEvento: number;
-    idProduto: string;
+    idProduto: number;
     beneficio: string;
 }
 

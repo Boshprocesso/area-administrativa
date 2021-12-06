@@ -17,7 +17,7 @@ import { EventosCadastro } from './evento-dialog';
 })
 export class AaEventosTabelaComponent implements OnInit {
 
-  displayedColumns: string[] = ['excluir', 'evento', 'inicio', 'fim', 'menus'];
+  displayedColumns: string[] = ['evento', 'inicio', 'fim', 'menus'];
   dataSource = Array<EventosJSON>();
 
   constructor(private _liveAnnouncer: LiveAnnouncer,

@@ -4,6 +4,10 @@ table {
     text-align: center;
   }
 
+  .coluna_botao{
+    padding: 0px;
+  }
+
   .datas{
     padding-left: 20px;
     padding-right: 20px;
@@ -33,6 +37,16 @@ table {
     width: 30px;
   }
 
+  @media screen and (max-width: 900px) {
+    .body{
+        margin: 10px;
+        width: 100%;
+    }
+    .pagina{
+        width: 100%;
+    }
+    }
+
   @media screen and (max-width: 790px){
     button{
       width: 100%;
@@ -46,9 +60,6 @@ table {
       width: 100%;
     }
   }
-
-
-
 
 
   .fab{
