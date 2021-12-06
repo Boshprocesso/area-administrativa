@@ -1,10 +1,11 @@
-import { Component, Inject } from "@angular/core";
+import { Component, Inject, ViewChild } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { first } from "rxjs/operators";
 import { AaEventosService } from "../dao/aa-eventos.service";
 import { EventosUsuariosJSON } from "../dao/tiposJSON";
-
+import {MatAccordion} from '@angular/material/expansion';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
 export type usuariosDialog = {
     tipo: string;
@@ -18,6 +19,8 @@ export type usuariosDialog = {
     styleUrls: ['./usuarios-dialog.css']
   })
   export class UsuarioDialog {
+    @ViewChild(MatAccordion) accordion!: MatAccordion;
+    
     formEnvio = this.formBuilder.group({
       evento: '',
       descricao: '',

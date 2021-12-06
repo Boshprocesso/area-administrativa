@@ -13,7 +13,7 @@ import { UsuarioDialog } from "./usuarios-dialog";
   export class UsuariosTabela implements OnInit {
     @Input() idEvento!: number;                   //Numero do Evento vem com uma variavel de Input para trabalhar em cima da página.
 
-    displayedColumns: string[] = ['excluir', 'edv', 'colaborador', 'cpf', 'area', 'user', 'beneficios', 'dataInclusao', 'menus'];
+    displayedColumns: string[] = ['excluir', 'edv', 'colaborador', 'cpf', 'area', 'user', 'beneficios', 'dataInclusao'];
     dataSource = Array<EventosUsuariosJSON>();
     
     constructor(

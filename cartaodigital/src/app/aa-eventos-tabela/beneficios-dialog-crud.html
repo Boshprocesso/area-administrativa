@@ -13,14 +13,14 @@
 
 <div *ngIf="data.tipo=='cadastro'">
   <div mat-dialog-actions>
-    <button mat-button (click)="postBeneficio()" cdkFocusInitial class="action_button"><mat-icon>control_point</mat-icon> Inserir</button>
+    <button mat-button (click)="postBeneficio()" cdkFocusInitial class="action_button"><mat-icon>save_alt</mat-icon> Inserir</button>
     <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial class="action_button">Fechar</button>
   </div>
 </div>
 
 <div *ngIf="data.tipo=='editar'">
   <div mat-dialog-actions>
-    <button mat-button (click)="editarBeneficio()" cdkFocusInitial class="action_button"><mat-icon>create</mat-icon> Editar</button>
+    <button mat-button (click)="editarBeneficio()" cdkFocusInitial class="action_button"><mat-icon>save</mat-icon> Salvar</button>
     <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial class="action_button">Fechar</button>
   </div>
 </div>

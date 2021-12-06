@@ -1,3 +1,46 @@
+
+  .button{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: solid 1px #CCC;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .delete_button{
+    color: rgb(175, 0, 0);
+    border: solid 1px rgb(175, 0, 0);
+  }
+
+  button{
+    width: 30px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .body{
+        margin: 10px;
+        width: 100%;
+    }
+    .pagina{
+        width: 100%;
+    }
+    }
+
+  @media screen and (max-width: 790px){
+    button{
+      width: 100%;
+    }
+
+    .coluna_botao{
+      width: 30px;
+    }
+    
+    .button{
+      width: 100%;
+    }
+  }
+
 .margem{
     padding-left: 15px;
     padding-right: 15px;
