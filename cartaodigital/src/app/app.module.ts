@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TelaFooterComponent } from './tela-footer/tela-footer.component';
@@ -36,6 +37,10 @@ import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
 import { AaEventosTabelaComponent, EventosBeneficiosDialog, EventosCadastro } from './aa-eventos-tabela/aa-eventos-tabela.component';
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
 import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
+import { AoTelaColetaComponent } from './ao-tela-coleta/ao-tela-coleta.component';
+import { PageEntregaBeneficioComponent } from './page-entrega-beneficio/page-entrega-beneficio.component';
+import { PageFiltroBeneficiosComponent } from './page-entrega-beneficio/page-filtro-beneficios/page-filtro-beneficios.component';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -54,7 +59,10 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     
     AaEventosTabelaComponent,
     EventosBeneficiosDialog,
-    EventosCadastro
+    EventosCadastro,
+    AoTelaColetaComponent,
+    PageEntregaBeneficioComponent,
+    PageFiltroBeneficiosComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +86,7 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     MatSelectModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
