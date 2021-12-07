@@ -70,14 +70,11 @@ export class AaXlsxConversorComponent implements OnInit {
     }
     
     let beneficioBeneficiario = this.xlsxPayload.beneficioBeneficiario
-    let indexBeneficiario = this.xlsxPayload.beneficiarios.findIndex(
-      beneficiario => beneficiario.cpf == cpf
-    )
 
     if(beneficioBeneficiario[beneficio] == null) {
-      beneficioBeneficiario[beneficio] = [[indexBeneficiario, quantidade]]
+      beneficioBeneficiario[beneficio] = [[cpf, quantidade]]
     }else {
-      beneficioBeneficiario[beneficio].push( [indexBeneficiario, quantidade] )
+      beneficioBeneficiario[beneficio].push( [cpf, quantidade] )
     }
   }
 
