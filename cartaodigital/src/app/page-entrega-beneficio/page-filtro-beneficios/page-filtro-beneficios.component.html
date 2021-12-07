@@ -1,1 +1,35 @@
-<p>page-filtro-beneficios works!</p>
+
+<div class="body">
+    <div class="pagina">
+        <mat-card class="card-principal">
+
+            <mat-card-header>
+                <mat-card-title>RETIRADA ILHA CESTA CONGELADA</mat-card-title>
+            </mat-card-header>
+
+            <mat-card class="conteudo" *ngFor="let beneficio of beneficios">
+                <div class="descricao">
+                    <mat-card-title>{{ beneficio.descricaoBeneficio }}</mat-card-title>
+                    <mat-card-subtitle>QUANTIDADE: {{ beneficio.quantidade }}</mat-card-subtitle>
+                </div>
+                <div class="nome">
+                    <mat-card-content>
+                        <h2>{{ beneficio.nomeCompleto }}</h2>
+                    </mat-card-content>
+                </div>
+                <div class="simbolo">
+                    <div *ngIf="beneficio.entregue === 1 else naoEntregue">
+                        <mat-icon>check_circle</mat-icon>
+                    </div>
+                    <ng-template #naoEntregue>
+                        <mat-icon>check_circle_outline</mat-icon>
+                    </ng-template>
+                </div>
+                <div class="btn-coletar">
+                    <button mat-raised-button color='primary'>COLETAR</button>
+                </div>
+           
+            </mat-card>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagina{
+    padding: 15px;
+    margin: 3px;
+    height: 450px;
+}
+
+.card-principal{
+    padding: 30px;
+    width: 600px;
+    border-radius: 20px;
+    
+    /* Para centralizar a DIV no centro da página */
+    position: relative;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+
+    -webkit-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+    -moz-box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+    box-shadow: 2px 4px 58px -20px rgba(0,0,0,1);
+}
+
+.card-principal mat-card-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    margin-bottom: 30px;
+}
+
+.conteudo {
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+    background-color: aliceblue;
+    margin: 15px;
+    align-self: flex-start;
+    flex-flow: row;
+}
+
+.descricao {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.nome{
+    position: absolute;
+    bottom: 2px;
+    left: 15px;
+}
+
+.simbolo {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.btn-coletar{
+    position: absolute;
+    bottom: 8px;
+    right: 5px;
+}
