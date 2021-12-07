@@ -21,6 +21,11 @@ export class AaXlsxConversorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  excelDateToJSDate(excelDate:number) {
+      var date = new Date(Math.round((excelDate - (25567 + 2)) * 86400 * 1000));
+      var converted_date = date.toISOString().split('T')[0];
+      return converted_date;
+  }
   organizarBeneficiarios(arraysColaboradores:Array<Array<any>>) {
     let headers: string[] = arraysColaboradores[0]
 
@@ -37,7 +42,7 @@ export class AaXlsxConversorComponent implements OnInit {
       return {
         edv: array[headersIndex[0]],
         cpf: array[headersIndex[1]],
-        nascimento: array[headersIndex[2]],
+        nascimento: this.excelDateToJSDate(array[headersIndex[2]]),
         nome: array[headersIndex[3]],
         unidade: array[headersIndex[4]]
       }
