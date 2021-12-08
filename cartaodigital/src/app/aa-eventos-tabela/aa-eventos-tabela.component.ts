@@ -1,20 +1,15 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
 import { Sort } from '@angular/material/sort';
-import { BeneficioUsuario } from '../dao/tiposJSON';
+import { first } from 'rxjs/operators';
+import { AaEventosService } from '../dao/aa-eventos.service';
+import { EventosJSON } from '../dao/tiposJSON';
 
-export interface PeriodicElement {
-  evento: string;
-  position: number;
-  inicio: string;
-  fim: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, evento: 'Fim de Ano 2021', inicio: '19-12-2021', fim: '23-12-2021'},
-  {position: 2, evento: 'Natal 2021', inicio: '24-12-2021', fim: '25-12-2021'},
-  {position: 3, evento: 'Festa de Boas Vindas', inicio: '06-01-2022', fim: '08-01-2022'}
-];
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FormBuilder } from '@angular/forms';
+import { EventosBeneficiosDialog } from './beneficios.dialog';
+import { EventosCadastro } from './evento-dialog';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-aa-eventos-tabela',
@@ -23,27 +18,70 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AaEventosTabelaComponent implements OnInit {
 
-  displayedColumns: string[] = ['excluir', 'evento', 'inicio', 'fim', 'menus'];
+  displayedColumns: string[] = ['evento', 'inicio', 'fim', 'menus'];
+  dataSource = Array<EventosJSON>();
 
-  @Input() objeto!: BeneficioUsuario; 
-
-  dataSource = ELEMENT_DATA;
-
-  constructor(private _liveAnnouncer: LiveAnnouncer) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer,
+              public dialog: MatDialog,
+              private eventosService: AaEventosService
+              ) {}
 
   ngOnInit(): void {
+            this.getEventos();
   }
 
   announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  //Atualiza o objeto "EVENTOS" da tela principal
+  getEventos(){
+    this.eventosService.getEvento()
+    .pipe(first())
+    .subscribe(data => {
+        console.log("Obtendo os Eventos cadastrados...");
+        console.warn(data);
+        if(data.length>0){
+          this.dataSource = data;
+        }else{
+          this.dataSource.length = 0;
+        }
+      }
+    );
+  }
+
+  //Função que irá chamar o Objeto de EVENTO DIALOG
+  EventoDialog(acao:string, objEvento?:EventosJSON): void {
+    const dialogRef = this.dialog.open( EventosCadastro, 
+                                        {
+                                          width: '350px',
+                                          data: {tipo: acao, evento: objEvento}
+                                        }
+                                      );
+
+    dialogRef.afterClosed().subscribe(result => {
+      //console.log('Fechando a caixa de dialogo');
+      this.getEventos();                          //Atualiza a página de eventos novamente
+    });
+  }
+    
+  //OpenDialog para controle
+  beneficiosDialog(objEvento:EventosJSON): void {
+    const dialogRef = this.dialog.open( EventosBeneficiosDialog, 
+                                        {
+                                          width: '350px',
+                                          data: {tipo: 'visualizar', evento: objEvento}
+                                        }
+                                      );
+
+    dialogRef.afterClosed().subscribe(result => {
+      //console.log('Fechando a caixa de dialogo');
+      console.log(result)
+    });
   }
 
 }

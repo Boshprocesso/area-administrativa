@@ -1,23 +1,3 @@
-table {
-    width: 100%;
-    min-width: 350px;
-    text-align: center;
-  }
-
-  .coluna_botao{
-    padding: 0px;
-  }
-
-  .datas{
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .eventos{
-    text-align: left;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 
   .button{
     margin-top: 5px;
@@ -61,8 +41,12 @@ table {
     }
   }
 
+.margem{
+    padding-left: 15px;
+    padding-right: 15px;
+}
 
-  .fab{
+.fab{
     position: fixed;
     z-index: 999;
     bottom:10px;
@@ -114,14 +98,13 @@ table {
 
 
 
-
   .fab_img{
     position: fixed;
     z-index: 999;
     bottom:10px;
     right:10px;
 
-    background-image: url("../../assets/img/site/ico_new_event.png"); /* The image used */
+    background-image: url("../../assets/img/site/ico_new_user.png"); /* The image used */
     background-color: none; /* Used if the image is unavailable */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */

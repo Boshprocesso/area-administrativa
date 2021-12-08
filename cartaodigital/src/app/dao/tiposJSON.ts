@@ -46,3 +46,39 @@ export type xlsxPayloadJSON = {
         [beneficio:string]: [{ cpf: String, quantidade:Number }]
     }
 }
+
+
+export type EventosJSON = {
+    idEvento: number;
+    nomeEvento: string;
+    descricaoEvento: string;
+    dataInicio: string;
+    dataFim: string;
+  }
+
+
+
+
+
+
+export type EventosBeneficioJSON = {
+    idEvento: number;
+    idProduto: number;
+    beneficio: string;
+}
+
+
+
+
+
+
+export type EventosUsuariosJSON = {
+    idEvento: number;
+    codFuncionario: string;
+    nomeFuncionario: string;
+    cpf: string;
+    area: string;
+    username: string;
+    dataInclusao: string;
+    beneficios: Array<BeneficioEstrutura>;
+}

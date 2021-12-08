@@ -1,0 +1,26 @@
+.action_button{
+    width: 47%;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+}
+
+.button{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: solid 1px #CCC;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .delete_button{
+    color: rgb(175, 0, 0);
+    border: solid 1px rgb(175, 0, 0);
+  }
+
+.form-full-width{
+    width: 100%;
+}
+
+.tabela{
+    width: 100%;
+}

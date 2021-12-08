@@ -11,7 +11,7 @@ linkBaseAPI = 'https://61a567484c822c00170421e7.mockapi.io/'
 })
 export class LoginService {
   //Servico entre Front e Back-end
-  loginLocal!: LoginJSON;      //JSON de Beneficios que o usuário tem direito
+  loginLocal!: LoginJSON;                   //JSON de Beneficios que o usuário tem direito
 
   constructor(private router: Router,
               private http: HttpClient      //Coloca no Construtor agora o Http Client

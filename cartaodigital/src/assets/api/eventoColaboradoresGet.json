@@ -1,0 +1,90 @@
+[
+    {
+     "nomeFuncionario": "nomeFuncionario 1",
+     "cpf": "cpf 1",
+     "area": "area 1",
+     "dataInclusao": "2021-12-19",
+     "beneficios": [
+      {
+       "idProduto": 1,
+       "beneficio": "Kit Happy Hour",
+       "status": "OK",
+       "quantidade": 2
+      },
+      {
+       "idProduto": 5,
+       "beneficio": "Kit Natal 2021",
+       "status": "Pendente",
+       "quantidade": 1
+      }
+     ],
+     "codFuncionario": "1",
+     "idEvento": "1"
+    },
+    {
+     "nomeFuncionario": "nomeFuncionario 2",
+     "cpf": "cpf 2",
+     "area": "area 2",
+     "dataInclusao": "2021-12-21",
+     "beneficios": [
+      {
+       "idProduto": 1,
+       "beneficio": "Kit Happy Hour",
+       "status": "OK",
+       "quantidade": 4
+      }
+     ],
+     "codFuncionario": "2",
+     "idEvento": "1"
+    },
+    {
+     "idEvento": "1",
+     "codFuncionario": "92617565",
+     "nomeFuncionario": "Joelcio Leandro Benvenutti",
+     "cpf": "",
+     "area": "Engenharia",
+     "dataInclusao": "2021-11-29",
+     "beneficios": [
+      {
+       "idProduto": 1,
+       "beneficio": "Kit Happy Hour",
+       "status": "OK",
+       "quantidade": 1
+      },
+      {
+       "idProduto": 5,
+       "beneficio": "Kit Natal 2021",
+       "status": "Pendente",
+       "quantidade": 1
+      },
+      {
+       "idProduto": 20,
+       "beneficio": "Cesta Fria",
+       "status": "Pendente",
+       "quantidade": 2
+      }
+     ]
+    },
+    {
+     "idEvento": "1",
+     "codFuncionario": "12345678",
+     "nomeFuncionario": "Amadeu Henrique Moro Marques",
+     "cpf": "",
+     "area": "Comercial",
+     "dataInclusao": "2021-11-29",
+     "beneficios": [
+      {
+       "idProduto": 1,
+       "beneficio": "Kit Happy Hour",
+       "status": "OK",
+       "quantidade": 1
+      },
+      {
+       "idProduto": 20,
+       "beneficio": "Cesta Fria",
+       "status": "Pendente",
+       "quantidade": 2
+      }
+     ]
+    }
+   ]
