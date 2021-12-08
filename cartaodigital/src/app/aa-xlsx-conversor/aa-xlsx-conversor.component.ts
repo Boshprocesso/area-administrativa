@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { xlsxPayloadJSON } from '../dao/tiposJSON';
 import * as XLSX from 'xlsx';
 
@@ -8,13 +8,15 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./aa-xlsx-conversor.component.css']
 })
 export class AaXlsxConversorComponent implements OnInit {
+  @Input() idEvento!:string
+  @Output() ArquivoConvertido = new EventEmitter<xlsxPayloadJSON>();
   headerColaboradores = ["EDV", "CPF", "DATA DE NASCIMENTO", "NOME COMPLETO", "UNIDADE"]
   xlsxPayload:xlsxPayloadJSON = {
+    idEveneto: this.idEvento,
     beneficiarios: [],
     beneficios: [],
     beneficioBeneficiario: {}
   }
-  @Output() ArquivoConvertido = new EventEmitter<xlsxPayloadJSON>();
 
   constructor() { }
 
