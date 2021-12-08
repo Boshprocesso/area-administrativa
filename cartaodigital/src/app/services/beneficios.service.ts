@@ -13,9 +13,9 @@ export class BeneficiosService {
     { idBeneficio: '1', descricaoBeneficio: 'Cesta Fria', entregue: 0, quantidade: 1, nomeCompleto: 'Joao', chaveFuncionario: '12345' },
     { idBeneficio: '2', descricaoBeneficio: 'Kit Happy Hour', entregue: 0, quantidade: 2, nomeCompleto: 'Maria', chaveFuncionario: '12345' },
     { idBeneficio: '3', descricaoBeneficio: 'Cesta Seca', entregue: 1, quantidade: 1,  nomeCompleto: 'Jose', chaveFuncionario: '12345' },
-    { idBeneficio: '1', descricaoBeneficio: 'Cesta Fria', entregue: 0, quantidade: 1, nomeCompleto: 'Joao', chaveFuncionario: '12345' },
-    { idBeneficio: '2', descricaoBeneficio: 'Kit Happy Hour', entregue: 0, quantidade: 2, nomeCompleto: 'Maria', chaveFuncionario: '12345' },
-    { idBeneficio: '3', descricaoBeneficio: 'Cesta Seca', entregue: 1, quantidade: 1,  nomeCompleto: 'Jose', chaveFuncionario: '12345' },
+    { idBeneficio: '4', descricaoBeneficio: 'Cesta Fria', entregue: 0, quantidade: 1, nomeCompleto: 'Joao', chaveFuncionario: '12345' },
+    { idBeneficio: '5', descricaoBeneficio: 'Kit Happy Hour', entregue: 0, quantidade: 2, nomeCompleto: 'Maria', chaveFuncionario: '12345' },
+    { idBeneficio: '6', descricaoBeneficio: 'Cesta Seca', entregue: 1, quantidade: 1,  nomeCompleto: 'Jose', chaveFuncionario: '12345' },
   ];
 
   api = 'https://exemplo.com/api/';

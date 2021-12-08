@@ -12,7 +12,8 @@
 
 .card-principal{
     padding: 30px;
-    width: 600px;
+    width: 70%;
+    height: 90%;
     border-radius: 20px;
     
     /* Para centralizar a DIV no centro da página */
@@ -22,7 +23,6 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     
-    flex-direction: row;
     justify-content: center;
     justify-items: center;
 
@@ -36,17 +36,20 @@
     flex-direction: row;
     justify-content: center;
     justify-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .conteudo {
-    width: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cartao {
     height: 100px;
-    padding: 10px;
+    width: 200px;
     background-color: aliceblue;
-    margin: 15px;
-    align-self: flex-start;
-    flex-flow: row;
+    margin: 6px;
 }
 
 .descricao {
@@ -71,4 +74,8 @@
     position: absolute;
     bottom: 8px;
     right: 5px;
+}
+
+.recebido {
+    color: greenyellow;
 }

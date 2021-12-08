@@ -19,10 +19,16 @@ export class PageFiltroBeneficiosComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('CPF ou EDV resgatado da rota', this.route.snapshot.params['edvOuCpf']);
-    this.beneficios = this.beneficiosService.getBeneficiosFAKE();
+    this.carregarDados();
   }
 
-  
+  // alterar no back e chamar novamente o método que carrega os dados
+  darBaixa(index: number) {
+    this.beneficios[index].entregue = 1;
+  }
 
+  carregarDados(): void {
+    this.beneficios = this.beneficiosService.getBeneficiosFAKE();
+  }
 
 }

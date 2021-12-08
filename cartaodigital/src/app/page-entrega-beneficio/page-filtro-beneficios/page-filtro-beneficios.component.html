@@ -7,29 +7,35 @@
                 <mat-card-title>RETIRADA ILHA CESTA CONGELADA</mat-card-title>
             </mat-card-header>
 
-            <mat-card class="conteudo" *ngFor="let beneficio of beneficios">
-                <div class="descricao">
-                    <mat-card-title>{{ beneficio.descricaoBeneficio }}</mat-card-title>
-                    <mat-card-subtitle>QUANTIDADE: {{ beneficio.quantidade }}</mat-card-subtitle>
+            <section class="conteudo" >
+                <div *ngFor="let beneficio of beneficios; index as i" >
+                    <mat-card class="cartao">
+                        <div class="descricao">
+                            <mat-card-title>{{ beneficio.descricaoBeneficio }}</mat-card-title>
+                            <mat-card-subtitle>QUANTIDADE: {{ beneficio.quantidade }}</mat-card-subtitle>
+                        </div>
+                        <div class="nome">
+                            <h2>{{ beneficio.nomeCompleto }}</h2>
+                        </div>
+                        <div class="simbolo">
+                            <div *ngIf="beneficio.entregue === 1 else naoEntregue">
+                                <mat-icon>check_circle</mat-icon>
+                            </div>
+                            <ng-template #naoEntregue>
+                                <mat-icon>check_circle_outline</mat-icon>
+                            </ng-template>
+                        </div>
+                        <div class="btn-coletar">
+                            <div *ngIf="beneficio.entregue === 0 else mensagem">
+                                <button mat-raised-button color='primary' (click)="darBaixa(i)">COLETAR</button>
+                            </div>
+                            <ng-template #mensagem>
+                                <p>Recebido</p>
+                            </ng-template>
+                        </div>
+                    </mat-card>
                 </div>
-                <div class="nome">
-                    <mat-card-content>
-                        <h2>{{ beneficio.nomeCompleto }}</h2>
-                    </mat-card-content>
-                </div>
-                <div class="simbolo">
-                    <div *ngIf="beneficio.entregue === 1 else naoEntregue">
-                        <mat-icon>check_circle</mat-icon>
-                    </div>
-                    <ng-template #naoEntregue>
-                        <mat-icon>check_circle_outline</mat-icon>
-                    </ng-template>
-                </div>
-                <div class="btn-coletar">
-                    <button mat-raised-button color='primary'>COLETAR</button>
-                </div>
-           
-            </mat-card>
+            </section>
         </mat-card>
     </div>
 </div>
