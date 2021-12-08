@@ -12,7 +12,7 @@ export class AaXlsxConversorComponent implements OnInit {
   @Output() ArquivoConvertido = new EventEmitter<xlsxPayloadJSON>();
   headerColaboradores = ["EDV", "CPF", "DATA DE NASCIMENTO", "NOME COMPLETO", "UNIDADE"]
   xlsxPayload:xlsxPayloadJSON = {
-    idEveneto: this.idEvento,
+    idEvento: "",
     beneficiarios: [],
     beneficios: [],
     beneficioBeneficiario: {}
@@ -121,6 +121,8 @@ export class AaXlsxConversorComponent implements OnInit {
   }
 
   criarXlsxPayload(wb:XLSX.WorkBook) {
+    this.xlsxPayload.idEvento = this.idEvento
+
     wb.SheetNames.forEach(nomePlanilha => {
       const ws: XLSX.WorkSheet = wb.Sheets[nomePlanilha];
 
