@@ -47,6 +47,7 @@ import { UsuarioDialogBeneficiosInput } from './aa-eventos-usuarios/usuarios-dia
 import { UsuariosTabelaVazia } from './aa-eventos-usuarios/tela-usuarios-vazio';
 
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
+import { AaXlsxConversorComponent } from './aa-xlsx-conversor/aa-xlsx-conversor.component';
 import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
 
 
@@ -64,7 +65,6 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     AaEventosComponent,
     TelaBloqueadaComponent,
     AaEventosUsuariosComponent,
-    
     AaEventosTabelaComponent,
     EventosBeneficiosDialog,
     EventosBeneficioCadastro,
@@ -72,7 +72,8 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     UsuariosTabela,
     UsuarioDialog,
     UsuarioDialogBeneficiosInput,
-    UsuariosTabelaVazia
+    UsuariosTabelaVazia,
+    AaXlsxConversorComponent
   ],
   imports: [
     BrowserModule,

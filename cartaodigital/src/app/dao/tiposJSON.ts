@@ -39,7 +39,14 @@ export type LoginJSON = {
             }
 }
 
-
+export type xlsxPayloadJSON = {
+    idEvento:String,
+    beneficiarios:Array<any>,
+    beneficios:Array<any>,
+    beneficioBeneficiario: {
+        [beneficio:string]: [{ cpf:String, quantidade:Number }]
+    }
+}
 
 
 export type EventosJSON = {
