@@ -1,1 +1,18 @@
-<p>aa-eventos-usuarios works!</p>
+<div class="body" id="body">
+    <div class="pagina">
+
+        <div *ngIf="paginaRH; then temItem else naoTem" id="localCard"></div>
+        <ng-template #temItem>
+            
+            <app-usuarios-tabela [idEvento]="idEventoRota" ></app-usuarios-tabela>
+
+
+        </ng-template>
+        <ng-template #naoTem>
+            
+            <app-tela-bloqueada></app-tela-bloqueada>
+            
+        </ng-template>
+
+    </div>
+</div>

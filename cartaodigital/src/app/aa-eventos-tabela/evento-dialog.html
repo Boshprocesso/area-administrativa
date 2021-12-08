@@ -37,14 +37,14 @@
 
 <div *ngIf="data.tipo=='cadastro'">   
     <div mat-dialog-actions>
-      <button mat-button (click)="postEvento()" cdkFocusInitial>Cadastrar</button>
+      <button mat-button (click)="postEvento()" cdkFocusInitial><mat-icon>save_alt</mat-icon>Cadastrar</button>
       <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial><mat-icon>cancel</mat-icon>Cancelar</button>
     </div>
 </div>
 
 <div *ngIf="data.tipo=='editar'">
     <div mat-dialog-actions>
-      <button mat-button (click)="editarEvento()" cdkFocusInitial>Editar</button>
+      <button mat-button (click)="editarEvento()" cdkFocusInitial><mat-icon>save</mat-icon>Editar</button>
       <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial><mat-icon>cancel</mat-icon>Cancelar</button>
     </div>
 </div>

@@ -19,6 +19,10 @@ import {MatTableModule} from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,9 +37,18 @@ import { PageBeneficiosTerceiroComponent } from './page-beneficios-terceiro/page
 import { PageBeneficiosTabelaComponent } from './page-beneficios-tabela/page-beneficios-tabela.component';
 import { PageBeneficiosTerceiroFormComponent } from './page-beneficios-terceiro-form/page-beneficios-terceiro-form.component';
 import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
-import { AaEventosTabelaComponent, EventosBeneficiosDialog, EventosCadastro } from './aa-eventos-tabela/aa-eventos-tabela.component';
+
+import { AaEventosTabelaComponent } from './aa-eventos-tabela/aa-eventos-tabela.component';
+import { EventosCadastro } from './aa-eventos-tabela/evento-dialog';
+import { EventosBeneficiosDialog, EventosBeneficioCadastro  } from './aa-eventos-tabela/beneficios.dialog';
+import { UsuariosTabela } from './aa-eventos-usuarios/usuarios-tabela'; 
+import { UsuarioDialog } from './aa-eventos-usuarios/usuarios-dialog';
+import { UsuarioDialogBeneficiosInput } from './aa-eventos-usuarios/usuarios-dialog-beneficios';
+import { UsuariosTabelaVazia } from './aa-eventos-usuarios/tela-usuarios-vazio';
+
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
 import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +67,12 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     
     AaEventosTabelaComponent,
     EventosBeneficiosDialog,
-    EventosCadastro
+    EventosBeneficioCadastro,
+    EventosCadastro,
+    UsuariosTabela,
+    UsuarioDialog,
+    UsuarioDialogBeneficiosInput,
+    UsuariosTabelaVazia
   ],
   imports: [
     BrowserModule,
@@ -76,7 +94,11 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     HttpClientModule,
     ReactiveFormsModule,       //Para o CRUD
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    DragDropModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

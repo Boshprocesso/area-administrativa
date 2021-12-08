@@ -1,0 +1,107 @@
+<form class="example-form" [formGroup]="formEnvio">
+<div *ngIf="data.tipo=='cadastro'"><h1 mat-dialog-title>Cadastro de Colaborador</h1></div>
+<div *ngIf="data.tipo=='editar'"><h1 mat-dialog-title>Editar o Colaborador</h1></div>
+<div *ngIf="data.tipo=='excluir'"><h1 mat-dialog-title>Você tem certeza que quer excluir o Colaborador?</h1></div>
+
+
+
+<div *ngIf="formulario">
+  <mat-accordion class="example-headers-align" multi>
+
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Colaborador
+        </mat-panel-title>
+        <mat-panel-description>
+          Informações pessoais
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Número do EDV</mat-label>
+        <input formControlName="edv" matInput placeholder="EDV do Usuário" required> 
+        <mat-icon matSuffix>person_pin</mat-icon>
+        <mat-hint>Número de EDV do funcionario</mat-hint>
+      </mat-form-field>
+      <br>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Nome Colaborador</mat-label>
+        <input formControlName="nome" matInput placeholder="Nome Colaborador" required>  
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>  
+        <mat-hint>Nome completo do colaborador</mat-hint>   
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>CPF</mat-label>
+        <input formControlName="cpf" matInput placeholder="CPF Colaborador">    
+        <mat-icon matSuffix>view_week</mat-icon> 
+        <mat-hint>CPF somente números</mat-hint>     
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Área</mat-label>
+        <input formControlName="area" matInput placeholder="Área de Trabalho" required>  
+        <mat-icon matSuffix>work</mat-icon>   
+        <mat-hint>Área de trabalho do colaborador</mat-hint>     
+      </mat-form-field>
+      <br>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput placeholder="Nome de Usuário">  
+        <mat-icon matSuffix>how_to_reg</mat-icon>  
+        <mat-hint>Nome de usuário</mat-hint>      
+      </mat-form-field>
+
+  
+    </mat-expansion-panel>
+
+  <div *ngIf="data.tipo!='excluir'">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Beneficios
+          </mat-panel-title>
+          <mat-panel-description>
+            Cadastrar beneficios
+            <mat-icon>card_giftcard</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <div *ngFor="let item of beneficioLocal">
+          <usuarios-dialog-beneficios [objeto]="item"></usuarios-dialog-beneficios>
+          <br>
+        </div>
+
+      </mat-expansion-panel>
+    
+    </div>
+  </mat-accordion>
+</div>
+
+
+<div *ngIf="data.tipo=='cadastro'">   
+    <div mat-dialog-actions>
+      <button mat-button (click)="postUsuario()" cdkFocusInitial><mat-icon>save_alt</mat-icon>Cadastrar</button>
+      <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial><mat-icon>cancel</mat-icon>Cancelar</button>
+    </div>
+</div>
+
+<div *ngIf="data.tipo=='editar'">
+    <div mat-dialog-actions>
+      <button mat-button (click)="editarUsuario()" cdkFocusInitial><mat-icon>save</mat-icon>Salvar</button>
+      <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial><mat-icon>cancel</mat-icon>Cancelar</button>
+    </div>
+</div>
+
+<div *ngIf="data.tipo=='excluir'">
+  <div mat-dialog-actions>
+    <button mat-button (click)="deleteUsuario()" cdkFocusInitial><mat-icon>delete</mat-icon>Excluir</button>
+    <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial><mat-icon>cancel</mat-icon>Cancelar</button>
+  </div>
+</div>
+
+</form>

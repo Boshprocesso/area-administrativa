@@ -1,0 +1,19 @@
+.body{
+    display: flex;
+    justify-content: center;
+    min-height: 500px;
+}
+.pagina{
+    padding-top: 10px;
+    margin: 5px;
+}
+
+@media screen and (max-width: 900px) {
+.body{
+    margin: 10px;
+    width: 100%;
+}
+.pagina{
+    width: 100%;
+}
+}

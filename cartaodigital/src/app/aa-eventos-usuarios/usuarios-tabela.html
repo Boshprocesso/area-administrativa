@@ -1,0 +1,85 @@
+<div class="back">
+  <button mat-button class="back"></button>
+</div>
+
+<div class="fab_img">
+  <button mat-button (click)="UsuarioDialog('cadastro')"></button>
+</div>
+
+<div *ngIf="dataSource.length>0; then temDado else naoTem"></div>
+
+<ng-template #temDado>
+  <h1>Usuarios Cadastrados</h1>
+  <h3>Evento: {{idEvento}}</h3>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="excluir">
+          <th mat-header-cell *matHeaderCellDef class="margem"> Menus </th>
+          <td mat-cell *matCellDef="let element; let posicao = index" class="coluna_botao margem"> 
+            <button mat-button (click)="UsuarioDialog('excluir', element)"><mat-icon class="button delete_button">delete_sweep</mat-icon></button>
+            <button mat-button (click)="UsuarioDialog('editar', element)"><mat-icon class="button">create</mat-icon></button>
+          </td>
+        </ng-container>
+
+      <ng-container matColumnDef="edv">
+        <th mat-header-cell *matHeaderCellDef class="margem"> EDV </th>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.codFuncionario}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="colaborador">
+        <th mat-header-cell *matHeaderCellDef class="margem"> Colaborador </th>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.nomeFuncionario}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cpf">
+        <th mat-header-cell *matHeaderCellDef class="margem"> CPF </th>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.cpf}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="area">
+        <th mat-header-cell *matHeaderCellDef class="margem"> Area </th>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.area}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="user">
+        <th mat-header-cell *matHeaderCellDef class="margem"> Username </th>
+        <td mat-cell *matCellDef="let element" class="margem">  </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="beneficios">
+        <th mat-header-cell *matHeaderCellDef class="margem"> Beneficios </th>
+        <td mat-cell *matCellDef="let element" class="margem"> 
+            <div *ngFor="let item of element.beneficios">
+              <div *ngIf="item.quantidade>0">
+                {{item.quantidade}} x {{item.beneficio}}<br>
+              </div>
+            </div>
+          </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="dataInclusao">
+        <th mat-header-cell *matHeaderCellDef class="margem"> Data Inclusao </th>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.dataInclusao}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="menus">
+          <th mat-header-cell *matHeaderCellDef class="margem"> MENUS </th>
+          <td mat-cell *matCellDef="let element" class="coluna_botao margem"> 
+            <div>
+              
+            </div>
+          </td>
+        </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+    </table>
+  
+</ng-template>
+
+<ng-template #naoTem>
+  <h1>Nenhum usuário cadastrado...</h1>
+  <tela-usuarios-vazio (click)="UsuarioDialog('cadastro')"></tela-usuarios-vazio>
+</ng-template>
