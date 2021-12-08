@@ -77,9 +77,9 @@ export class AaXlsxConversorComponent implements OnInit {
     let beneficioBeneficiario = this.xlsxPayload.beneficioBeneficiario
 
     if(beneficioBeneficiario[beneficio] == null) {
-      beneficioBeneficiario[beneficio] = [[cpf, quantidade]]
+      beneficioBeneficiario[beneficio] = [{ cpf, quantidade }]
     }else {
-      beneficioBeneficiario[beneficio].push( [cpf, quantidade] )
+      beneficioBeneficiario[beneficio].push( { cpf, quantidade } )
     }
   }
 

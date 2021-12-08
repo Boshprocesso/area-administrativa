@@ -43,6 +43,6 @@ export type xlsxPayloadJSON = {
     beneficiarios: Array<any>,
     beneficios: Array<any>,
     beneficioBeneficiario: {
-        [beneficio:string]: [dados:[Cpf:String, quantidade:Number]]
+        [beneficio:string]: [{ cpf: String, quantidade:Number }]
     }
 }
