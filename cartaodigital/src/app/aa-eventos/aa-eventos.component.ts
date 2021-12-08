@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../dao/login.service';
 import { HttpClient } from '@angular/common/http';
@@ -12,8 +13,10 @@ export class AaEventosComponent implements OnInit {
   
   constructor(
               private loginService: LoginService,
-              private http: HttpClient
-  ) {   }
+              viewportScroller: ViewportScroller
+              ) {  
+                viewportScroller.scrollToPosition([0,0]);
+                }
 
   ngOnInit(): void {
     try{
@@ -22,11 +25,5 @@ export class AaEventosComponent implements OnInit {
 
     }
     
-  }
-
-  enviarCarga(e:any) {
-    let request = this.http.post<any>("https://61a95fa833e9df0017ea3da1.mockapi.io/api/payload", e);
-
-    return request.subscribe()
   }
 }
