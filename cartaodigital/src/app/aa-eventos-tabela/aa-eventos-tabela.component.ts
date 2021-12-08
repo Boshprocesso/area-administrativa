@@ -9,6 +9,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { FormBuilder } from '@angular/forms';
 import { EventosBeneficiosDialog } from './beneficios.dialog';
 import { EventosCadastro } from './evento-dialog';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-aa-eventos-tabela',
@@ -23,7 +24,7 @@ export class AaEventosTabelaComponent implements OnInit {
   constructor(private _liveAnnouncer: LiveAnnouncer,
               public dialog: MatDialog,
               private eventosService: AaEventosService
-              ) { }
+              ) {}
 
   ngOnInit(): void {
             this.getEventos();

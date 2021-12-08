@@ -72,8 +72,7 @@ export type EventosUsuariosJSON = {
     nomeFuncionario: string;
     cpf: string;
     area: string;
+    username: string;
     dataInclusao: string;
-    administrativo: boolean;
-    entregaproduto: boolean;
     beneficios: Array<BeneficioEstrutura>;
 }

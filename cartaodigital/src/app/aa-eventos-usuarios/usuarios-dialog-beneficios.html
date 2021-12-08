@@ -1,0 +1,15 @@
+<form [formGroup]="formBeneficio">
+  
+        <mat-form-field appearance="outline">
+          <mat-label>{{objeto.beneficio}}</mat-label>
+          <input formControlName="beneficio" matInput [(ngModel)]="objeto.beneficio" readonly>  
+          <mat-icon matSuffix>card_giftcard</mat-icon>    
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Quantidade</mat-label>
+          <input formControlName="quantidade" type="number" [(ngModel)]="objeto.quantidade" matInput>  
+          <mat-icon matSuffix>format_list_numbered_rtl</mat-icon>     
+        </mat-form-field>
+
+</form>

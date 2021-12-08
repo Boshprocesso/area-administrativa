@@ -34,7 +34,7 @@ export type eventoDialog = {
                 public dialogRef: MatDialogRef<any>,
                 public dialog: MatDialog,
                 private formBuilder: FormBuilder
-                ) {}
+                ) {  }
   
     ngOnInit(): void {
         if(this.data.evento){

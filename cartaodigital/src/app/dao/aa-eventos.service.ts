@@ -113,4 +113,36 @@ export class AaEventosService {
 
     return this.http.get<EventosUsuariosJSON[]>(linkJSON);
   }
+
+  //Função para excluir algum colaborador do Evento
+  deleteColaboradores(idEvento:number, idColaborador?:string){
+    var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores/' + idColaborador;
+
+    console.log("SERVICE - Evento|Colaboradores DELETE:");
+    console.warn(linkJSON);
+
+    return this.http.delete(linkJSON);
+  }
+
+  //Função para inserir Colaboradores no Evento
+  postColaboradores(bodyJSON: any, idEvento:number){
+    var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores';
+
+    console.log("SERVICE - Evento|Colaboradores POST:");
+    console.warn(linkJSON);
+    console.warn(bodyJSON);
+
+    return this.http.post<EventosUsuariosJSON>(linkJSON, bodyJSON);
+  }
+
+  //Função para editar os Colaboradores do Evento
+  putColaboradores(bodyJSON: any, idEvento:number, idColaborador?:any){
+    var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores/' + idColaborador;
+
+    console.log("SERVICE - Evento|Colaboradores PUT:");
+    console.warn(linkJSON);
+    console.warn(bodyJSON);
+
+    return this.http.put<EventosUsuariosJSON>(linkJSON, bodyJSON);
+  }
 }

@@ -1,3 +1,4 @@
+import { ViewportScroller } from "@angular/common";
 import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { first } from "rxjs/operators";
@@ -18,8 +19,11 @@ import { UsuarioDialog } from "./usuarios-dialog";
     
     constructor(
                 public dialog: MatDialog,
-                private eventosService: AaEventosService
-                ) { }
+                private eventosService: AaEventosService,
+                viewportScroller: ViewportScroller
+                ) {  
+                  viewportScroller.scrollToPosition([0,0]);
+                  }
   
     ngOnInit(): void {
       this.getColaboradores();
@@ -32,6 +36,7 @@ import { UsuarioDialog } from "./usuarios-dialog";
       .subscribe(data => {
           console.log("Obtendo os Usuarios cadastrados...");
           console.warn(data);
+          console.warn(data.length);
           if(data.length>0){
             this.dataSource = data;
           }else{
@@ -46,7 +51,7 @@ import { UsuarioDialog } from "./usuarios-dialog";
     const dialogRef = this.dialog.open( UsuarioDialog, 
                                         {
                                           width: '350px',
-                                          data: {tipo: acao, evento: objEvento}
+                                          data: {tipo: acao, idEvento: this.idEvento, evento: objEvento}
                                         }
                                       );
 

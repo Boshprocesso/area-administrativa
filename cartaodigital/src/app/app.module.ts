@@ -22,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,9 +43,12 @@ import { EventosCadastro } from './aa-eventos-tabela/evento-dialog';
 import { EventosBeneficiosDialog, EventosBeneficioCadastro  } from './aa-eventos-tabela/beneficios.dialog';
 import { UsuariosTabela } from './aa-eventos-usuarios/usuarios-tabela'; 
 import { UsuarioDialog } from './aa-eventos-usuarios/usuarios-dialog';
+import { UsuarioDialogBeneficiosInput } from './aa-eventos-usuarios/usuarios-dialog-beneficios';
+import { UsuariosTabelaVazia } from './aa-eventos-usuarios/tela-usuarios-vazio';
 
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
 import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
+
 
 @NgModule({
   declarations: [
@@ -66,7 +70,9 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     EventosBeneficioCadastro,
     EventosCadastro,
     UsuariosTabela,
-    UsuarioDialog
+    UsuarioDialog,
+    UsuarioDialogBeneficiosInput,
+    UsuariosTabelaVazia
   ],
   imports: [
     BrowserModule,
@@ -91,7 +97,8 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     MatDialogModule,
     MatSnackBarModule,
     MatExpansionModule,
-    DragDropModule
+    DragDropModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

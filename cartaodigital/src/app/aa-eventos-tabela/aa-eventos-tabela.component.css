@@ -111,3 +111,26 @@ table {
   .fab button.main:focus:before{
     content: '...';
   }
+
+
+
+
+  .fab_img{
+    position: fixed;
+    z-index: 999;
+    bottom:10px;
+    right:10px;
+
+    background-image: url("../../assets/img/site/ico_new_event.png"); /* The image used */
+    background-color: none; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+  }
+
+  .fab_img button{
+    bottom:10px;
+    right:10px;
+    width: 60px;
+    height: 60px;
+  }

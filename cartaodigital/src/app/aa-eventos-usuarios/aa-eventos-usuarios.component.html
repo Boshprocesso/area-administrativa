@@ -3,8 +3,6 @@
 
         <div *ngIf="paginaRH; then temItem else naoTem" id="localCard"></div>
         <ng-template #temItem>
-            <h1>Usuarios Cadastrados</h1>
-            Evento atual: {{idEventoRota}}
             
             <app-usuarios-tabela [idEvento]="idEventoRota" ></app-usuarios-tabela>
 

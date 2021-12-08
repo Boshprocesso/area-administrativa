@@ -4,8 +4,6 @@
      "cpf": "cpf 1",
      "area": "area 1",
      "dataInclusao": "2021-12-19",
-     "administrativo": false,
-     "entregaproduto": false,
      "beneficios": [
       {
        "idProduto": 1,
@@ -28,8 +26,6 @@
      "cpf": "cpf 2",
      "area": "area 2",
      "dataInclusao": "2021-12-21",
-     "administrativo": false,
-     "entregaproduto": false,
      "beneficios": [
       {
        "idProduto": 1,
@@ -48,8 +44,6 @@
      "cpf": "",
      "area": "Engenharia",
      "dataInclusao": "2021-11-29",
-     "administrativo": true,
-     "entregaproduto": true,
      "beneficios": [
       {
        "idProduto": 1,
@@ -78,8 +72,6 @@
      "cpf": "",
      "area": "Comercial",
      "dataInclusao": "2021-11-29",
-     "administrativo": false,
-     "entregaproduto": true,
      "beneficios": [
       {
        "idProduto": 1,

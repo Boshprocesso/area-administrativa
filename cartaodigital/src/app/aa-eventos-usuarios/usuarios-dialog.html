@@ -14,38 +14,40 @@
           Colaborador
         </mat-panel-title>
         <mat-panel-description>
-          Digite o EDV do Colaborador
+          Informações pessoais
           <mat-icon>account_circle</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
   
       <mat-form-field appearance="outline">
         <mat-label>Número do EDV</mat-label>
-        <input formControlName="edv" matInput placeholder="EDV do Usuário" [ngModel]="usuarioLocal.codFuncionario" required> 
+        <input formControlName="edv" matInput placeholder="EDV do Usuário" required> 
         <mat-icon matSuffix>person_pin</mat-icon>
         <mat-hint>Número de EDV do funcionario</mat-hint>
       </mat-form-field>
+      <br>
   
       <mat-form-field appearance="outline">
         <mat-label>Nome Colaborador</mat-label>
-        <input formControlName="nome" matInput placeholder="Nome Colaborador" [ngModel]="usuarioLocal.nomeFuncionario" required>  
+        <input formControlName="nome" matInput placeholder="Nome Colaborador" required>  
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>  
         <mat-hint>Nome completo do colaborador</mat-hint>   
       </mat-form-field>
-  
+
       <mat-form-field appearance="outline">
         <mat-label>CPF</mat-label>
-        <input formControlName="cpf" matInput placeholder="CPF Colaborador" [ngModel]="usuarioLocal.cpf" >    
+        <input formControlName="cpf" matInput placeholder="CPF Colaborador">    
         <mat-icon matSuffix>view_week</mat-icon> 
         <mat-hint>CPF somente números</mat-hint>     
       </mat-form-field>
   
       <mat-form-field appearance="outline">
         <mat-label>Área</mat-label>
-        <input formControlName="area" matInput placeholder="Área de Trabalho" [ngModel]="usuarioLocal.area" required>  
+        <input formControlName="area" matInput placeholder="Área de Trabalho" required>  
         <mat-icon matSuffix>work</mat-icon>   
         <mat-hint>Área de trabalho do colaborador</mat-hint>     
       </mat-form-field>
+      <br>
   
       <mat-form-field appearance="outline">
         <mat-label>Username</mat-label>
@@ -57,83 +59,26 @@
   
     </mat-expansion-panel>
 
-
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Beneficios
-        </mat-panel-title>
-        <mat-panel-description>
-          Selecione os Beneficios do Colaborador
-          <mat-icon>card_giftcard</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
-      <div *ngFor="let item of usuarioLocal.beneficios">
-        <mat-form-field appearance="outline">
-          <mat-label>{{item.beneficio}}</mat-label>
-          <input formControlName="beneficio" matInput [ngModel]="item.beneficio" readonly>  
-          <mat-icon matSuffix>how_to_reg</mat-icon>    
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Quantidade</mat-label>
-          <input formControlName="quantidade" type="number" matInput [ngModel]="item.quantidade">  
-          <mat-icon matSuffix>how_to_reg</mat-icon>     
-        </mat-form-field>
-        {{item.beneficio}}
-        <br>
-      </div>
-
-
-
-
-
-    <form [formGroup]="dynamicForm" >
-      
-      <div *ngFor="let ticket of t.controls; let i = index" class="list-group list-group-flush">
-        <div class="list-group-item">
-            <div  class="form-row">
-                <div class="form-group col-6">
-                    <label>Name</label>
-                    <input type="text" formControlName="name" class="form-control" />
-                </div>
-                <div class="form-group col-6">
-                    <label>Email</label>
-                    <input type="text" formControlName="email" class="form-control" />
-                </div>
-            </div>
+  <div *ngIf="data.tipo!='excluir'">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Beneficios
+          </mat-panel-title>
+          <mat-panel-description>
+            Cadastrar beneficios
+            <mat-icon>card_giftcard</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <div *ngFor="let item of beneficioLocal">
+          <usuarios-dialog-beneficios [objeto]="item"></usuarios-dialog-beneficios>
+          <br>
         </div>
-      </div>
-    </form>
 
-
-
-
-
-
-
-
-    </mat-expansion-panel>
-  
-
-
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Configurações
-        </mat-panel-title>
-        <mat-panel-description>
-          Informar acesso especial do colaborador
-          <mat-icon>no_encryption</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-
-      {{usuarioLocal.entregaproduto}}
-
-    </mat-expansion-panel>
-
-
+      </mat-expansion-panel>
+    
+    </div>
   </mat-accordion>
 </div>
 

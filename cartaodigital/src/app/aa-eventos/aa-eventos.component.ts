@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../dao/login.service';
 
@@ -10,8 +11,11 @@ export class AaEventosComponent implements OnInit {
   public paginaRH = true;
   
   constructor(
-              private loginService: LoginService
-              ) {   }
+              private loginService: LoginService,
+              viewportScroller: ViewportScroller
+              ) {  
+                viewportScroller.scrollToPosition([0,0]);
+                }
 
   ngOnInit(): void {
     try{
