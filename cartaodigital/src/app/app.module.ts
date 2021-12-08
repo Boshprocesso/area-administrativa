@@ -64,7 +64,7 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     PageBeneficiosTerceiroFormComponent,
     AaEventosComponent,
     TelaBloqueadaComponent,
-    AaXlsxConversorComponent,    
+    AaEventosUsuariosComponent,
     AaEventosTabelaComponent,
     EventosBeneficiosDialog,
     EventosBeneficioCadastro,
@@ -72,7 +72,8 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     UsuariosTabela,
     UsuarioDialog,
     UsuarioDialogBeneficiosInput,
-    UsuariosTabelaVazia
+    UsuariosTabelaVazia,
+    AaXlsxConversorComponent
   ],
   imports: [
     BrowserModule,
