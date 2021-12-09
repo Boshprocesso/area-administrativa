@@ -32,11 +32,11 @@ export class BeneficiosService {
     }
   }
 
-  getTodosBeneficios(){
+  getTodosBeneficios(){                                                               //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'beneficio';
     if(linkServidor!=null){
-      linkJSON = linkServidor + this.loginService.chaveLogin().headers.cod;
-  }
+      linkJSON = linkServidor + 'beneficio/'+ this.loginService.chaveLogin().headers.cod;
+    }
     
     console.log("Será enviado o seguinte link para o servidor para solicitar os beneficios");
     console.warn(linkJSON);
@@ -47,10 +47,14 @@ export class BeneficiosService {
 
 
   //Função para obter os beneficiarios Cadastrados
-  getBeneficiarios(){
+  getBeneficiarios(){                                                              //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'beneficiario';
     var linkJSONfinal = linkJSON + "/" + this.loginService.chaveLogin().headers.cod;
     
+    if(linkServidor!=null){
+      linkJSON = linkServidor + 'beneficiario/'+ this.loginService.chaveLogin().headers.cod;
+    }
+
     console.log("Será enviado o seguinte link para o servidor para solicitar o terceiro:");
     console.warn(linkJSONfinal);
 
@@ -60,6 +64,10 @@ export class BeneficiosService {
   //Função para obter os beneficiarios Cadastrados
   postBeneficiarios(headers: any){
     var linkJSON = linkBaseAPI + 'beneficiario';
+
+    if(linkServidor!=null){
+      linkJSON = linkServidor + 'beneficiario/Terceiro'+ this.loginService.chaveLogin().headers.cod;
+    }
 
     return this.http.post<BeneficiarioJSON>(linkJSON, headers);
   }

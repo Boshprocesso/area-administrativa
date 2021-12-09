@@ -121,10 +121,10 @@ import { eventoDialog } from "./evento-dialog";
   
     getEstruturaBeneficioJSON(){
       var POSTevento = {
-        "beneficio": ""
+        "descricaoBeneficio": ""
       };
   
-      POSTevento.beneficio = this.formEnvio.controls['beneficio'].value;
+      POSTevento.descricaoBeneficio = this.formEnvio.controls['beneficio'].value;
       return POSTevento;
     }
 

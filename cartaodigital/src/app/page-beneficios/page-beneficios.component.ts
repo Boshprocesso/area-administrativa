@@ -42,10 +42,10 @@ export class PageBeneficiosComponent implements OnInit {
         .pipe(first())
         .subscribe(data=>{   
             console.warn(data);
-            console.log(data[0].beneficios);
+            console.log(data[0].beneficios[0]);
             console.log(data[0].terceiros);
             this.beneficios.length = 0;
-            this.beneficios.push(data[0].beneficios);
+            this.beneficios.push(data[0].beneficios[0]);
             data[0].terceiros.forEach((item) => {
               this.beneficios.push(item);                     //Insere o item recebido do JSON no vetor local para trabalhar somente com o tipo de dado BeneficioUsuario
             });

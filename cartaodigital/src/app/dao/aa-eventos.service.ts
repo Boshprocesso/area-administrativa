@@ -19,7 +19,7 @@ export class AaEventosService {
 
   //SERVICES PARA OS EVENTOS
   //Função para coletar todos os eventos do servidor
-  getEvento(){                                                                          //************** Alterado servidor
+  getEvento(){                                                                              //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento';
 
     if(linkServidor!=null){
@@ -33,7 +33,7 @@ export class AaEventosService {
   }
 
   //Função para editar os eventos
-  postEvento(bodyJSON: any){                                                            //************** Alterado servidor
+  postEvento(bodyJSON: any){                                                                //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento';
 
     if(linkServidor!=null){
@@ -48,7 +48,7 @@ export class AaEventosService {
   }
 
   //Função para editar os eventos
-  putEvento(bodyJSON: any, idEvento?:number){                                            //************** Alterado servidor
+  putEvento(bodyJSON: any, idEvento?:number){                                               //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento/' + idEvento;
 
     if(linkServidor!=null){
@@ -63,7 +63,7 @@ export class AaEventosService {
   }
 
   //Função para efetuar a exclusão do evento no servidor
-  deleteEvento(idEvento?: number){                                                      //************** Alterado servidor
+  deleteEvento(idEvento?: number){                                                           //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento/' + idEvento;
 
     if(linkServidor!=null){
@@ -79,7 +79,7 @@ export class AaEventosService {
 
   //SERVICES PARA OS BENEFICIOS DOS EVENTOS
   //Função para coletar todos os eventos do servidor
-  getBeneficio(idEvento?:number){                                                       //************** Alterado servidor
+  getBeneficio(idEvento?:number){                                                             //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios';
 
     if(linkServidor!=null){
@@ -93,8 +93,12 @@ export class AaEventosService {
   }
 
   //Função para coletar todos os eventos do servidor
-  deleteBeneficio(idEvento?:number, idBeneficio?:number){
+  deleteBeneficio(idEvento?:number, idBeneficio?:number){                                     //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios/' + idBeneficio;
+
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/deleteBeneficioEvento/evento/" + idEvento + "/beneficio/" + idBeneficio;
+    }
 
     console.log("SERVICE - Evento|Beneficio DELETE:");
     console.warn(linkJSON);
@@ -103,8 +107,12 @@ export class AaEventosService {
   }
 
   //Função para editar os eventos
-  postBeneficio(bodyJSON: any, idEvento?:number){
+  postBeneficio(bodyJSON: any, idEvento?:number){                                            //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios';
+
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/adicionarBeneficioEvento/evento/" + idEvento;
+    }
 
     console.log("SERVICE - Evento|Beneficio POST:");
     console.warn(linkJSON);
@@ -114,8 +122,12 @@ export class AaEventosService {
   }
 
   //Função para editar os eventos
-  putBeneficio(bodyJSON: any, idEvento?:number, idBeneficio?:any){
+  putBeneficio(bodyJSON: any, idEvento?:number, idBeneficio?:any){                            //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios/' + idBeneficio;
+
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/EditarBeneficio/evento/" + idEvento + "/beneficio/" + idBeneficio;
+    }
 
     console.log("SERVICE - Evento|Beneficio PUT:");
     console.warn(linkJSON);
