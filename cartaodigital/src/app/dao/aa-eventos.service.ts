@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BeneficiarioJSON, EventosBeneficioJSON, EventosJSON, EventosUsuariosJSON, LoginJSON } from './tiposJSON';
+import { BeneficiarioJSON, EventosBeneficioJSON, EventosJSON, EventosUsuariosJSON, linkServidor, LoginJSON } from './tiposJSON';
 import {Router} from '@angular/router';
 import { LoginService } from './login.service';
 
@@ -19,9 +19,13 @@ export class AaEventosService {
 
   //SERVICES PARA OS EVENTOS
   //Função para coletar todos os eventos do servidor
-  getEvento(){
+  getEvento(){                                                                          //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento';
 
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/eventos";
+    }
+    
     console.log("SERVICE - Evento GET:");
     console.warn(linkJSON);
 
@@ -61,8 +65,12 @@ export class AaEventosService {
 
   //SERVICES PARA OS BENEFICIOS DOS EVENTOS
   //Função para coletar todos os eventos do servidor
-  getBeneficio(idEvento?:number){
+  getBeneficio(idEvento?:number){                                                       //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios';
+
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/beneficiosEvento/" + idEvento;
+    }
 
     console.log("SERVICE - Evento|Beneficio GET:");
     console.warn(linkJSON);

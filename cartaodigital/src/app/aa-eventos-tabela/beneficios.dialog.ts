@@ -110,12 +110,12 @@ import { eventoDialog } from "./evento-dialog";
                 ) {}
   
     ngOnInit(): void {
-      this.beneficioLocal = this.data.beneficio?.beneficio;
+      this.beneficioLocal = this.data.beneficio?.descricaoBeneficio;
       if(this.data.tipo=="excluir"){
         this.formEnvio.controls['beneficio'].disable();
       }
       if(this.data.beneficio){
-        this.formEnvio.controls['beneficio'].setValue(this.data.beneficio.beneficio);
+        this.formEnvio.controls['beneficio'].setValue(this.data.beneficio.descricaoBeneficio);
       }
     }
   
@@ -142,7 +142,7 @@ import { eventoDialog } from "./evento-dialog";
   
     editarBeneficio(){
       if(this.formEnvio.status=="VALID"){
-        this.eventoService.putBeneficio(this.getEstruturaBeneficioJSON(), this.data.idEvento, this.data.beneficio?.idProduto)
+        this.eventoService.putBeneficio(this.getEstruturaBeneficioJSON(), this.data.idEvento, this.data.beneficio?.idBeneficio)
             .pipe(first())
             .subscribe(data => {
                   console.log("Beneficio que foi editado");
@@ -154,9 +154,9 @@ import { eventoDialog } from "./evento-dialog";
 
     fecharDialog(confirmar?:boolean){
       if(confirmar){
-        return {tipo: 'confirmar', beneficio: this.data.beneficio?.idProduto};
+        return {tipo: 'confirmar', beneficio: this.data.beneficio?.idBeneficio};
       }else{
-        return {tipo: 'cancelar', beneficio: this.data.beneficio?.idProduto};
+        return {tipo: 'cancelar', beneficio: this.data.beneficio?.idBeneficio};
       }
     }
   }

@@ -40,12 +40,13 @@ export class PageBeneficiosComponent implements OnInit {
     //Obtém os valores para alimentar a página
     this.beneficiosService.getTodosBeneficios()
         .pipe(first())
-        .subscribe(data=>{    
-            console.log(data.beneficios);
-            console.log(data.terceiros);
+        .subscribe(data=>{   
+            console.warn(data);
+            console.log(data[0].beneficios);
+            console.log(data[0].terceiros);
             this.beneficios.length = 0;
-            this.beneficios.push(data.beneficios);
-            data.terceiros.forEach((item) => {
+            this.beneficios.push(data[0].beneficios);
+            data[0].terceiros.forEach((item) => {
               this.beneficios.push(item);                     //Insere o item recebido do JSON no vetor local para trabalhar somente com o tipo de dado BeneficioUsuario
             });
           });

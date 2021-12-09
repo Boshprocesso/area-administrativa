@@ -34,6 +34,7 @@ export class PageLoginComponent implements OnInit {
   ngOnInit(): void {
       this.loginService.validaLogin(this.router.url);
 
+      //Para efetuar os testes com o GET para o servidor
       //this._http.get('http://localhost:5127/Admin/eventos')
       //          .subscribe((returnedStuff) => {
       //            console.log(returnedStuff);

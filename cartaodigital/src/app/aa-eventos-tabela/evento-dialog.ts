@@ -42,7 +42,7 @@ export type eventoDialog = {
           this.formEnvio.controls['evento'].setValue(this.eventoLocal.nomeEvento);
           this.formEnvio.controls['descricao'].setValue(this.eventoLocal.descricaoEvento);
           this.formEnvio.controls['dataInicio'].setValue(this.eventoLocal.dataInicio);
-          this.formEnvio.controls['dataFim'].setValue(this.eventoLocal.dataFim);
+          this.formEnvio.controls['dataFim'].setValue(this.eventoLocal.dataTermino);
         }
         if(this.data.tipo == "excluir"){
           this.formEnvio.controls['evento'].disable();

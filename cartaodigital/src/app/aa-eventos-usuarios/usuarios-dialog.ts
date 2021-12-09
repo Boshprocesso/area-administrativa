@@ -101,8 +101,8 @@ export type usuariosDialog = {
               console.warn(data);
               data.forEach(item => {
                 var BeneficioTemporario:BeneficioEstrutura = {
-                  "idProduto": 0,
-                  "beneficio": item.beneficio,
+                  "idBeneficio": item.idBeneficio,
+                  "descricaoBeneficio": item.descricaoBeneficio,
                   "status": "Pendente",
                   "quantidade": 0
                 };
