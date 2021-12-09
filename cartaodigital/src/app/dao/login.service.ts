@@ -18,20 +18,23 @@ export class LoginService {
               ) { }
 
   postLogin(params: any) {
-    var linkJSON = linkBaseAPI + 'loginPost.json';
-    
-    linkJSON = linkBaseAPI + 'login';
-    //linkJSON = "https://127.0.0.1:7151/Login";
+    var linkJSON = linkBaseAPI + 'login';
+    linkJSON = "http://localhost:5127/Login";
 
+    console.log(params);
+    //Teste enviar:
+    //742.976.869-53
+    //1969-05-05
 
-    return this.http.post<LoginJSON>(linkJSON, params);
+    return this.http.post<LoginJSON[]>(linkJSON, params);
   }
 
   chaveLogin(){
     const headers = { 'cod': '', 'nascimento': '' };
-    headers.cod = this.loginLocal.login.codFuncionario;
-    headers.nascimento = this.loginLocal.login.nascimento;
-
+    headers.cod = this.loginLocal.codFuncionario;
+    headers.nascimento = this.loginLocal.nascimento;
+    console.log("Login Local");
+    console.warn(this.loginLocal);
     return {headers};
   }
 
