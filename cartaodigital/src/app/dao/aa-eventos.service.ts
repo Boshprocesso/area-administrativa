@@ -33,28 +33,42 @@ export class AaEventosService {
   }
 
   //Função para editar os eventos
-  postEvento(bodyJSON: any){
+  postEvento(bodyJSON: any){                                                            //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento';
 
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/adicionarEvento";
+    }
+
     console.log("SERVICE - Evento POST:");
+    console.warn(linkJSON);
     console.warn(bodyJSON);
 
     return this.http.post<EventosJSON>(linkJSON, bodyJSON);
   }
 
   //Função para editar os eventos
-  putEvento(bodyJSON: any, idEvento?:number){
+  putEvento(bodyJSON: any, idEvento?:number){                                            //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento/' + idEvento;
 
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/EditarEvento/evento/" + idEvento;
+    }
+
     console.log("SERVICE - Evento PUT:");
+    console.warn(linkJSON);
     console.warn(bodyJSON);
 
     return this.http.put<EventosJSON>(linkJSON, bodyJSON);
   }
 
   //Função para efetuar a exclusão do evento no servidor
-  deleteEvento(id?: number){
-    var linkJSON = linkBaseAPI + 'evento/' + id;
+  deleteEvento(idEvento?: number){                                                      //************** Alterado servidor
+    var linkJSON = linkBaseAPI + 'evento/' + idEvento;
+
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/deleteEvento/" + idEvento;
+    }
 
     console.log("SERVICE - Evento DELETE:");
     console.warn(linkJSON);

@@ -73,13 +73,14 @@ export type eventoDialog = {
         "nomeEvento": "",
         "descricaoEvento": "",
         "dataInicio": "",
-        "dataFim": ""
+        "dataTermino": "",
+        "inativo": "0"
       };
   
       POSTevento.nomeEvento = this.formEnvio.controls['evento'].value;
       POSTevento.descricaoEvento = this.formEnvio.controls['descricao'].value;
       POSTevento.dataInicio = this.formEnvio.controls['dataInicio'].value;
-      POSTevento.dataFim = this.formEnvio.controls['dataFim'].value;
+      POSTevento.dataTermino = this.formEnvio.controls['dataFim'].value;
       return POSTevento;
     }
   
