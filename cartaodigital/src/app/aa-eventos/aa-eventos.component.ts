@@ -20,7 +20,7 @@ export class AaEventosComponent implements OnInit {
 
   ngOnInit(): void {
     try{
-      this.paginaRH = this.loginService.loginLocal.login.administrativo;
+      this.paginaRH = this.loginService.loginLocal.administrativo;
     }catch{
 
     }

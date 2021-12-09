@@ -27,17 +27,17 @@ export class PageLoginComponent implements OnInit {
   nascimento?: string;
 
   formEnvio = this.formBuilder.group({
-    edv: '',
+    cod: '',
     nascimento: ''
   });
 
   ngOnInit(): void {
       this.loginService.validaLogin(this.router.url);
 
-      this._http.get('http://localhost:5127/Admin/eventos')
-                .subscribe((returnedStuff) => {
-                  console.log(returnedStuff);
-                });
+      //this._http.get('http://localhost:5127/Admin/eventos')
+      //          .subscribe((returnedStuff) => {
+      //            console.log(returnedStuff);
+      //          });
   }
 
 
@@ -57,8 +57,8 @@ export class PageLoginComponent implements OnInit {
       .subscribe({
           next: data => {
             try{
-              if(data.login.codFuncionario!=""){
-                this.loginService.loginLocal = data;
+              if(data[0].codFuncionario!=""){
+                this.loginService.loginLocal = data[0];
                 console.warn("Login realizado com sucesso!");
                 this.router.navigate(["beneficios"]);
               }else{
