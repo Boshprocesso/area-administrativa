@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { LoginService } from './login.service';
 
 //Tipos de cada JSON que deseja ser recebido ou enviado.
-import { BeneficiarioJSON, BeneficioEstrutura, BeneficioJSON, BeneficioUsuario, LoginJSON } from './tiposJSON';
+import { BeneficiarioJSON, BeneficioEstrutura, BeneficioJSON, BeneficioUsuario, linkServidor, LoginJSON } from './tiposJSON';
 import { HttpClient } from '@angular/common/http';
 
 var linkBaseAPI = 'http://localhost:4200/assets/api/';
@@ -34,12 +34,14 @@ export class BeneficiosService {
 
   getTodosBeneficios(){
     var linkJSON = linkBaseAPI + 'beneficio';
-    var linkJSONfinal = linkJSON + "/" + this.loginService.chaveLogin().headers.cod;
-
+    if(linkServidor!=null){
+      linkJSON = linkServidor + this.loginService.chaveLogin().headers.cod;
+  }
+    
     console.log("Será enviado o seguinte link para o servidor para solicitar os beneficios");
-    console.warn(linkJSONfinal);
+    console.warn(linkJSON);
 
-    return this.http.get<BeneficioJSON>(linkJSON);
+    return this.http.get<BeneficioJSON[]>(linkJSON);
   }
 
 

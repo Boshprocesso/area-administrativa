@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
 import { AaEventosComponent } from './aa-eventos/aa-eventos.component';
 import { PageBeneficiosTerceiroComponent } from './page-beneficios-terceiro/page-beneficios-terceiro.component';
 import { PageBeneficiosComponent } from './page-beneficios/page-beneficios.component';
@@ -14,10 +15,16 @@ const routes: Routes = [
   {path: 'login', component: PageLoginComponent },
   {path: 'beneficios', component: PageBeneficiosComponent },
   {path: 'cadastro_terceiro', component: PageBeneficiosTerceiroComponent },
+<<<<<<< HEAD
   {path: 'eventos', component: AaEventosComponent },
   {path: 'entrega_beneficios', component: PageEntregaBeneficioComponent},
   {path: 'filtro_beneficios', component: PageEntregaBeneficioComponent},
   {path: 'filtro_beneficios/:edvOuCpf', component: PageFiltroBeneficiosComponent}
+=======
+  
+  {path: 'eventos', component: AaEventosComponent },
+  {path: 'eventos/usuarios/:idEvento', component: AaEventosUsuariosComponent }
+>>>>>>> origin/AA9_JSON_LOGIN_PAGE
 ];
 
 @NgModule({

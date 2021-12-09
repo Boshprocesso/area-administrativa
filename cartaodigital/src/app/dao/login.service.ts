@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginJSON } from './tiposJSON';
+import { linkServidor, LoginJSON } from './tiposJSON';
 import {Router} from '@angular/router';
 
 var linkBaseAPI = 'http://localhost:4200/assets/api/';
@@ -18,19 +18,26 @@ export class LoginService {
               ) { }
 
   postLogin(params: any) {
-    var linkJSON = linkBaseAPI + 'loginPost.json';
+    var linkJSON = linkBaseAPI + 'login';
     
-    linkJSON = linkBaseAPI + 'login';
+    if(linkServidor!=null){
+        linkJSON = linkServidor + "Login";
+    }
 
+    console.log(params);
+    //Teste enviar:
+    //742.976.869-53
+    //1969-05-05
 
-    return this.http.post<LoginJSON>(linkJSON, params);
+    return this.http.post<LoginJSON[]>(linkJSON, params);
   }
 
   chaveLogin(){
     const headers = { 'cod': '', 'nascimento': '' };
-    headers.cod = this.loginLocal.login.codFuncionario;
-    headers.nascimento = this.loginLocal.login.nascimento;
-
+    headers.cod = this.loginLocal.codFuncionario;
+    headers.nascimento = this.loginLocal.nascimento;
+    console.log("Login Local");
+    console.warn(this.loginLocal);
     return {headers};
   }
 

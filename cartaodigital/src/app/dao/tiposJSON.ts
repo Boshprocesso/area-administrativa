@@ -1,6 +1,6 @@
 export type BeneficioEstrutura = {
-    idProduto: number;
-    beneficio: string;
+    idBeneficio: number;
+    descricaoBeneficio: string;
     status: string;
     quantidade: number;
 }
@@ -30,16 +30,21 @@ export type BeneficiarioJSON = {
 
 
 export type LoginJSON = {
-    login: {
                 codFuncionario: string,
                 nomeFuncionario: string,
                 nascimento: string,
                 administrativo: boolean,
                 entregaproduto: boolean
-            }
 }
 
-
+export type xlsxPayloadJSON = {
+    idEvento:String,
+    beneficiarios:Array<any>,
+    beneficios:Array<any>,
+    beneficioBeneficiario: {
+        [beneficio:string]: [{ cpf:String, quantidade:Number }]
+    }
+}
 
 
 export type EventosJSON = {
@@ -47,5 +52,36 @@ export type EventosJSON = {
     nomeEvento: string;
     descricaoEvento: string;
     dataInicio: string;
-    dataFim: string;
+    dataTermino: string;
+    inativo: boolean;
   }
+
+
+
+
+
+
+export type EventosBeneficioJSON = {
+    idEvento: number;
+    idBeneficio: number;
+    descricaoBeneficio: string;
+}
+
+
+
+
+
+
+export type EventosUsuariosJSON = {
+    idEvento: number;
+    codFuncionario: string;
+    nomeFuncionario: string;
+    cpf: string;
+    area: string;
+    username: string;
+    dataInclusao: string;
+    beneficios: Array<BeneficioEstrutura>;
+}
+
+
+export const linkServidor = "http://localhost:5127/";

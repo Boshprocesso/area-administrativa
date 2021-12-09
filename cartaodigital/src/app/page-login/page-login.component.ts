@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { LoginService } from '../dao/login.service';
 import { ViewportScroller } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-page-login',
@@ -16,7 +17,8 @@ export class PageLoginComponent implements OnInit {
   constructor(private router: Router,
               private loginService: LoginService,
               private formBuilder: FormBuilder,
-              viewportScroller: ViewportScroller
+              viewportScroller: ViewportScroller,
+              private _http:HttpClient
              ) {  
                viewportScroller.scrollToPosition([0,0]);
                }
@@ -25,12 +27,18 @@ export class PageLoginComponent implements OnInit {
   nascimento?: string;
 
   formEnvio = this.formBuilder.group({
-    edv: '',
+    cod: '',
     nascimento: ''
   });
 
   ngOnInit(): void {
       this.loginService.validaLogin(this.router.url);
+
+      //Para efetuar os testes com o GET para o servidor
+      //this._http.get('http://localhost:5127/Admin/eventos')
+      //          .subscribe((returnedStuff) => {
+      //            console.log(returnedStuff);
+      //          });
   }
 
 
@@ -50,8 +58,8 @@ export class PageLoginComponent implements OnInit {
       .subscribe({
           next: data => {
             try{
-              if(data.login.codFuncionario!=""){
-                this.loginService.loginLocal = data;
+              if(data[0].codFuncionario!=""){
+                this.loginService.loginLocal = data[0];
                 console.warn("Login realizado com sucesso!");
                 this.router.navigate(["beneficios"]);
               }else{
