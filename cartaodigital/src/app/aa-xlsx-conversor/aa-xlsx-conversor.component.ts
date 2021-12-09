@@ -79,10 +79,10 @@ export class AaXlsxConversorComponent implements OnInit {
     let beneficioBeneficiario = this.xlsxPayload.beneficioBeneficiario
 
     if(beneficioBeneficiario[beneficio] == null) {
-      beneficioBeneficiario[beneficio] = [{ cpf, quantidade }]
-    }else {
-      beneficioBeneficiario[beneficio].push( { cpf, quantidade } )
+      beneficioBeneficiario[beneficio] = []
     }
+      
+    beneficioBeneficiario[beneficio].push( { cpf, quantidade } )
   }
 
   tratarDados(nomePlanilha:string, headers:string[], arraysBeneficios:Array<Array<any>>, verificacoes:boolean[]) {
