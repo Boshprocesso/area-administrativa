@@ -21,6 +21,7 @@ export class LoginService {
     var linkJSON = linkBaseAPI + 'loginPost.json';
     
     linkJSON = linkBaseAPI + 'login';
+    //linkJSON = "https://127.0.0.1:7151/Login";
 
 
     return this.http.post<LoginJSON>(linkJSON, params);

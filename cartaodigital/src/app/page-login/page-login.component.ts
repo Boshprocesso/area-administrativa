@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { LoginService } from '../dao/login.service';
 import { ViewportScroller } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-page-login',
@@ -16,7 +17,8 @@ export class PageLoginComponent implements OnInit {
   constructor(private router: Router,
               private loginService: LoginService,
               private formBuilder: FormBuilder,
-              viewportScroller: ViewportScroller
+              viewportScroller: ViewportScroller,
+              private _http:HttpClient
              ) {  
                viewportScroller.scrollToPosition([0,0]);
                }
@@ -31,6 +33,11 @@ export class PageLoginComponent implements OnInit {
 
   ngOnInit(): void {
       this.loginService.validaLogin(this.router.url);
+
+      this._http.get('http://localhost:5127/Admin/eventos')
+                .subscribe((returnedStuff) => {
+                  console.log(returnedStuff);
+                });
   }
 
 

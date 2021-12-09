@@ -35,7 +35,7 @@ export class BeneficiosService {
   getTodosBeneficios(){
     var linkJSON = linkBaseAPI + 'beneficio';
     var linkJSONfinal = linkJSON + "/" + this.loginService.chaveLogin().headers.cod;
-
+    
     console.log("Será enviado o seguinte link para o servidor para solicitar os beneficios");
     console.warn(linkJSONfinal);
 
