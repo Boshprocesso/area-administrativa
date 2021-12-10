@@ -89,7 +89,7 @@ export class BeneficiosService {
     if(linkServidor!=null){
       linkJSON = linkServidor + 'beneficiario/delete/' + this.loginService.chaveLogin().headers.cod + "/" + id;
     }
-    console.log("SERVICE - Beneficiario POST:");
+    console.log("SERVICE - Beneficiario DELETE:");
     console.warn(linkJSON);
 
     return this.http.delete(linkJSON);

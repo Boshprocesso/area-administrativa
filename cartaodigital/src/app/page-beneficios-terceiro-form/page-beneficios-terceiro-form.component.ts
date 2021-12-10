@@ -100,29 +100,12 @@ export class PageBeneficiosTerceiroFormComponent implements OnInit {
       console.warn(headerMask);
 
       this.beneficiosService.postBeneficiarios(headerMask)
-      .pipe(first())
-      .subscribe({
-          next: data => {
-            try{
-              if(data){
-                console.warn("Terceiro cadastrado com sucesso!");
-                this.router.navigate(["/cadastro_terceiro"]);
-              }else{
-                console.warn("Falha no cadastro...");
-                this.showSpinner = false;
-              }
-            }catch{
-              console.warn("Falha de acesso ao servidor...");
-              this.showSpinner = false;
-            }
-            
-            this.showSpinner = false;
-          },
-          error: error => {
-              console.log(error.message);
-              console.error('Falha no cadastro...', error);
-            }
-      });
+                            .pipe(first())
+                            .subscribe(data => {
+                              console.log("Resultado servidor para o Post Beneficiario:");
+                              console.warn(data);
+                              this.router.navigate(["/cadastro_terceiro"]);  
+                            });
 
 
     }else{
@@ -136,27 +119,10 @@ export class PageBeneficiosTerceiroFormComponent implements OnInit {
       
       this.beneficiosService.deleteBeneficiarios(idBeneficiario)
                             .pipe(first())
-                            .subscribe({
-                                next: data => {
-                                  try{
-                                    if(data){
-                                      console.warn("Removido com Sucesso!")   
-                                      this.router.navigate(["/cadastro_terceiro"]);         
-                                    }else{
-                                      console.warn("Falha no cadastro...");
-                                      this.showSpinner = false;
-                                    }
-                                  }catch{
-                                    console.warn("Falha de acesso ao servidor...");
-                                    this.showSpinner = false;
-                                  }
-                                  
-                                  this.showSpinner = false;
-                                },
-                                error: error => {
-                                    console.log(error.message);
-                                    console.error('Falha no cadastro...', error);
-                                  }
+                            .subscribe(data => {
+                              console.log("Resultado servidor para o Delete Beneficiario:");
+                              console.warn(data);
+                              this.router.navigate(["/cadastro_terceiro"]);  
                             });
   }
 }

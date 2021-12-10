@@ -23,7 +23,7 @@ export class AaEventosService {
     var linkJSON = linkBaseAPI + 'evento';
 
     if(linkServidor!=null){
-      linkJSON = linkServidor + "Admin/eventos";
+      linkJSON = linkServidor + "eventos";
     }
     
     console.log("SERVICE - Evento GET:");
@@ -37,7 +37,7 @@ export class AaEventosService {
     var linkJSON = linkBaseAPI + 'evento';
 
     if(linkServidor!=null){
-      linkJSON = linkServidor + "Admin/adicionarEvento";
+      linkJSON = linkServidor + "adicionarEvento";
     }
 
     console.log("SERVICE - Evento POST:");
@@ -52,7 +52,7 @@ export class AaEventosService {
     var linkJSON = linkBaseAPI + 'evento/' + idEvento;
 
     if(linkServidor!=null){
-      linkJSON = linkServidor + "Admin/EditarEvento/evento/" + idEvento;
+      linkJSON = linkServidor + "EditarEvento/evento/" + idEvento;
     }
 
     console.log("SERVICE - Evento PUT:");
@@ -67,7 +67,7 @@ export class AaEventosService {
     var linkJSON = linkBaseAPI + 'evento/' + idEvento;
 
     if(linkServidor!=null){
-      linkJSON = linkServidor + "Admin/deleteEvento/" + idEvento;
+      linkJSON = linkServidor + "deletarEvento/" + idEvento;
     }
 
     console.log("SERVICE - Evento DELETE:");
@@ -83,7 +83,7 @@ export class AaEventosService {
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios';
 
     if(linkServidor!=null){
-      linkJSON = linkServidor + "Admin/beneficiosEvento/" + idEvento;
+      linkJSON = linkServidor + "beneficiosEvento/" + idEvento;
     }
 
     console.log("SERVICE - Evento|Beneficio GET:");
@@ -97,7 +97,7 @@ export class AaEventosService {
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios/' + idBeneficio;
 
     if(linkServidor!=null){
-      linkJSON = linkServidor + "Admin/deleteBeneficioEvento/evento/" + idEvento + "/beneficio/" + idBeneficio;
+      linkJSON = linkServidor + "deletarBeneficioEvento/evento/" + idEvento + "/beneficio/" + idBeneficio;
     }
 
     console.log("SERVICE - Evento|Beneficio DELETE:");
@@ -111,7 +111,7 @@ export class AaEventosService {
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios';
 
     if(linkServidor!=null){
-      linkJSON = linkServidor + "Admin/adicionarBeneficioEvento/evento/" + idEvento;
+      linkJSON = linkServidor + "adicionarBeneficioEvento/evento/" + idEvento;
     }
 
     console.log("SERVICE - Evento|Beneficio POST:");
@@ -126,7 +126,7 @@ export class AaEventosService {
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios/' + idBeneficio;
 
     if(linkServidor!=null){
-      linkJSON = linkServidor + "Admin/EditarBeneficio/evento/" + idEvento + "/beneficio/" + idBeneficio;
+      linkJSON = linkServidor + "EditarBeneficio/evento/" + idEvento + "/beneficio/" + idBeneficio;
     }
 
     console.log("SERVICE - Evento|Beneficio PUT:");
@@ -139,8 +139,12 @@ export class AaEventosService {
 
   //SERVICES PARA OS BENEFICIOS DOS EVENTOS
   //Função para coletar todos os eventos do servidor
-  getColaboradores(idEvento?:number){
+  getColaboradores(idEvento?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores';
+
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "colaboradoresEvento/" + idEvento;
+    }
 
     console.log("SERVICE - Evento|Colaboradores GET:");
     console.warn(linkJSON);
