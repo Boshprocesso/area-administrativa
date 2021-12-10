@@ -3,7 +3,7 @@ import { FormBuilder } from "@angular/forms";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { first } from "rxjs/operators";
 import { AaEventosService } from "../dao/aa-eventos.service";
-import { EventosJSON } from "../dao/tiposJSON";
+import { EventosJSON, xlsxPayloadJSON } from "../dao/tiposJSON";
 
 
 export type eventoDialog = {
@@ -18,6 +18,8 @@ export type eventoDialog = {
     styleUrls: ['./evento-dialog.css']
   })
   export class EventosCadastro {
+    showSpinner = false;
+
     formEnvio = this.formBuilder.group({
       evento: '',
       descricao: '',
@@ -26,6 +28,7 @@ export type eventoDialog = {
     });
   
   eventoLocal ?: EventosJSON;
+  idEvento: string = "";
   formulario = true;
   autorizaPostEvento = true;
   tipoDeEvento = "";
@@ -45,6 +48,7 @@ export type eventoDialog = {
           this.formEnvio.controls['descricao'].setValue(this.eventoLocal.descricaoEvento);
           this.formEnvio.controls['dataInicio'].setValue(this.eventoLocal.dataInicio);
           this.formEnvio.controls['dataFim'].setValue(this.eventoLocal.dataTermino);
+          this.idEvento = this.data.evento.idEvento
         }
         if(this.data.tipo == "excluir"){
           this.formEnvio.controls['evento'].disable();
@@ -145,6 +149,25 @@ export type eventoDialog = {
               this.dialogRef.close();
             }
           );
+    }
+
+    enviarCarga(e:xlsxPayloadJSON) {
+      console.warn("Enviando carga:")
+      console.warn(e)
+      this.showSpinner = true;
+
+      this.eventoService.enviarCarga(e)
+        .pipe(first())
+        .subscribe(data => {
+            console.log("Resposta:");
+            console.warn(data);
+            if(data){
+                console.warn("Carga executada com sucesso");
+            }
+            this.showSpinner = false;
+            this.dialogRef.close();
+          }
+        );
     }
   
     fecharDialog(){

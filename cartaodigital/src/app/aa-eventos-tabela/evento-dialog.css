@@ -6,3 +6,14 @@ button{
 .form-full-width{
     width: 100%;
 }
+
+.uploadButton {
+    margin: auto;
+    width: 100%;
+}
+
+mat-spinner{
+    margin-left: 20px;
+    margin-right: 10px;
+    zoom: 0.25;
+}

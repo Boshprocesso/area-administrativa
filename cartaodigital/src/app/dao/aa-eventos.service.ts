@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BeneficiarioJSON, EventosBeneficioJSON, EventosJSON, EventosUsuariosJSON, linkServidor, LoginJSON } from './tiposJSON';
+import { BeneficiarioJSON, EventosBeneficioJSON, EventosJSON, EventosUsuariosJSON, linkServidor, LoginJSON , xlsxPayloadJSON} from './tiposJSON';
 import {Router} from '@angular/router';
 import { LoginService } from './login.service';
 
@@ -48,7 +48,7 @@ export class AaEventosService {
   }
 
   //Função para editar os eventos
-  putEvento(bodyJSON: any, idEvento?:number){                                               //************** Alterado servidor
+  putEvento(bodyJSON: any, idEvento?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento;
 
     if(linkServidor!=null){
@@ -63,7 +63,7 @@ export class AaEventosService {
   }
 
   //Função para efetuar a exclusão do evento no servidor
-  deleteEvento(idEvento?: number){                                                           //************** Alterado servidor
+  deleteEvento(idEvento?: string){                                                           //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento/' + idEvento;
 
     if(linkServidor!=null){
@@ -79,7 +79,7 @@ export class AaEventosService {
 
   //SERVICES PARA OS BENEFICIOS DOS EVENTOS
   //Função para coletar todos os eventos do servidor
-  getBeneficio(idEvento?:number){                                                             //************** Alterado servidor
+  getBeneficio(idEvento?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios';
 
     if(linkServidor!=null){
@@ -93,7 +93,7 @@ export class AaEventosService {
   }
 
   //Função para coletar todos os eventos do servidor
-  deleteBeneficio(idEvento?:number, idBeneficio?:number){                                     //************** Alterado servidor
+  deleteBeneficio(idEvento?:string, idBeneficio?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios/' + idBeneficio;
 
     if(linkServidor!=null){
@@ -107,7 +107,7 @@ export class AaEventosService {
   }
 
   //Função para editar os eventos
-  postBeneficio(bodyJSON: any, idEvento?:number){                                            //************** Alterado servidor
+  postBeneficio(bodyJSON: any, idEvento?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios';
 
     if(linkServidor!=null){
@@ -122,7 +122,7 @@ export class AaEventosService {
   }
 
   //Função para editar os eventos
-  putBeneficio(bodyJSON: any, idEvento?:number, idBeneficio?:any){                            //************** Alterado servidor
+  putBeneficio(bodyJSON: any, idEvento?:string, idBeneficio?:any){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios/' + idBeneficio;
 
     if(linkServidor!=null){
@@ -153,7 +153,7 @@ export class AaEventosService {
   }
 
   //Função para excluir algum colaborador do Evento
-  deleteColaboradores(idEvento:number, idColaborador?:string){
+  deleteColaboradores(idEvento:string, idColaborador?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores/' + idColaborador;
 
     console.log("SERVICE - Evento|Colaboradores DELETE:");
@@ -163,7 +163,7 @@ export class AaEventosService {
   }
 
   //Função para inserir Colaboradores no Evento
-  postColaboradores(bodyJSON: any, idEvento:number){
+  postColaboradores(bodyJSON: any, idEvento:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores';
 
     console.log("SERVICE - Evento|Colaboradores POST:");
@@ -174,7 +174,7 @@ export class AaEventosService {
   }
 
   //Função para editar os Colaboradores do Evento
-  putColaboradores(bodyJSON: any, idEvento:number, idColaborador?:any){
+  putColaboradores(bodyJSON: any, idEvento:string, idColaborador?:any){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores/' + idColaborador;
 
     console.log("SERVICE - Evento|Colaboradores PUT:");
@@ -182,5 +182,9 @@ export class AaEventosService {
     console.warn(bodyJSON);
 
     return this.http.put<EventosUsuariosJSON>(linkJSON, bodyJSON);
+  }
+
+  enviarCarga(bodyJSON:xlsxPayloadJSON) {
+    return this.http.post<JSON>("http://localhost:5127/CargaDeDados", bodyJSON)
   }
 }

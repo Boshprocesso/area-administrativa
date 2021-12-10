@@ -34,6 +34,20 @@
   <mat-form-field class="form-full-width">
     <input matInput placeholder="Data de Fim" type="datetime-local" formControlName="dataFim"required>
   </mat-form-field>
+  
+  <div *ngIf="data.tipo=='editar'">
+    <app-aa-xlsx-conversor [idEvento]="idEvento" (ArquivoConvertido)="enviarCarga($event)">
+      <button  mat-button class="uploadButton">
+        <mat-icon>upload</mat-icon>Enviar carga de dados
+      </button>
+      <div *ngIf="showSpinner">
+        <p></p>
+        Enviando para o servidor, aguarde...
+        <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+        <p></p>
+      </div>
+    </app-aa-xlsx-conversor>
+  </div>
 </div>
 
 

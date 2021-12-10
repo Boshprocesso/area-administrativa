@@ -50,7 +50,7 @@ import { eventoDialog } from "./evento-dialog";
             });
     }
 
-    deleteBeneficio(idBeneficio:number){//Inicializa os dados do beneficio com base no evento clicado.
+    deleteBeneficio(idBeneficio:string){//Inicializa os dados do beneficio com base no evento clicado.
       this.eventoService.deleteBeneficio(this.data.evento?.idEvento, idBeneficio)
           .pipe(first())
           .subscribe(data => {
@@ -83,7 +83,7 @@ import { eventoDialog } from "./evento-dialog";
 
   export type eventoBeneficioDialog = {
     tipo: string;
-    idEvento: number;
+    idEvento: string;
     beneficio?: EventosBeneficioJSON;
   }
 
