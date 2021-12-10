@@ -153,21 +153,21 @@ export class AaEventosService {
   }
 
   //Função para excluir algum colaborador do Evento
-  deleteColaboradores(idEvento:string, idColaborador?:string){
+  deleteColaboradores(idEvento:string, idColaborador?:string){                //Validado
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores/' + idColaborador;
 
     if(linkServidor!=null){
-      linkJSON = linkServidor + "adicionarColaboradorEvento/eventoid/" + idEvento + "/excluiredv/" + idColaborador;
+      linkJSON = linkServidor + "removerColaboradorEvento/eventoid/" + idEvento + "/edv/" + idColaborador;
     }
 
     console.log("SERVICE - Evento|Colaboradores DELETE:");
     console.warn(linkJSON);
 
-    return this.http.delete('linkJSON');
+    return this.http.delete(linkJSON);
   }
 
   //Função para inserir Colaboradores no Evento
-  postColaboradores(bodyJSON: any, idEvento:string){
+  postColaboradores(bodyJSON: any, idEvento:string){                          //Validado
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores';
 
     if(linkServidor!=null){
@@ -182,7 +182,7 @@ export class AaEventosService {
   }
 
   //Função para editar os Colaboradores do Evento
-  putColaboradores(bodyJSON: any, idEvento:string, idColaborador?:any){
+  putColaboradores(bodyJSON: any, idEvento:string, idColaborador?:any){       
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores/' + idColaborador;
 
     if(linkServidor!=null){
@@ -193,7 +193,7 @@ export class AaEventosService {
     console.warn(linkJSON);
     console.warn(bodyJSON);
 
-    return this.http.put<EventosUsuariosJSON>('linkJSON', bodyJSON);
+    return this.http.put<EventosUsuariosJSON>(linkJSON, bodyJSON);
   }
 
 
