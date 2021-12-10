@@ -9,14 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 export class AaEventosUsuariosComponent implements OnInit {
   public paginaRH = true;
   
-  public idEventoRota = 0;
+  public idEventoRota = "";
   
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const idEventoFromRoute = Number(routeParams.get('idEvento'));
-    this.idEventoRota = idEventoFromRoute;
+    const idEventoFromRoute = routeParams.get('idEvento');
+    if(idEventoFromRoute){
+      this.idEventoRota = idEventoFromRoute;
+    }
   }
-
 }
