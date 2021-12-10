@@ -51,6 +51,7 @@ import { UsuarioDialog } from "./usuarios-dialog";
     const dialogRef = this.dialog.open( UsuarioDialog, 
                                         {
                                           width: '350px',
+                                          maxHeight: window.innerHeight + 'px',
                                           data: {tipo: acao, idEvento: this.idEvento, evento: objEvento}
                                         }
                                       );

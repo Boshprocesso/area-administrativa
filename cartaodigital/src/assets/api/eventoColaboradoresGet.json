@@ -1,4 +1,48 @@
 {
+    "eventoId": "12b24219-e052-4ffe-8e1f-4dc069a6c397",
+    "colaborador": {
+        "nomeCompleto": "Amadeu",
+        "dataNascimento": "2021-12-10T14:07",
+        "edv": "1234",
+        "cpf": "23123156456",
+        "unidade": "Engenharia",
+        "dataInclusao": "2021-12-10",
+        "responsavelInclusao": "amadeu.marques"
+    },
+    "listaBeneficios": [
+        {
+            "idBeneficio": "48925d09-4698-4f8e-ab62-05b90801c6ae",
+            "descricaoBeneficio": "Material Escolar KIT 5",
+            "status": "Pendente",
+            "quantidade": 1
+        },
+        {
+            "idBeneficio": "35442a9e-af1d-4df6-88a6-17bcb9940e6f",
+            "descricaoBeneficio": "CESTA FRIA",
+            "status": "Pendente",
+            "quantidade": 0
+        },
+        {
+            "idBeneficio": "31743045-3585-44b7-aff0-62ac6cef1098",
+            "descricaoBeneficio": "Brinquedos 12M",
+            "status": "Pendente",
+            "quantidade": 1
+        },
+        {
+            "idBeneficio": "ce18554e-0805-4c35-8cb4-f193df14b7e0",
+            "descricaoBeneficio": "Material Escolar KIT 3",
+            "status": "Pendente",
+            "quantidade": 0
+        }
+    ]
+}
+
+
+
+
+
+
+{
     "eventoId": "b8061929-1d9f-42f0-90a4-fce45c5c1e61",
     "colaborador": {
         "idBeneficiario": "0a8ca795-95c2-4c70-87ee-030231cc92d6",

@@ -159,7 +159,7 @@ export class AaEventosService {
     console.log("SERVICE - Evento|Colaboradores DELETE:");
     console.warn(linkJSON);
 
-    return this.http.delete(linkJSON);
+    return this.http.delete('linkJSON');
   }
 
   //Função para inserir Colaboradores no Evento
@@ -170,7 +170,7 @@ export class AaEventosService {
     console.warn(linkJSON);
     console.warn(bodyJSON);
 
-    return this.http.post<EventosUsuariosJSON>(linkJSON, bodyJSON);
+    return this.http.post<EventosUsuariosJSON>('linkJSON', bodyJSON);
   }
 
   //Função para editar os Colaboradores do Evento
@@ -181,9 +181,11 @@ export class AaEventosService {
     console.warn(linkJSON);
     console.warn(bodyJSON);
 
-    return this.http.put<EventosUsuariosJSON>(linkJSON, bodyJSON);
+    return this.http.put<EventosUsuariosJSON>('linkJSON', bodyJSON);
   }
 
+
+  
   enviarCarga(bodyJSON:xlsxPayloadJSON) {
     return this.http.post<JSON>("http://localhost:5127/CargaDeDados", bodyJSON)
   }

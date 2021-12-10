@@ -85,6 +85,7 @@ export type EventosUsuariosColaborador = {
     cpf: string;
     unidade: string;
     dataInclusao: string;
+    dataNascimento: string;
     responsavelInclusao: string;
 }
 

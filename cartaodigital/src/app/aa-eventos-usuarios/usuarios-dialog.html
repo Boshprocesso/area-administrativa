@@ -47,11 +47,18 @@
         <mat-icon matSuffix>work</mat-icon>   
         <mat-hint>Área de trabalho do colaborador</mat-hint>     
       </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Data Nascimento</mat-label>
+        <input formControlName="dataNascimento" type="datetime-local" matInput required>  
+        <mat-icon matSuffix>calendar_today</mat-icon>   
+        <mat-hint>Data de Nascimento do colaborador</mat-hint>     
+      </mat-form-field>
       <br>
   
       <mat-form-field appearance="outline">
-        <mat-label>Username</mat-label>
-        <input formControlName="username" matInput placeholder="Nome de Usuário">  
+        <mat-label>Responsavel Inclusao</mat-label>
+        <input formControlName="username" matInput placeholder="Nome de Usuário" required>  
         <mat-icon matSuffix>how_to_reg</mat-icon>  
         <mat-hint>Nome de usuário</mat-hint>      
       </mat-form-field>
