@@ -24,9 +24,8 @@ export class PageFiltroBeneficiosComponent implements OnInit {
   ngOnInit(): void {
     console.log('CPF ou EDV resgatado da rota', this.route.snapshot.params['edvOuCpf']);
     this.edvOuCpfRota = this.route.snapshot.params['edvOuCpf'];
-    //this.carregarDados(this.edvOuCpfRota);
-    this.setDumbData();
-    
+    this.carregarDados(this.edvOuCpfRota);
+    //this.setDumbData();
   }
 
   // alterar no back e chamar novamente o método que carrega os dados
