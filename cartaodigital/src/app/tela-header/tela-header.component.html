@@ -6,6 +6,10 @@
         <img src='../../assets/img/logo/logo.png' [routerLink]="['/']" class="logo">
         <span class="example-spacer"></span>
         
+        <div *ngIf="exibeBack; then btnVoltar else btnNone"></div>
+            <ng-template #btnVoltar><button mat-icon-button class="example-icon" (click)="botaoVoltar()"><mat-icon>arrow_back</mat-icon></button></ng-template>
+            <ng-template #btnNone></ng-template>
+
         <!-- Rendereriza o carrinho de compras com a quantidade comprada até o momento -->
         <div *ngIf="getQuantidadeBeneficios(); then cartFull else cartEmpty"></div>
             <ng-template #cartFull><button mat-icon-button class="example-icon"  matBadge="{{getQuantidadeBeneficios()}}" matBadgeColor="warn" [routerLink]="['/beneficios']"><mat-icon>card_giftcard</mat-icon></button></ng-template>

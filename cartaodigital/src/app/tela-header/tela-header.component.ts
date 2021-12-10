@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Produto, carrinho, produtos  } from 'src/produtos';
 
 //Servico de DAO - Banco de Dados
@@ -12,9 +13,31 @@ import { BeneficiosService } from '../dao/beneficios.service';
 export class TelaHeaderComponent implements OnInit {
   @Output() toggleSlider = new EventEmitter();  //Aqui para quando precisa conectar as duas interfaces do projeto
   
-  constructor(private beneficiosService: BeneficiosService) { }
+  constructor(private beneficiosService: BeneficiosService,
+              private route: Router) { 
+                    route.events.subscribe(event => 
+                                            {   
+                                                if(this.route.url.indexOf("/eventos/") != -1){
+                                                    this.exibeBack = true;
+                                                    this.linkRotaBack = "/eventos";
+                                                    console.log(this.route.url);
+                                                }else if(this.route.url.indexOf("/filtro_beneficios/") != -1){
+                                                  this.exibeBack = true;
+                                                  this.linkRotaBack = "/entrega_beneficios";
+                                                  console.log(this.route.url);
+                                                }else{
+                                                    this.exibeBack = false;
+                                                }
+                                            });
+              }
 
+  public exibeBack !: boolean;
+  public linkRotaBack = "";
+  
+  public paginaAtual = "";
+  
   ngOnInit(): void {
+    
   }
 
   toggleSideNav() {
@@ -25,5 +48,9 @@ export class TelaHeaderComponent implements OnInit {
   //Função para exibir a quantidade de beneficios disponíveis, retorna do servico de Beneficios
   getQuantidadeBeneficios(){
     return this.beneficiosService.quantidade;
+  }
+
+  botaoVoltar(){
+    this.route.navigate([this.linkRotaBack]);  
   }
 }

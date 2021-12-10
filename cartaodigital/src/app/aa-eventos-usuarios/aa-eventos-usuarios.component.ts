@@ -15,8 +15,9 @@ export class AaEventosUsuariosComponent implements OnInit {
 
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
-    const idEventoFromRoute = String(routeParams.get('idEvento'));
-    this.idEventoRota = idEventoFromRoute;
+    const idEventoFromRoute = routeParams.get('idEvento');
+    if(idEventoFromRoute){
+      this.idEventoRota = idEventoFromRoute;
+    }
   }
-
 }

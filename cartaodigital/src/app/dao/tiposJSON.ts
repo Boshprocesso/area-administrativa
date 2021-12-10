@@ -81,19 +81,19 @@ export type EventosBeneficioJSON = {
 
 
 export type EventosUsuariosJSON = {
-    idEvento: number;
+    idEvento: string;
     codFuncionario: string;
     nomeFuncionario: string;
     cpf: string;
-    area: string;
+    unidade: string;
     username: string;
     dataInclusao: string;
     beneficios: Array<BeneficioEstrutura>;
 }
 
 export type BeneficioEntregue = {
-    idBeneficio: string,
-    idBeneficiario: string
+    idBeneficiario: string,
+    idBeneficio: string
 }
 
 export type ConjuntoIlhaEvento = {

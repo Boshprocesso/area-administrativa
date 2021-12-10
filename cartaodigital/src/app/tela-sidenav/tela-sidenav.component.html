@@ -23,10 +23,17 @@
         Indicar um Terceiro
     </button>
 </p>
-
+-------- Administrativo --------
 <p>
-    <button mat-icon-button color="white" [routerLink]="['/login']" (click)="sairSistema()">
-        <mat-icon>power_settings_new</mat-icon>
-        Sair
+    <button mat-icon-button color="white" [routerLink]="['/eventos']" (click)="toggleSideNav()">
+        <mat-icon>streetview</mat-icon>
+        Eventos
+    </button>
+</p>
+-------- Operacional --------
+<p>
+    <button mat-icon-button color="white" [routerLink]="['/entrega_beneficios']" (click)="toggleSideNav()">
+        <mat-icon>shopping_basket</mat-icon>
+        Entrega Benefícios
     </button>
 </p>

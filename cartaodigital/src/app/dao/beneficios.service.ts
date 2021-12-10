@@ -89,7 +89,7 @@ export class BeneficiosService {
     if(linkServidor!=null){
       linkJSON = linkServidor + 'beneficiario/delete/' + this.loginService.chaveLogin().headers.cod + "/" + id;
     }
-    console.log("SERVICE - Beneficiario POST:");
+    console.log("SERVICE - Beneficiario DELETE:");
     console.warn(linkJSON);
 
     return this.http.delete(linkJSON);
@@ -104,8 +104,9 @@ export class BeneficiosService {
   }
 
   postAlteraStatus(data: any): Observable<any> {
+    console.log(data)
     const url = `${linkServidor}BeneficioEntregue`;
-    return this.http.put<any>(url, data , this.httpOptions);
+    return this.http.post<JSON>(url, data , this.httpOptions);
   }
 
   private handleError(err: HttpErrorResponse): Observable<never> {

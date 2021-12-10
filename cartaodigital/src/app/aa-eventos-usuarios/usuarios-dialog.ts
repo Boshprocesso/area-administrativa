@@ -62,7 +62,7 @@ export type usuariosDialog = {
         this.formEnvio.controls['edv'].setValue(this.data.evento?.codFuncionario);
         this.formEnvio.controls['nome'].setValue(this.data.evento?.nomeFuncionario);
         this.formEnvio.controls['cpf'].setValue(this.data.evento?.cpf);
-        this.formEnvio.controls['area'].setValue(this.data.evento?.area);
+        this.formEnvio.controls['area'].setValue(this.data.evento?.unidade);
         this.formEnvio.controls['username'].setValue("n/a");
       }
 
@@ -124,7 +124,7 @@ export type usuariosDialog = {
         "codFuncionario": "",
         "nomeFuncionario": "",
         "cpf": "",
-        "area": "",
+        "unidade": "",
         "username": "",
         "dataInclusao": "",
         "beneficios": Array<BeneficioEstrutura>()
@@ -133,7 +133,7 @@ export type usuariosDialog = {
       POSTusuario.codFuncionario = this.formEnvio.controls['edv'].value;
       POSTusuario.nomeFuncionario = this.formEnvio.controls['nome'].value;
       POSTusuario.cpf = this.formEnvio.controls['cpf'].value;
-      POSTusuario.area = this.formEnvio.controls['area'].value;
+      POSTusuario.unidade = this.formEnvio.controls['area'].value;
       POSTusuario.username = this.formEnvio.controls['username'].value;
       POSTusuario.beneficios = this.beneficioLocal;
 

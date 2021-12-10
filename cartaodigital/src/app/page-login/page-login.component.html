@@ -15,7 +15,7 @@
                             </mat-grid-tile>
                             <mat-grid-tile [colspan]="7">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="CPF ou EDV"  name="cod" formControlName="cod" required>
+                                    <input matInput placeholder="CPF ou EDV"  name="cod" formControlName="cod" maxlength="11" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
                                 </mat-form-field>
                             </mat-grid-tile>
                         </mat-grid-list>

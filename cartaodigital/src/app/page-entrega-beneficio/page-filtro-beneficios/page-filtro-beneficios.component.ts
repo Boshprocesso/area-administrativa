@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BeneficiosService } from 'src/app/dao/beneficios.service';
 import { BeneficiosParaEntrega, BeneficioEntregue, ConjuntoIlhaEvento } from 'src/app/dao/tiposJSON';
 import { Router } from '@angular/router';
+import { first } from "rxjs/operators";
 
 
 @Component({
@@ -32,7 +33,15 @@ export class PageFiltroBeneficiosComponent implements OnInit {
   darBaixa(idBeneficiario: string, idBeneficio: string) {
     this.entrega.idBeneficiario = idBeneficiario;
     this.entrega.idBeneficio = idBeneficio;
-    this.beneficiosService.postAlteraStatus(this.entrega);
+    this.beneficiosService.postAlteraStatus(this.entrega)
+      .pipe(first())
+      .subscribe(data => {
+          console.log("Entregando o beneficio...");
+          console.warn(data);
+          this.carregarDados(this.edvOuCpfRota);
+        }
+      );
+    
   }
 
   carregarDados(edvOuCpfDaRota: string): void {
