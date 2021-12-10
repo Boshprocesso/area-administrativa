@@ -1,0 +1,11 @@
+<div class="body" id="body">
+    <div class="pagina">
+        <div *ngIf="acessaEntrega; then temItem else naoTem" id="localCard"></div>
+        <ng-template #temItem>
+            <app-page-entrega-beneficio></app-page-entrega-beneficio>
+        </ng-template>
+        <ng-template #naoTem>
+            <app-tela-bloqueada></app-tela-bloqueada>
+        </ng-template>
+    </div>
+</div>

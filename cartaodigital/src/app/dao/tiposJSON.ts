@@ -91,5 +91,23 @@ export type EventosUsuariosJSON = {
     beneficios: Array<BeneficioEstrutura>;
 }
 
+export type BeneficioEntregue = {
+    idBeneficio: string,
+    idBeneficiario: string
+}
+
+export type ConjuntoIlhaEvento = {
+    idEvento: string,
+    idIlha: string
+}
+
+export type BeneficiosParaEntrega = {
+    beneficio: string,
+    idBeneficio: string,
+    quantidade: number,
+    entregue: number,
+    idBeneficiario: string,
+    beneficiario: string
+}
 
 export const linkServidor = "http://localhost:5127/";
