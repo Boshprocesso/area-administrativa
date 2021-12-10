@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -16,6 +16,7 @@ export class PageLoginComponent implements OnInit {
   public siteKey :string = "6LfSJpIdAAAAANur_uVIhISP7SWRlbhgl-GI3Xz3";
 
   showSpinner = false;
+  
   constructor(private router: Router,
               private loginService: LoginService,
               private formBuilder: FormBuilder,
@@ -75,6 +76,7 @@ export class PageLoginComponent implements OnInit {
               }
             }catch{
               console.warn("Falha requisição de Login!");
+              location.reload();
               this.showSpinner = false;
             }
 
