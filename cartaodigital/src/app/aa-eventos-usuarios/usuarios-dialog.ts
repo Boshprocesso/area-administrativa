@@ -11,7 +11,7 @@ import { DatePipe } from "@angular/common";
 
 export type usuariosDialog = {
     tipo: string;
-    idEvento: number;
+    idEvento: string;
     evento?: EventosUsuariosJSON;
   }
   

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { xlsxPayloadJSON } from '../dao/tiposJSON';
+import { xlsxPayloadJSON, BeneficiarioPayload } from '../dao/tiposJSON';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -41,13 +41,16 @@ export class AaXlsxConversorComponent implements OnInit {
 
     arraysColaboradores = arraysColaboradores.splice(1)
     this.xlsxPayload.beneficiarios = arraysColaboradores.map(array => {
-      return {
+      let beneficiario:BeneficiarioPayload = {
         edv: array[headersIndex[0]],
         cpf: array[headersIndex[1]],
         nascimento: this.excelDateToJSDate(array[headersIndex[2]]),
         nome: array[headersIndex[3]],
         unidade: array[headersIndex[4]]
+
       }
+
+      return beneficiario
     })
   }
 
@@ -102,7 +105,7 @@ export class AaXlsxConversorComponent implements OnInit {
     })
   }
 
-  conferirSeNumeroOuTexto(primeiraLinha:Array<Number|String>) {
+  conferirSeNumeroOuTexto(primeiraLinha:Array<Number|string>) {
     let numero = false, texto = false;
     let index = 1;
     while(!(numero || texto) && index < primeiraLinha.length) {
@@ -142,7 +145,7 @@ export class AaXlsxConversorComponent implements OnInit {
             this.inserirdados(cpf, beneficio, quantidade)
           })
         }else {
-          let primeiraLinha:Array<Number|String> = arraysBeneficios[1]
+          let primeiraLinha:Array<Number|string> = arraysBeneficios[1]
 
           try {
             let verificacoes = this.conferirSeNumeroOuTexto(primeiraLinha)

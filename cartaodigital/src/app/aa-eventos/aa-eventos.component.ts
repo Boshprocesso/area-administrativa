@@ -1,7 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../dao/login.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-aa-eventos',

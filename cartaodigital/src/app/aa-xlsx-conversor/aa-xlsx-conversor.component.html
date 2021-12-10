@@ -1,5 +1,5 @@
 <input hidden type="file" class="file-input"(change)="onFileSelected($event)" #fileUpload>
 
-<button mat-button (click)="fileUpload.click()">
+<div (click)="fileUpload.click()">
     <ng-content></ng-content>
-</button>
+</div>

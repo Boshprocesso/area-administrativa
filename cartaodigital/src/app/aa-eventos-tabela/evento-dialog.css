@@ -6,3 +6,8 @@ button{
 .form-full-width{
     width: 100%;
 }
+
+.uploadButton {
+    margin: auto;
+    width: 100%;
+}
