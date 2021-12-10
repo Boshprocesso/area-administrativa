@@ -178,7 +178,7 @@ export class AaEventosService {
     console.warn(linkJSON);
     console.warn(bodyJSON);
 
-    return this.http.post<EventosUsuariosJSON>('linkJSON', bodyJSON);
+    return this.http.post<EventosUsuariosJSON>(linkJSON, bodyJSON);
   }
 
   //Função para editar os Colaboradores do Evento

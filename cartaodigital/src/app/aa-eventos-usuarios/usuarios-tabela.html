@@ -80,6 +80,17 @@
 </ng-template>
 
 <ng-template #naoTem>
-  <h1>Nenhum usuário cadastrado...</h1>
-  <tela-usuarios-vazio (click)="UsuarioDialog('cadastro')"></tela-usuarios-vazio>
+  <div *ngIf="loadingShow; then loading else semcarregar"></div>
+  <ng-template #loading>
+    <div class="loading">
+      <h1>Aguarde, carregando os usuarios...</h1>
+      <div class="loading_spinning">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #semcarregar>
+    <h1>Nenhum usuário cadastrado...</h1>
+    <tela-usuarios-vazio (click)="UsuarioDialog('cadastro')"></tela-usuarios-vazio>
+  </ng-template>
 </ng-template>
