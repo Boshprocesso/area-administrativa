@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BeneficiosService } from 'src/app/dao/beneficios.service';
 import { BeneficiosParaEntrega, BeneficioEntregue, ConjuntoIlhaEvento } from 'src/app/dao/tiposJSON';
 import { Router } from '@angular/router';
+import { first } from "rxjs/operators";
 
 
 @Component({
@@ -32,14 +33,21 @@ export class PageFiltroBeneficiosComponent implements OnInit {
   darBaixa(idBeneficiario: string, idBeneficio: string) {
     this.entrega.idBeneficiario = idBeneficiario;
     this.entrega.idBeneficio = idBeneficio;
-    this.beneficiosService.postAlteraStatus(this.entrega);
-    this.carregarDados(this.edvOuCpfRota);
+    this.beneficiosService.postAlteraStatus(this.entrega)
+      .pipe(first())
+      .subscribe(data => {
+          console.log("Entregando o beneficio...");
+          console.warn(data);
+          this.carregarDados(this.edvOuCpfRota);
+        }
+      );
+    
   }
 
   carregarDados(edvOuCpfDaRota: string): void {
     var ilhaEvento: ConjuntoIlhaEvento = {
-      idEvento: '12gg-2113eg-aegeg3-egag13',  // irá vir do back futuramente
-      idIlha: '12313-21312-131213-121312',   // irá vir do back futuramente
+      idEvento: '3AB37867-12C4-467A-A897-36D32A2FBC65',  // irá vir do back futuramente
+      idIlha: '47992B34-AD6C-4E4A-A3CA-56A8AECCACB9',   // irá vir do back futuramente
     }
     this.beneficiosService.getBeneficios(ilhaEvento, edvOuCpfDaRota).subscribe(res => {
       console.log("Dados vindos do servidor: ", res)
