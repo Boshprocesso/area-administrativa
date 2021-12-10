@@ -125,6 +125,7 @@ export type usuariosDialog = {
       var POSTusuario = {
         "eventoId": "",
         "colaborador":{
+          "idBeneficiario": "",
           "nomeCompleto": "",
           "dataNascimento": "",
           "edv": "",
