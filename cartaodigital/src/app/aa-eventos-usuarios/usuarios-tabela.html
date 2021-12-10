@@ -24,43 +24,43 @@
 
       <ng-container matColumnDef="edv">
         <th mat-header-cell *matHeaderCellDef class="margem"> EDV </th>
-        <td mat-cell *matCellDef="let element" class="margem"> {{element.codFuncionario}} </td>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.colaborador.edv}} </td>
       </ng-container>
     
       <ng-container matColumnDef="colaborador">
         <th mat-header-cell *matHeaderCellDef class="margem"> Colaborador </th>
-        <td mat-cell *matCellDef="let element" class="margem"> {{element.nomeFuncionario}} </td>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.colaborador.nomeCompleto | slice:0:20 }}... </td>
       </ng-container>
 
       <ng-container matColumnDef="cpf">
         <th mat-header-cell *matHeaderCellDef class="margem"> CPF </th>
-        <td mat-cell *matCellDef="let element" class="margem"> {{element.cpf}} </td>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.colaborador.cpf}} </td>
       </ng-container>
       
       <ng-container matColumnDef="area">
         <th mat-header-cell *matHeaderCellDef class="margem"> Unidade </th>
-        <td mat-cell *matCellDef="let element" class="margem"> {{element.unidade}} </td>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.colaborador.unidade}} </td>
       </ng-container>
       
       <ng-container matColumnDef="user">
-        <th mat-header-cell *matHeaderCellDef class="margem"> Username </th>
-        <td mat-cell *matCellDef="let element" class="margem">  </td>
+        <th mat-header-cell *matHeaderCellDef class="margem"> Responsável </th>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.colaborador.responsavelInclusao}}</td>
       </ng-container>
       
       <ng-container matColumnDef="beneficios">
         <th mat-header-cell *matHeaderCellDef class="margem"> Beneficios </th>
         <td mat-cell *matCellDef="let element" class="margem"> 
-            <div *ngFor="let item of element.beneficios">
+            <div *ngFor="let item of element.listaBeneficios">
               <div *ngIf="item.quantidade>0">
-                {{item.quantidade}} x {{item.beneficio}}<br>
+                {{item.quantidade}} x {{item.descricaoBeneficio | slice:0:15 }}<br>
               </div>
             </div>
-          </td>
+        </td>
       </ng-container>
       
       <ng-container matColumnDef="dataInclusao">
         <th mat-header-cell *matHeaderCellDef class="margem"> Data Inclusao </th>
-        <td mat-cell *matCellDef="let element" class="margem"> {{element.dataInclusao}} </td>
+        <td mat-cell *matCellDef="let element" class="margem"> {{element.colaborador.dataInclusao}} </td>
       </ng-container>
 
       <ng-container matColumnDef="menus">

@@ -3,6 +3,10 @@ button{
     border: solid 1px #ccc;
 }
 
+.example-form{
+  max-height: 80%;
+}
+
 .form-full-width{
     width: 100%;
 }

@@ -78,9 +78,26 @@ export type EventosBeneficioJSON = {
 
 
 
-
+export type EventosUsuariosColaborador = {
+    idBeneficiario: string;
+    nomeCompleto: string;
+    edv: string;
+    cpf: string;
+    unidade: string;
+    dataInclusao: string;
+    dataNascimento: string;
+    responsavelInclusao: string;
+}
 
 export type EventosUsuariosJSON = {
+    eventoId: string;
+    colaborador: EventosUsuariosColaborador;
+    listaBeneficios: Array<BeneficioEstrutura>;
+}
+
+
+
+export type EventosUsuariosJSONAntigo = {
     idEvento: string;
     codFuncionario: string;
     nomeFuncionario: string;
@@ -90,6 +107,10 @@ export type EventosUsuariosJSON = {
     dataInclusao: string;
     beneficios: Array<BeneficioEstrutura>;
 }
+
+
+
+
 
 export type BeneficioEntregue = {
     idBeneficiario: string,

@@ -32,6 +32,7 @@ export type usuariosDialog = {
       nome: '',
       cpf: '',
       area: '',
+      dataNascimento: '',
       username: ''
     });
   
@@ -55,15 +56,16 @@ export type usuariosDialog = {
       }
       if(this.data){
         if(this.data.evento){
-          this.beneficioLocal = this.data.evento?.beneficios;
+          this.beneficioLocal = this.data.evento?.listaBeneficios;
         }else{
           this.updateBeneficio();
         }
-        this.formEnvio.controls['edv'].setValue(this.data.evento?.codFuncionario);
-        this.formEnvio.controls['nome'].setValue(this.data.evento?.nomeFuncionario);
-        this.formEnvio.controls['cpf'].setValue(this.data.evento?.cpf);
-        this.formEnvio.controls['area'].setValue(this.data.evento?.unidade);
-        this.formEnvio.controls['username'].setValue("n/a");
+        this.formEnvio.controls['edv'].setValue(this.data.evento?.colaborador.edv);
+        this.formEnvio.controls['nome'].setValue(this.data.evento?.colaborador.nomeCompleto);
+        this.formEnvio.controls['cpf'].setValue(this.data.evento?.colaborador.cpf);
+        this.formEnvio.controls['area'].setValue(this.data.evento?.colaborador.unidade);
+        this.formEnvio.controls['dataNascimento'].setValue(this.data.evento?.colaborador.dataNascimento);
+        this.formEnvio.controls['username'].setValue(this.data.evento?.colaborador.responsavelInclusao);
       }
 
       if(this.data.tipo=="editar"){
@@ -121,28 +123,34 @@ export type usuariosDialog = {
 
     getEstruturaEventoColaboradoresJSON(){
       var POSTusuario = {
-        "codFuncionario": "",
-        "nomeFuncionario": "",
-        "cpf": "",
-        "unidade": "",
-        "username": "",
-        "dataInclusao": "",
-        "beneficios": Array<BeneficioEstrutura>()
+        "eventoId": "",
+        "colaborador":{
+          "nomeCompleto": "",
+          "dataNascimento": "",
+          "edv": "",
+          "cpf": "",
+          "unidade": "",
+          "dataInclusao": "",
+          "responsavelInclusao": ""
+        },
+        "listaBeneficios": Array<BeneficioEstrutura>()
       };
       
-      POSTusuario.codFuncionario = this.formEnvio.controls['edv'].value;
-      POSTusuario.nomeFuncionario = this.formEnvio.controls['nome'].value;
-      POSTusuario.cpf = this.formEnvio.controls['cpf'].value;
-      POSTusuario.unidade = this.formEnvio.controls['area'].value;
-      POSTusuario.username = this.formEnvio.controls['username'].value;
-      POSTusuario.beneficios = this.beneficioLocal;
+      POSTusuario.eventoId = this.data.idEvento;
+      POSTusuario.colaborador.edv = this.formEnvio.controls['edv'].value;
+      POSTusuario.colaborador.nomeCompleto = this.formEnvio.controls['nome'].value;
+      POSTusuario.colaborador.cpf = this.formEnvio.controls['cpf'].value;
+      POSTusuario.colaborador.unidade = this.formEnvio.controls['area'].value;
+      POSTusuario.colaborador.dataNascimento = this.formEnvio.controls['dataNascimento'].value;
+      POSTusuario.colaborador.responsavelInclusao = this.formEnvio.controls['username'].value;
+      POSTusuario.listaBeneficios = this.beneficioLocal;
 
       //Efetua a leitura da Data e Hora atual e envia para o servidor
       var dataAtual = new Date(Date.now());
       var pipe = new DatePipe('en-US');
       var dataFormatada = pipe.transform(dataAtual, 'yyyy-MM-dd');
       if(dataFormatada){
-        POSTusuario.dataInclusao = dataFormatada.toString();
+        POSTusuario.colaborador.dataInclusao = dataFormatada.toString();
       }
       return POSTusuario;
     }
@@ -161,7 +169,7 @@ export type usuariosDialog = {
 
     editarUsuario(){
       if(this.formEnvio.status=="VALID"){
-        this.eventoService.putColaboradores(this.getEstruturaEventoColaboradoresJSON(), this.data.idEvento, this.data.evento?.codFuncionario)
+        this.eventoService.putColaboradores(this.getEstruturaEventoColaboradoresJSON(), this.data.idEvento, this.data.evento?.colaborador.idBeneficiario)
             .pipe(first())
             .subscribe(data => {
                   console.log("Colaborador que foi editado");
@@ -173,9 +181,9 @@ export type usuariosDialog = {
     
     deleteUsuario(){
       console.log("Usuario Local DELETED");
-      console.warn("ID: " + this.data.evento?.codFuncionario);
+      console.warn("ID: " + this.data.evento?.colaborador.idBeneficiario);
       console.warn("Excluindo o Evento: " + this.data.evento)
-      this.eventoService.deleteColaboradores(this.data.idEvento, this.data.evento?.codFuncionario)
+      this.eventoService.deleteColaboradores(this.data.idEvento, this.data.evento?.colaborador.idBeneficiario)
           .pipe(first())
           .subscribe(data => {
               console.log("Evento que foi excluido");
