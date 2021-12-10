@@ -1,51 +1,63 @@
-<h1>Eventos Cadastrados</h1>
-
 <div class="fab_img">
   <button mat-button (click)="EventoDialog('cadastro')"></button>
 </div>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="excluir">
-      <th mat-header-cell *matHeaderCellDef> Excluir </th>
-      <td mat-cell *matCellDef="let element" class="coluna_botao"> 
-        
-      </td>
-    </ng-container>
+<div *ngIf="dataSource.length>0; then temItem else naoTem" id="localCard"></div>
+<ng-template #temItem>
+  <h1>Eventos Cadastrados</h1>
 
-    <ng-container matColumnDef="evento">
-      <th mat-header-cell *matHeaderCellDef> Nome </th>
-      <td mat-cell *matCellDef="let element" class="eventos"> 
-                {{element.nomeEvento}}
-      </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="inicio">
-      <th mat-header-cell *matHeaderCellDef> Inicio </th>
-      <td mat-cell *matCellDef="let element" class="datas"> {{element.dataInicio | date: 'dd/MM/yyyy'}}  </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="fim">
-      <th mat-header-cell *matHeaderCellDef> Fim </th>
-      <td mat-cell *matCellDef="let element" class="datas"> {{element.dataTermino | date: 'dd/MM/yyyy'}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="menus">
-        <th mat-header-cell *matHeaderCellDef> MENUS </th>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="excluir">
+        <th mat-header-cell *matHeaderCellDef> Excluir </th>
         <td mat-cell *matCellDef="let element" class="coluna_botao"> 
-          <div>
-            <button mat-button [routerLink]="['/eventos/usuarios/', element.idEvento]"><mat-icon class="button">person</mat-icon></button>
-            <button mat-button (click)="beneficiosDialog(element)"><mat-icon class="button">card_giftcard</mat-icon></button>
-            <button mat-button (click)="EventoDialog('editar', element)"><mat-icon class="button">create</mat-icon></button>
-            <button mat-button (click)="EventoDialog('excluir', element)"><mat-icon class="button delete_button">delete_sweep</mat-icon></button>
-          </div>
+          
         </td>
       </ng-container>
   
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <ng-container matColumnDef="evento">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element" class="eventos"> 
+                  {{element.nomeEvento}}
+        </td>
+      </ng-container>
     
-  </table>
+      <!-- Name Column -->
+      <ng-container matColumnDef="inicio">
+        <th mat-header-cell *matHeaderCellDef> Inicio </th>
+        <td mat-cell *matCellDef="let element" class="datas"> {{element.dataInicio | date: 'dd/MM/yyyy'}}  </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="fim">
+        <th mat-header-cell *matHeaderCellDef> Fim </th>
+        <td mat-cell *matCellDef="let element" class="datas"> {{element.dataTermino | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="menus">
+          <th mat-header-cell *matHeaderCellDef> MENUS </th>
+          <td mat-cell *matCellDef="let element" class="coluna_botao"> 
+            <div>
+              <button mat-button [routerLink]="['/eventos/usuarios/', element.idEvento]"><mat-icon class="button">person</mat-icon></button>
+              <button mat-button (click)="beneficiosDialog(element)"><mat-icon class="button">card_giftcard</mat-icon></button>
+              <button mat-button (click)="EventoDialog('editar', element)"><mat-icon class="button">create</mat-icon></button>
+              <button mat-button (click)="EventoDialog('excluir', element)"><mat-icon class="button delete_button">delete_sweep</mat-icon></button>
+            </div>
+          </td>
+        </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+    </table>
+</ng-template>
+
+<ng-template #naoTem>
+  <div class="loading">
+    <h1>Nenhum evento cadastrado ainda...</h1>
+    <div class="loading_spinning">
+      <button mat-raised-button color="primary" (click)="EventoDialog('cadastro')">Clique Aqui para Iniciar</button>
+    </div>
+  </div>
+</ng-template>
