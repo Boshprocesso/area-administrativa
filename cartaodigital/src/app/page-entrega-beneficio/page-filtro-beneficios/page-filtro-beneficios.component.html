@@ -20,7 +20,7 @@
                             <h4>{{ beneficio.beneficiario }}</h4>
                         </div>
                         <div class="simbolo">
-                            <div *ngIf="beneficio.entregue === 1 else naoEntregue">
+                            <div *ngIf="beneficio.entregue == 1; else naoEntregue">
                                 <mat-icon>check_circle</mat-icon>
                             </div>
                             <ng-template #naoEntregue>
@@ -28,7 +28,7 @@
                             </ng-template>
                         </div>
                         <div class="btn-coletar">
-                            <div *ngIf="beneficio.entregue === 0 else mensagem">
+                            <div *ngIf="beneficio.entregue == 0; else mensagem">
                                 <button mat-raised-button color="primary" (click)="darBaixa(beneficio.idBeneficiario, beneficio.idBeneficio)">COLETAR</button>
                             </div>
                             <ng-template #mensagem>
