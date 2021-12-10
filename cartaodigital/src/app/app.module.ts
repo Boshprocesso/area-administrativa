@@ -72,12 +72,10 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     AaEventosUsuariosComponent,
     AaEventosTabelaComponent,
     EventosBeneficiosDialog,
-<<<<<<< HEAD
     EventosCadastro,
     AoTelaColetaComponent,
     PageEntregaBeneficioComponent,
-    PageFiltroBeneficiosComponent
-=======
+    PageFiltroBeneficiosComponent,
     EventosBeneficioCadastro,
     EventosCadastro,
     UsuariosTabela,
@@ -85,7 +83,6 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     UsuarioDialogBeneficiosInput,
     UsuariosTabelaVazia,
     AaXlsxConversorComponent
->>>>>>> origin/AA9_JSON_LOGIN_PAGE
   ],
   imports: [
     BrowserModule,

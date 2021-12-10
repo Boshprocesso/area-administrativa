@@ -15,16 +15,11 @@ const routes: Routes = [
   {path: 'login', component: PageLoginComponent },
   {path: 'beneficios', component: PageBeneficiosComponent },
   {path: 'cadastro_terceiro', component: PageBeneficiosTerceiroComponent },
-<<<<<<< HEAD
   {path: 'eventos', component: AaEventosComponent },
   {path: 'entrega_beneficios', component: PageEntregaBeneficioComponent},
   {path: 'filtro_beneficios', component: PageEntregaBeneficioComponent},
-  {path: 'filtro_beneficios/:edvOuCpf', component: PageFiltroBeneficiosComponent}
-=======
-  
-  {path: 'eventos', component: AaEventosComponent },
+  {path: 'filtro_beneficios/:edvOuCpf', component: PageFiltroBeneficiosComponent},
   {path: 'eventos/usuarios/:idEvento', component: AaEventosUsuariosComponent }
->>>>>>> origin/AA9_JSON_LOGIN_PAGE
 ];
 
 @NgModule({
