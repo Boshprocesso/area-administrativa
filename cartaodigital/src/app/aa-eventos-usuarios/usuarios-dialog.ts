@@ -63,7 +63,11 @@ export type usuariosDialog = {
         }
         this.formEnvio.controls['edv'].setValue(this.data.evento?.colaborador.edv);
         this.formEnvio.controls['nome'].setValue(this.data.evento?.colaborador.nomeCompleto);
-        this.formEnvio.controls['cpf'].setValue(this.data.evento?.colaborador.cpf);
+        if(this.data.evento?.colaborador.cpf){
+          const cpf_limpo = (this.data.evento?.colaborador.cpf.slice(0,3) + this.data.evento?.colaborador.cpf.slice(4,7) + this.data.evento?.colaborador.cpf.slice(8,11) + this.data.evento?.colaborador.cpf.slice(12,14));
+          this.formEnvio.controls['cpf'].setValue(cpf_limpo);
+        }
+        //this. = (this.data.evento?.colaborador.cpf.slice(0,3) + this.data.evento?.colaborador.cpf.slice(5,3));
         this.formEnvio.controls['area'].setValue(this.data.evento?.colaborador.unidade);
         this.formEnvio.controls['dataNascimento'].setValue(this.data.evento?.colaborador.dataNascimento);
         this.formEnvio.controls['username'].setValue(this.data.evento?.colaborador.responsavelInclusao);
@@ -142,6 +146,7 @@ export type usuariosDialog = {
       POSTusuario.colaborador.edv = this.formEnvio.controls['edv'].value;
       POSTusuario.colaborador.nomeCompleto = this.formEnvio.controls['nome'].value;
       POSTusuario.colaborador.cpf = this.formEnvio.controls['cpf'].value;
+      POSTusuario.colaborador.cpf = [POSTusuario.colaborador.cpf.slice(0,3), ".", POSTusuario.colaborador.cpf.slice(3,6), ".", POSTusuario.colaborador.cpf.slice(6,9), "-", POSTusuario.colaborador.cpf.slice(9,11)].join('');
       POSTusuario.colaborador.unidade = this.formEnvio.controls['area'].value;
       POSTusuario.colaborador.dataNascimento = this.formEnvio.controls['dataNascimento'].value;
       POSTusuario.colaborador.responsavelInclusao = this.formEnvio.controls['username'].value;
