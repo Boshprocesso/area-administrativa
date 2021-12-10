@@ -18,6 +18,8 @@ export type eventoDialog = {
     styleUrls: ['./evento-dialog.css']
   })
   export class EventosCadastro {
+    showSpinner = false;
+
     formEnvio = this.formBuilder.group({
       evento: '',
       descricao: '',
@@ -152,6 +154,7 @@ export type eventoDialog = {
     enviarCarga(e:xlsxPayloadJSON) {
       console.warn("Enviando carga:")
       console.warn(e)
+      this.showSpinner = true;
 
       this.eventoService.enviarCarga(e)
         .pipe(first())
@@ -161,6 +164,7 @@ export type eventoDialog = {
             if(data){
                 console.warn("Carga executada com sucesso");
             }
+            this.showSpinner = false;
             this.dialogRef.close();
           }
         );
