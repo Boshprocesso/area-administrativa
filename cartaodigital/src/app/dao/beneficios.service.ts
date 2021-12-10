@@ -74,12 +74,15 @@ export class BeneficiosService {
   }
 
   //Função para obter os beneficiarios Cadastrados
-  deleteBeneficiarios(id: string){
+  deleteBeneficiarios(id: string){                                                 //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'beneficiario/' + id;
     var linkJSONfinal = linkJSON + "/delete/" + this.loginService.chaveLogin().headers.cod + "/" + id;
 
-    console.log("Será enviado o seguinte link para o servidor para excluir o terceiro:");
-    console.warn(linkJSONfinal);
+    if(linkServidor!=null){
+      linkJSON = linkServidor + 'beneficiario/delete/' + this.loginService.chaveLogin().headers.cod + "/" + id;
+    }
+    console.log("SERVICE - Beneficiario POST:");
+    console.warn(linkJSON);
 
     return this.http.delete(linkJSON);
   }
