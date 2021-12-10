@@ -37,6 +37,7 @@ export type usuariosDialog = {
     });
   
   formulario = true;
+  showSpinner = false;
   
     constructor(
                 @Inject(MAT_DIALOG_DATA) public data: usuariosDialog,
@@ -70,6 +71,7 @@ export type usuariosDialog = {
 
       if(this.data.tipo=="editar"){
         this.formEnvio.controls['edv'].disable();
+        this.formEnvio.controls['username'].disable();
       }
 
       if(this.data.tipo=="excluir"){
@@ -156,6 +158,7 @@ export type usuariosDialog = {
     }
 
     postUsuario(){
+    this.showSpinner = true;
       if(this.formEnvio.status=="VALID"){
         this.eventoService.postColaboradores(this.getEstruturaEventoColaboradoresJSON(), this.data.idEvento)
             .pipe(first())
@@ -168,8 +171,9 @@ export type usuariosDialog = {
     }
 
     editarUsuario(){
+    this.showSpinner = true;
       if(this.formEnvio.status=="VALID"){
-        this.eventoService.putColaboradores(this.getEstruturaEventoColaboradoresJSON(), this.data.idEvento, this.data.evento?.colaborador.idBeneficiario)
+        this.eventoService.putColaboradores(this.getEstruturaEventoColaboradoresJSON(), this.data.idEvento, this.data.evento?.colaborador.edv)
             .pipe(first())
             .subscribe(data => {
                   console.log("Colaborador que foi editado");
@@ -180,10 +184,11 @@ export type usuariosDialog = {
     }
     
     deleteUsuario(){
+      this.showSpinner = true;
       console.log("Usuario Local DELETED");
       console.warn("ID: " + this.data.evento?.colaborador.idBeneficiario);
       console.warn("Excluindo o Evento: " + this.data.evento)
-      this.eventoService.deleteColaboradores(this.data.idEvento, this.data.evento?.colaborador.idBeneficiario)
+      this.eventoService.deleteColaboradores(this.data.idEvento, this.data.evento?.colaborador.edv)
           .pipe(first())
           .subscribe(data => {
               console.log("Evento que foi excluido");

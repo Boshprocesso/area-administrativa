@@ -89,6 +89,10 @@
   </mat-accordion>
 </div>
 
+<div *ngIf="showSpinner">
+  <h2>Aguarde processando...</h2>
+  <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+</div>
 
 <div *ngIf="data.tipo=='cadastro'">   
     <div mat-dialog-actions>

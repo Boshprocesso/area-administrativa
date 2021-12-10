@@ -8,7 +8,7 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Quantidade</mat-label>
-          <input formControlName="quantidade" type="number" [(ngModel)]="objeto.quantidade" matInput>  
+          <input formControlName="quantidade" type="number" min="0" [(ngModel)]="objeto.quantidade" matInput>  
           <mat-icon matSuffix>format_list_numbered_rtl</mat-icon>     
         </mat-form-field>
 
