@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { first } from 'rxjs/operators';
 import { LoginService } from '../dao/login.service';
@@ -13,6 +13,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./page-login.component.css']
 })
 export class PageLoginComponent implements OnInit {
+  public siteKey :string = "6LfSJpIdAAAAANur_uVIhISP7SWRlbhgl-GI3Xz3";
+
   showSpinner = false;
   constructor(private router: Router,
               private loginService: LoginService,
@@ -21,6 +23,7 @@ export class PageLoginComponent implements OnInit {
               private _http:HttpClient
              ) {  
                viewportScroller.scrollToPosition([0,0]);
+               
                }
   
   matricula?: string;
@@ -28,23 +31,27 @@ export class PageLoginComponent implements OnInit {
 
   formEnvio = this.formBuilder.group({
     cod: '',
-    nascimento: ''
+    nascimento: '',
+    recaptcha: ['', Validators.required]
   });
 
   ngOnInit(): void {
       this.loginService.validaLogin(this.router.url);
-
-      //Para efetuar os testes com o GET para o servidor
-      //this._http.get('http://localhost:5127/Admin/eventos')
-      //          .subscribe((returnedStuff) => {
-      //            console.log(returnedStuff);
-      //          });
   }
 
+  getLoginJSON(){
+    var LOGINtemp = {
+      "cod": this.formEnvio.controls['cod'].value,
+      "nascimento": this.formEnvio.controls['nascimento'].value
+    };
+
+    return LOGINtemp;
+  }
 
   login(): void {
     this.showSpinner = true;
     if(this.formEnvio.status=="VALID"){
+      console.warn("Captcha Resolvido com Sucesso!");
       this.initLogin(this.formEnvio.value);
     }else{
       console.warn('Verifique os valores digitados, estão errados!');
