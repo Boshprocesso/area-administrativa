@@ -1,0 +1,29 @@
+
+<div class="body">
+    <div class="pagina">
+        <mat-card class="card-principal">
+            <mat-card-header>
+                <mat-card-title>ESCOLHA O TIPO DE RETIRADA</mat-card-title>
+            </mat-card-header>
+
+            <button mat-raised-button>POR APROXIMAÇÃO DE CRACHÁ</button>
+            
+
+            <form class="cpf-edv-form" [formGroup]="cpfOuEdvForm" (ngSubmit)="onSubmit()">
+                <mat-form-field class="campoCpfEdv" appearance="fill">
+                  <mat-label>Idenficação</mat-label>
+                  <input type="number" matInput [formControl]="cpfOuEdvFormControl" formControlName="edvOuCpf" [errorStateMatcher]="matcher"
+                         placeholder="CPF ou EDV">
+                  <mat-hint>Digite aqui os dados para busca</mat-hint>
+                  <mat-error *ngIf="cpfOuEdvFormControl.hasError('required')">
+                    CPF ou EDV necessário <strong>Obrigatório</strong>
+                  </mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button color='primary' type="submit">RETIRADA POR CPF OU EDV</button>
+
+              </form>
+
+        </mat-card>
+    </div>
+</div>
