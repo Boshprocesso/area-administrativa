@@ -36,7 +36,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>CPF</mat-label>
-        <input formControlName="cpf" matInput placeholder="CPF Colaborador" maxlength="11" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>    
+        <input formControlName="cpf" matInput placeholder="CPF Colaborador" minlength="11" maxlength="11" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>    
         <mat-icon matSuffix>view_week</mat-icon> 
         <mat-hint>CPF somente números</mat-hint>     
       </mat-form-field>
