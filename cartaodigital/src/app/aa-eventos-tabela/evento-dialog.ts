@@ -27,6 +27,8 @@ export type eventoDialog = {
   
   eventoLocal ?: EventosJSON;
   formulario = true;
+  autorizaPostEvento = true;
+  tipoDeEvento = "";
   
     constructor(
                 @Inject(MAT_DIALOG_DATA) public data: eventoDialog,
@@ -55,6 +57,7 @@ export type eventoDialog = {
         }
     }
   
+    //Inicio da Caixa de Dialog
     confirmarDialog():void{
       const dialogRef = this.dialog.open( EventosCadastro, 
         {
@@ -64,9 +67,20 @@ export type eventoDialog = {
       );
   
       dialogRef.afterClosed().subscribe(result => {
-        //console.log('Fechando a caixa de dialogo');
+        console.warn("Fechando a caixa de Confirmar");
+        console.warn(result);
+        if(result){
+          if(this.tipoDeEvento=="POST"){
+            this.postEventoService();
+          }
+        }
       });
     }
+
+    resposta(status: boolean){
+        return status;
+    }
+    //Fim da Caixa de Dialog
   
     getEstruturaEventoJSON(){
       var POSTevento = {
@@ -84,15 +98,25 @@ export type eventoDialog = {
       return POSTevento;
     }
   
+    postEventoService(){
+      this.eventoService.postEvento(this.getEstruturaEventoJSON())
+                        .pipe(first())
+                        .subscribe(data => {
+                              console.log("Evento que foi postado");
+                              console.warn(data);
+                              this.dialogRef.close();
+                        });
+    }
     postEvento(){
       if(this.formEnvio.status=="VALID"){
-        this.eventoService.postEvento(this.getEstruturaEventoJSON())
-            .pipe(first())
-            .subscribe(data => {
-                  console.log("Evento que foi postado");
-                  console.warn(data);
-                  this.dialogRef.close();
-            });
+        if(this.formEnvio.controls['dataInicio'].value>this.formEnvio.controls['dataFim'].value){
+          this.confirmarDialog();
+          if(this.autorizaPostEvento){
+              this.tipoDeEvento="POST";
+          }
+        }else{
+              this.postEventoService();
+        }
       }
     }
   

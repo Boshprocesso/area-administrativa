@@ -12,7 +12,7 @@ export type BeneficioUsuario = {
 }
 
 export type BeneficioJSON = {
-    beneficios: BeneficioUsuario;
+    beneficios: Array<BeneficioUsuario>;
     terceiros: Array<BeneficioUsuario>;
 }
 
