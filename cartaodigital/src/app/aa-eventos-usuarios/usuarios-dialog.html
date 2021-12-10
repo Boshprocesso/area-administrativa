@@ -21,7 +21,7 @@
   
       <mat-form-field appearance="outline">
         <mat-label>Número do EDV</mat-label>
-        <input formControlName="edv" matInput placeholder="EDV do Usuário" required> 
+        <input formControlName="edv" matInput placeholder="EDV do Usuário" maxlength="11" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required> 
         <mat-icon matSuffix>person_pin</mat-icon>
         <mat-hint>Número de EDV do funcionario</mat-hint>
       </mat-form-field>
@@ -36,7 +36,7 @@
 
       <mat-form-field appearance="outline">
         <mat-label>CPF</mat-label>
-        <input formControlName="cpf" matInput placeholder="CPF Colaborador">    
+        <input formControlName="cpf" matInput placeholder="CPF Colaborador" maxlength="11" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>    
         <mat-icon matSuffix>view_week</mat-icon> 
         <mat-hint>CPF somente números</mat-hint>     
       </mat-form-field>
