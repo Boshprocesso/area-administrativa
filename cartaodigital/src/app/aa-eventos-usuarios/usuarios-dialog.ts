@@ -55,14 +55,14 @@ export type usuariosDialog = {
       }
       if(this.data){
         if(this.data.evento){
-          this.beneficioLocal = this.data.evento?.beneficios;
+          this.beneficioLocal = this.data.evento?.listaBeneficios;
         }else{
           this.updateBeneficio();
         }
-        this.formEnvio.controls['edv'].setValue(this.data.evento?.codFuncionario);
-        this.formEnvio.controls['nome'].setValue(this.data.evento?.nomeFuncionario);
-        this.formEnvio.controls['cpf'].setValue(this.data.evento?.cpf);
-        this.formEnvio.controls['area'].setValue(this.data.evento?.unidade);
+        this.formEnvio.controls['edv'].setValue(this.data.evento?.colaborador.edv);
+        this.formEnvio.controls['nome'].setValue(this.data.evento?.colaborador.nomeCompleto);
+        this.formEnvio.controls['cpf'].setValue(this.data.evento?.colaborador.cpf);
+        this.formEnvio.controls['area'].setValue(this.data.evento?.colaborador.unidade);
         this.formEnvio.controls['username'].setValue("n/a");
       }
 
@@ -161,7 +161,7 @@ export type usuariosDialog = {
 
     editarUsuario(){
       if(this.formEnvio.status=="VALID"){
-        this.eventoService.putColaboradores(this.getEstruturaEventoColaboradoresJSON(), this.data.idEvento, this.data.evento?.codFuncionario)
+        this.eventoService.putColaboradores(this.getEstruturaEventoColaboradoresJSON(), this.data.idEvento, this.data.evento?.colaborador.idBeneficiario)
             .pipe(first())
             .subscribe(data => {
                   console.log("Colaborador que foi editado");
@@ -173,9 +173,9 @@ export type usuariosDialog = {
     
     deleteUsuario(){
       console.log("Usuario Local DELETED");
-      console.warn("ID: " + this.data.evento?.codFuncionario);
+      console.warn("ID: " + this.data.evento?.colaborador.idBeneficiario);
       console.warn("Excluindo o Evento: " + this.data.evento)
-      this.eventoService.deleteColaboradores(this.data.idEvento, this.data.evento?.codFuncionario)
+      this.eventoService.deleteColaboradores(this.data.idEvento, this.data.evento?.colaborador.idBeneficiario)
           .pipe(first())
           .subscribe(data => {
               console.log("Evento que foi excluido");

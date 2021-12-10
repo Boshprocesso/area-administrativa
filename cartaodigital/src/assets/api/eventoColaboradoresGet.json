@@ -1,90 +1,45 @@
-[
-    {
-     "nomeFuncionario": "nomeFuncionario 1",
-     "cpf": "cpf 1",
-     "area": "area 1",
-     "dataInclusao": "2021-12-19",
-     "beneficios": [
-      {
-       "idProduto": 1,
-       "beneficio": "Kit Happy Hour",
-       "status": "OK",
-       "quantidade": 2
-      },
-      {
-       "idProduto": 5,
-       "beneficio": "Kit Natal 2021",
-       "status": "Pendente",
-       "quantidade": 1
-      }
-     ],
-     "codFuncionario": "1",
-     "idEvento": "1"
+{
+    "eventoId": "b8061929-1d9f-42f0-90a4-fce45c5c1e61",
+    "colaborador": {
+        "idBeneficiario": "0a8ca795-95c2-4c70-87ee-030231cc92d6",
+        "nomeCompleto": "ADEMAR SANTOS DE PAULA",
+        "dataNascimento": "1980-03-29T00:00:00",
+        "edv": 210,
+        "cpf": "029.270.199-32",
+        "unidade": "CtP/MFO21",
+        "dataInclusao": "2021-12-09T20:13:59.353",
+        "responsavelInclusao": "Import Process"
     },
-    {
-     "nomeFuncionario": "nomeFuncionario 2",
-     "cpf": "cpf 2",
-     "area": "area 2",
-     "dataInclusao": "2021-12-21",
-     "beneficios": [
-      {
-       "idProduto": 1,
-       "beneficio": "Kit Happy Hour",
-       "status": "OK",
-       "quantidade": 4
-      }
-     ],
-     "codFuncionario": "2",
-     "idEvento": "1"
-    },
-    {
-     "idEvento": "1",
-     "codFuncionario": "92617565",
-     "nomeFuncionario": "Joelcio Leandro Benvenutti",
-     "cpf": "",
-     "area": "Engenharia",
-     "dataInclusao": "2021-11-29",
-     "beneficios": [
-      {
-       "idProduto": 1,
-       "beneficio": "Kit Happy Hour",
-       "status": "OK",
-       "quantidade": 1
-      },
-      {
-       "idProduto": 5,
-       "beneficio": "Kit Natal 2021",
-       "status": "Pendente",
-       "quantidade": 1
-      },
-      {
-       "idProduto": 20,
-       "beneficio": "Cesta Fria",
-       "status": "Pendente",
-       "quantidade": 2
-      }
-     ]
-    },
-    {
-     "idEvento": "1",
-     "codFuncionario": "12345678",
-     "nomeFuncionario": "Amadeu Henrique Moro Marques",
-     "cpf": "",
-     "area": "Comercial",
-     "dataInclusao": "2021-11-29",
-     "beneficios": [
-      {
-       "idProduto": 1,
-       "beneficio": "Kit Happy Hour",
-       "status": "OK",
-       "quantidade": 1
-      },
-      {
-       "idProduto": 20,
-       "beneficio": "Cesta Fria",
-       "status": "Pendente",
-       "quantidade": 2
-      }
-     ]
-    }
-   ]
+    "listaBeneficios": [
+        {
+            "idBeneficio": "35442a9e-af1d-4df6-88a6-17bcb9940e6f",
+            "descricaoBeneficio": "CESTA FRIA",
+            "quantidade": 1,
+            "status": "0"
+        },
+        {
+            "idproduto": "3b629c17-00fc-423d-b893-76bb5553bf0c",
+            "descricao": "CESTA SECA",
+            "quantidade": 1,
+            "status": "0"
+        },
+        {
+            "idproduto": "7609d7d2-e3d2-41eb-87b9-ed9e135b2045",
+            "descricao": "PRESENTE BOSCH",
+            "quantidade": 1,
+            "status": "0"
+        },
+        {
+            "idproduto": "805b5c90-7185-48b8-9aa0-d55ff2996f0c",
+            "descricao": "Material Escolar KIT 4",
+            "quantidade": 1,
+            "status": "0"
+        },
+        {
+            "idproduto": "31743045-3585-44b7-aff0-62ac6cef1098",
+            "descricao": "Brinquedos 12M",
+            "quantidade": 1,
+            "status": "0"
+        }
+    ]
+}
