@@ -28,3 +28,4 @@ npm install ngx-captcha
 ```
 
 Site de referência: https://www.npmjs.com/package/ngx-captcha
+Video para Auxilio: https://www.youtube.com/watch?v=sQi5gx2p_2c
