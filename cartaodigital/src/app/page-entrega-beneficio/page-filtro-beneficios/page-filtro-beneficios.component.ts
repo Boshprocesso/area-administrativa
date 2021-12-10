@@ -37,8 +37,8 @@ export class PageFiltroBeneficiosComponent implements OnInit {
 
   carregarDados(edvOuCpfDaRota: string): void {
     var ilhaEvento: ConjuntoIlhaEvento = {
-      idEvento: '12gg-2113eg-aegeg3-egag13',  // irá vir do back futuramente
-      idIlha: '12313-21312-131213-121312',   // irá vir do back futuramente
+      idEvento: '3AB37867-12C4-467A-A897-36D32A2FBC65',  // irá vir do back futuramente
+      idIlha: '47992B34-AD6C-4E4A-A3CA-56A8AECCACB9',   // irá vir do back futuramente
     }
     this.beneficiosService.getBeneficios(ilhaEvento, edvOuCpfDaRota).subscribe(res => {
       console.log("Dados vindos do servidor: ", res)

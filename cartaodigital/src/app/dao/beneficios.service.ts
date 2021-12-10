@@ -96,7 +96,7 @@ export class BeneficiosService {
   }
 
   getBeneficios(ilhaEvento: ConjuntoIlhaEvento, edvOuCpf: string): Observable<BeneficiosParaEntrega[]> {
-    const url = `${linkServidor}${ilhaEvento.idEvento}/${ilhaEvento.idIlha}?identificacao=${edvOuCpf}`;
+    const url = `${linkServidor}Operacional/${ilhaEvento.idEvento}/${ilhaEvento.idIlha}?identificacao=${edvOuCpf}`;
     return this.http.get<BeneficiosParaEntrega[]>(url)
       .pipe(
         catchError(this.handleError)

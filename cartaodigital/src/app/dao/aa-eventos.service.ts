@@ -177,6 +177,6 @@ export class AaEventosService {
   }
 
   enviarCarga(bodyJSON:xlsxPayloadJSON) {
-    return this.http.post("http://localhost:5127/CargaDeDados", bodyJSON)
+    return this.http.post<JSON>("http://localhost:5127/CargaDeDados", bodyJSON)
   }
 }
