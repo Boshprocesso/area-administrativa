@@ -139,7 +139,7 @@ export class AaEventosService {
 
   //SERVICES PARA OS BENEFICIOS DOS EVENTOS
   //Função para coletar todos os eventos do servidor
-  getColaboradores(idEvento?:string){
+  getColaboradores(idEvento?:string){                                         //Validado
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores';
 
     if(linkServidor!=null){
@@ -156,6 +156,10 @@ export class AaEventosService {
   deleteColaboradores(idEvento:string, idColaborador?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores/' + idColaborador;
 
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "adicionarColaboradorEvento/eventoid/" + idEvento + "/excluiredv/" + idColaborador;
+    }
+
     console.log("SERVICE - Evento|Colaboradores DELETE:");
     console.warn(linkJSON);
 
@@ -166,16 +170,24 @@ export class AaEventosService {
   postColaboradores(bodyJSON: any, idEvento:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores';
 
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "adicionarColaboradorEvento/eventoid/" + idEvento;
+    }
+
     console.log("SERVICE - Evento|Colaboradores POST:");
     console.warn(linkJSON);
     console.warn(bodyJSON);
 
-    return this.http.post<EventosUsuariosJSON>('linkJSON', bodyJSON);
+    return this.http.post<EventosUsuariosJSON>(linkJSON, bodyJSON);
   }
 
   //Função para editar os Colaboradores do Evento
   putColaboradores(bodyJSON: any, idEvento:string, idColaborador?:any){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/colaboradores/' + idColaborador;
+
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "adicionarColaboradorEvento/eventoid/" + idEvento + "/edv/" + idColaborador;
+    }
 
     console.log("SERVICE - Evento|Colaboradores PUT:");
     console.warn(linkJSON);

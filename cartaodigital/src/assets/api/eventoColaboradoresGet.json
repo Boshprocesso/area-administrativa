@@ -1,11 +1,12 @@
 {
     "eventoId": "12b24219-e052-4ffe-8e1f-4dc069a6c397",
     "colaborador": {
-        "nomeCompleto": "Amadeu",
-        "dataNascimento": "2021-12-10T14:07",
-        "edv": "1234",
-        "cpf": "23123156456",
-        "unidade": "Engenharia",
+        "idBeneficiario": "",
+        "nomeCompleto": "Nome do Colaborador",
+        "dataNascimento": "1992-10-29T14:11",
+        "edv": "123",
+        "cpf": "12312312312",
+        "unidade": "Area dele",
         "dataInclusao": "2021-12-10",
         "responsavelInclusao": "amadeu.marques"
     },

@@ -16,6 +16,7 @@ import { UsuarioDialog } from "./usuarios-dialog";
 
     displayedColumns: string[] = ['excluir', 'edv', 'colaborador', 'cpf', 'area', 'user', 'beneficios', 'dataInclusao'];
     dataSource = Array<EventosUsuariosJSON>();
+    loadingShow = false;
     
     constructor(
                 public dialog: MatDialog,
@@ -31,6 +32,7 @@ import { UsuarioDialog } from "./usuarios-dialog";
 
     //Atualiza o objeto "EVENTOS" da tela principal
     getColaboradores(){
+      this.loadingShow = true;
       this.eventosService.getColaboradores(this.idEvento)
       .pipe(first())
       .subscribe(data => {
@@ -42,6 +44,8 @@ import { UsuarioDialog } from "./usuarios-dialog";
           }else{
             this.dataSource.length = 0;
           }
+          
+          this.loadingShow = false;
         }
       );
     }
