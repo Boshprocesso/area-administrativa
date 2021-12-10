@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class PageEntregaBeneficioComponent implements OnInit, ErrorStateMatcher {
 
   cpfOuEdvEntrada: string = '';
+  idEvento: string = '3AB37867-12C4-467A-A897-36D32A2FBC65';
+  idIlha: string = '47992B34-AD6C-4E4A-A3CA-56A8AECCACB9';
 
   constructor(
       private fb: FormBuilder,
@@ -21,7 +23,7 @@ export class PageEntregaBeneficioComponent implements OnInit, ErrorStateMatcher 
   }
 
   cpfOuEdvForm = this.fb.group({
-    edvOuCpf: new FormControl('', [Validators.required, Validators.maxLength(15)])
+    edvOuCpf: new FormControl('', [Validators.required, Validators.maxLength(15)]),
   });
 
   cpfOuEdvFormControl = new FormControl('', [Validators.required, Validators.maxLength(15)]);
@@ -34,7 +36,7 @@ export class PageEntregaBeneficioComponent implements OnInit, ErrorStateMatcher 
   matcher = new ErrorStateMatcher();
 
   onSubmit(): void {
-    console.log(this.cpfOuEdvForm.value.edvOuCpf);
+    console.log(this.cpfOuEdvForm.value);
 
     if(this.cpfOuEdvForm.status=="VALID"){
       // fazer a get à partir daqui e passar para o component filho os dados do array

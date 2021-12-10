@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'
 
 //Componentes do Angular Material
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -110,7 +111,8 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     MatExpansionModule,
     DragDropModule,
     MatSlideToggleModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    FormsModule
   ],
   providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]
