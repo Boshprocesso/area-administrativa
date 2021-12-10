@@ -19,7 +19,12 @@ export class TelaHeaderComponent implements OnInit {
                                             {   
                                                 if(this.route.url.indexOf("/eventos/") != -1){
                                                     this.exibeBack = true;
+                                                    this.linkRotaBack = "/eventos";
                                                     console.log(this.route.url);
+                                                }else if(this.route.url.indexOf("/filtro_beneficios/") != -1){
+                                                  this.exibeBack = true;
+                                                  this.linkRotaBack = "/entrega_beneficios";
+                                                  console.log(this.route.url);
                                                 }else{
                                                     this.exibeBack = false;
                                                 }
@@ -27,6 +32,7 @@ export class TelaHeaderComponent implements OnInit {
               }
 
   public exibeBack !: boolean;
+  public linkRotaBack = "";
   
   public paginaAtual = "";
   
@@ -45,6 +51,6 @@ export class TelaHeaderComponent implements OnInit {
   }
 
   botaoVoltar(){
-    this.route.navigate(["/eventos"]);  
+    this.route.navigate([this.linkRotaBack]);  
   }
 }

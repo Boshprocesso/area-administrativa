@@ -79,3 +79,7 @@
 .recebido {
     color: greenyellow;
 }
+
+button{
+    width: 100%;
+}
