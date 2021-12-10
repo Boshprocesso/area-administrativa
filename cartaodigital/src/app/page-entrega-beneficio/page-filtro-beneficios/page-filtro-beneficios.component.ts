@@ -33,6 +33,7 @@ export class PageFiltroBeneficiosComponent implements OnInit {
     this.entrega.idBeneficiario = idBeneficiario;
     this.entrega.idBeneficio = idBeneficio;
     this.beneficiosService.postAlteraStatus(this.entrega);
+    this.carregarDados(this.edvOuCpfRota);
   }
 
   carregarDados(edvOuCpfDaRota: string): void {
