@@ -59,7 +59,7 @@
                     </mat-grid-tile>
                     <mat-grid-tile [colspan]="7">
                         <mat-form-field class="example-full-width">
-                            <input id="edv" formControlName="edv" matInput placeholder="CPF ou EDV"  name="matricula" required>
+                            <input id="edv" formControlName="edv" matInput placeholder="CPF ou EDV"  name="matricula" maxlength="11" onkeypress='return event.charCode >= 48 && event.charCode <= 57' required>
                         </mat-form-field>
                     </mat-grid-tile>
                 </mat-grid-list>

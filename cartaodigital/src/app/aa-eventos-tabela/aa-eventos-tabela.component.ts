@@ -1,15 +1,12 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { Component, OnInit, Inject} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { first } from 'rxjs/operators';
 import { AaEventosService } from '../dao/aa-eventos.service';
 import { EventosJSON } from '../dao/tiposJSON';
-
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { FormBuilder } from '@angular/forms';
+import {MatDialog } from '@angular/material/dialog';
 import { EventosBeneficiosDialog } from './beneficios.dialog';
 import { EventosCadastro } from './evento-dialog';
-import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-aa-eventos-tabela',
