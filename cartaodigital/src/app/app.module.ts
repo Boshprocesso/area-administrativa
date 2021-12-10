@@ -54,6 +54,7 @@ import { AoTelaColetaComponent } from './ao-tela-coleta/ao-tela-coleta.component
 import { PageEntregaBeneficioComponent } from './page-entrega-beneficio/page-entrega-beneficio.component';
 import { PageFiltroBeneficiosComponent } from './page-entrega-beneficio/page-filtro-beneficios/page-filtro-beneficios.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     MatSnackBarModule,
     MatExpansionModule,
     DragDropModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    NgxCaptchaModule
   ],
   providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]
