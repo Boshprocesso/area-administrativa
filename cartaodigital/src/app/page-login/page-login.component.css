@@ -48,3 +48,11 @@ mat-spinner{
     margin-right: 10px;
     zoom: 0.25;
 }
+
+.captcha{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}

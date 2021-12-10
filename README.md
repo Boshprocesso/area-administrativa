@@ -18,3 +18,14 @@ Em seguida será substituido a informação pelo servidor localhost criado em c#
 ##Tela da área administrativa com os eventos disponíveis para acesso ao público apenas do RH
 
 Utilizado o mesmo servidor da área pública para poder realizar os procedimentos de testes com o CRUD total desta vez.
+
+# Captcha
+
+Para utilizar o captcha no servidor instalar o mesmo com o seguinte código:
+
+```bash
+npm install ngx-captcha
+```
+
+Site de referência: https://www.npmjs.com/package/ngx-captcha
+Video para Auxilio: https://www.youtube.com/watch?v=sQi5gx2p_2c

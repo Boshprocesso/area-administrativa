@@ -36,6 +36,13 @@
                         
                     </td>
                 </tr></table>
+                <div class="captcha">
+                    <ngx-recaptcha2 #captchaElem
+                        [siteKey]="siteKey"
+                        formControlName="recaptcha">
+                    </ngx-recaptcha2>
+                </div>
+                <p></p>
                 <div class="login-spinner">
                     <button mat-raised-button class="example-full-width" color="primary"><mat-icon>input</mat-icon> Confirmar</button> <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
                 </div>
