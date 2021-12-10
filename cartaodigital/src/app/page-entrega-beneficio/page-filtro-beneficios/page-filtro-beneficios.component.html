@@ -3,7 +3,7 @@
     <div class="pagina">
         <mat-card class="card-principal">
 
-            <button class="btn-voltar" mat-raised-button color="accent" (click)="retornar()"">VOLTAR</button>
+            <button class="btn-voltar" mat-raised-button color="accent" (click)="retornar()">VOLTAR</button>
 
             <mat-card-header>
                 <mat-card-title>RETIRADA ILHA CESTA CONGELADA</mat-card-title>
@@ -17,7 +17,7 @@
                             <mat-card-subtitle>QUANTIDADE: {{ beneficio.quantidade }}</mat-card-subtitle>
                         </div>
                         <div class="nome">
-                            <h2>{{ beneficio.beneficiario }}</h2>
+                            <h4>{{ beneficio.beneficiario }}</h4>
                         </div>
                         <div class="simbolo">
                             <div *ngIf="beneficio.entregue === 1 else naoEntregue">
@@ -29,7 +29,7 @@
                         </div>
                         <div class="btn-coletar">
                             <div *ngIf="beneficio.entregue === 0 else mensagem">
-                                <button mat-raised-button color="primary" (click)="darBaixa(beneficio.idBeneficiario, beneficio.idBeneficio">COLETAR</button>
+                                <button mat-raised-button color="primary" (click)="darBaixa(beneficio.idBeneficiario, beneficio.idBeneficio)">COLETAR</button>
                             </div>
                             <ng-template #mensagem>
                                 <p>Recebido</p>
