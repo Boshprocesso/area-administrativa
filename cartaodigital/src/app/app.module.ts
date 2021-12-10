@@ -24,6 +24,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TelaFooterComponent } from './tela-footer/tela-footer.component';
@@ -49,6 +50,10 @@ import { UsuariosTabelaVazia } from './aa-eventos-usuarios/tela-usuarios-vazio';
 import { TelaBloqueadaComponent } from './tela-bloqueada/tela-bloqueada.component';
 import { AaXlsxConversorComponent } from './aa-xlsx-conversor/aa-xlsx-conversor.component';
 import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usuarios.component';
+import { AoTelaColetaComponent } from './ao-tela-coleta/ao-tela-coleta.component';
+import { PageEntregaBeneficioComponent } from './page-entrega-beneficio/page-entrega-beneficio.component';
+import { PageFiltroBeneficiosComponent } from './page-entrega-beneficio/page-filtro-beneficios/page-filtro-beneficios.component';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 
 @NgModule({
@@ -67,6 +72,10 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     AaEventosUsuariosComponent,
     AaEventosTabelaComponent,
     EventosBeneficiosDialog,
+    EventosCadastro,
+    AoTelaColetaComponent,
+    PageEntregaBeneficioComponent,
+    PageFiltroBeneficiosComponent,
     EventosBeneficioCadastro,
     EventosCadastro,
     UsuariosTabela,
@@ -101,7 +110,7 @@ import { AaEventosUsuariosComponent } from './aa-eventos-usuarios/aa-eventos-usu
     DragDropModule,
     MatSlideToggleModule
   ],
-  providers: [],
+  providers: [{provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

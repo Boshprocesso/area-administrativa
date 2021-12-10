@@ -1,6 +1,6 @@
 export type BeneficioEstrutura = {
-    idProduto: number;
-    beneficio: string;
+    idBeneficio: number;
+    descricaoBeneficio: string;
     status: string;
     quantidade: number;
 }
@@ -12,7 +12,7 @@ export type BeneficioUsuario = {
 }
 
 export type BeneficioJSON = {
-    beneficios: BeneficioUsuario;
+    beneficios: Array<BeneficioUsuario>;
     terceiros: Array<BeneficioUsuario>;
 }
 
@@ -52,7 +52,8 @@ export type EventosJSON = {
     nomeEvento: string;
     descricaoEvento: string;
     dataInicio: string;
-    dataFim: string;
+    dataTermino: string;
+    inativo: boolean;
   }
 
 
@@ -62,8 +63,8 @@ export type EventosJSON = {
 
 export type EventosBeneficioJSON = {
     idEvento: number;
-    idProduto: number;
-    beneficio: string;
+    idBeneficio: number;
+    descricaoBeneficio: string;
 }
 
 
@@ -81,3 +82,24 @@ export type EventosUsuariosJSON = {
     dataInclusao: string;
     beneficios: Array<BeneficioEstrutura>;
 }
+
+export type BeneficioEntregue = {
+    idBeneficio: string,
+    idBeneficiario: string
+}
+
+export type ConjuntoIlhaEvento = {
+    idEvento: string,
+    idIlha: string
+}
+
+export type BeneficiosParaEntrega = {
+    beneficio: string,
+    idBeneficio: string,
+    quantidade: number,
+    entregue: number,
+    idBeneficiario: string,
+    beneficiario: string
+}
+
+export const linkServidor = "http://localhost:5127/";

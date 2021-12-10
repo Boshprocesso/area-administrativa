@@ -9,13 +9,15 @@
 
   <div mat-dialog-content>
   
-      Teste de Dialog Novo
-  
+    <p>
+      As datas não estão compatíveis, a data de início esta maior que a data de fim!
+    </p>
+    
   </div>
   
   <div mat-dialog-actions>
-    <button mat-button cdkFocusInitial>SIM</button>
-    <button mat-button [mat-dialog-close]="fecharDialog()" cdkFocusInitial>Cancelar</button>
+    <button mat-button [mat-dialog-close]="resposta(true)" cdkFocusInitial>SIM</button>
+    <button mat-button [mat-dialog-close]="resposta(false)" cdkFocusInitial>Cancelar</button>
   </div>
 </div>
 
@@ -27,10 +29,10 @@
       <input formControlName="descricao" matInput placeholder="Descricao do Evento" required>         
   </mat-form-field>
   <mat-form-field class="form-full-width">
-    <input matInput placeholder="Data de Inicio" type="date" formControlName="dataInicio"required>
+    <input matInput placeholder="Data de Inicio" type="datetime-local" formControlName="dataInicio"required>
   </mat-form-field>
   <mat-form-field class="form-full-width">
-    <input matInput placeholder="Data de Fim" type="date" formControlName="dataFim"required>
+    <input matInput placeholder="Data de Fim" type="datetime-local" formControlName="dataFim"required>
   </mat-form-field>
 </div>
 

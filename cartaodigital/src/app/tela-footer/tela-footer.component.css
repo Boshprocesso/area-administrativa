@@ -41,3 +41,7 @@
   .logo:hover{
     cursor: pointer;
   }
+
+  mat-icon{
+      margin-right: 5px;
+  }
