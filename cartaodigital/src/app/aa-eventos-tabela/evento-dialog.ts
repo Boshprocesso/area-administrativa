@@ -28,6 +28,8 @@ export type eventoDialog = {
   eventoLocal ?: EventosJSON;
   idEvento: string = "";
   formulario = true;
+  autorizaPostEvento = true;
+  tipoDeEvento = "";
   
     constructor(
                 @Inject(MAT_DIALOG_DATA) public data: eventoDialog,
@@ -43,8 +45,7 @@ export type eventoDialog = {
           this.formEnvio.controls['evento'].setValue(this.eventoLocal.nomeEvento);
           this.formEnvio.controls['descricao'].setValue(this.eventoLocal.descricaoEvento);
           this.formEnvio.controls['dataInicio'].setValue(this.eventoLocal.dataInicio);
-          this.formEnvio.controls['dataFim'].setValue(this.eventoLocal.dataFim);
-          this.idEvento = this.eventoLocal.idEvento
+          this.formEnvio.controls['dataFim'].setValue(this.eventoLocal.dataTermino);
         }
         if(this.data.tipo == "excluir"){
           this.formEnvio.controls['evento'].disable();
@@ -57,6 +58,7 @@ export type eventoDialog = {
         }
     }
   
+    //Inicio da Caixa de Dialog
     confirmarDialog():void{
       const dialogRef = this.dialog.open( EventosCadastro, 
         {
@@ -66,34 +68,56 @@ export type eventoDialog = {
       );
   
       dialogRef.afterClosed().subscribe(result => {
-        //console.log('Fechando a caixa de dialogo');
+        console.warn("Fechando a caixa de Confirmar");
+        console.warn(result);
+        if(result){
+          if(this.tipoDeEvento=="POST"){
+            this.postEventoService();
+          }
+        }
       });
     }
+
+    resposta(status: boolean){
+        return status;
+    }
+    //Fim da Caixa de Dialog
   
     getEstruturaEventoJSON(){
       var POSTevento = {
         "nomeEvento": "",
         "descricaoEvento": "",
         "dataInicio": "",
-        "dataFim": ""
+        "dataTermino": "",
+        "inativo": "0"
       };
   
       POSTevento.nomeEvento = this.formEnvio.controls['evento'].value;
       POSTevento.descricaoEvento = this.formEnvio.controls['descricao'].value;
       POSTevento.dataInicio = this.formEnvio.controls['dataInicio'].value;
-      POSTevento.dataFim = this.formEnvio.controls['dataFim'].value;
+      POSTevento.dataTermino = this.formEnvio.controls['dataFim'].value;
       return POSTevento;
     }
   
+    postEventoService(){
+      this.eventoService.postEvento(this.getEstruturaEventoJSON())
+                        .pipe(first())
+                        .subscribe(data => {
+                              console.log("Evento que foi postado");
+                              console.warn(data);
+                              this.dialogRef.close();
+                        });
+    }
     postEvento(){
       if(this.formEnvio.status=="VALID"){
-        this.eventoService.postEvento(this.getEstruturaEventoJSON())
-            .pipe(first())
-            .subscribe(data => {
-                  console.log("Evento que foi postado");
-                  console.warn(data);
-                  this.dialogRef.close();
-            });
+        if(this.formEnvio.controls['dataInicio'].value>this.formEnvio.controls['dataFim'].value){
+          this.confirmarDialog();
+          if(this.autorizaPostEvento){
+              this.tipoDeEvento="POST";
+          }
+        }else{
+              this.postEventoService();
+        }
       }
     }
   

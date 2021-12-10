@@ -92,7 +92,10 @@ export class PageBeneficiosTerceiroFormComponent implements OnInit {
 
       headerMask.opcaoSelecionada = this.formEnvio.value.opcao;
       headerMask.identificacaoTerceiro = this.formEnvio.value.edv;
-      headerMask.nomeTerceiro = this.formEnvio.value.nome;
+
+      if(this.formEnvio.value.nome){
+        headerMask.nomeTerceiro = this.formEnvio.value.nome;
+      }
       console.warn("O que será enviado para o servidor?");
       console.warn(headerMask);
 
@@ -131,29 +134,29 @@ export class PageBeneficiosTerceiroFormComponent implements OnInit {
   deleteTerceiro(){
       var idBeneficiario = this.formEnvio.controls['edv'].value;
       
-      this.beneficiosService.deleteBeneficiarios("1")
-      .pipe(first())
-      .subscribe({
-          next: data => {
-            try{
-              if(data){
-                console.warn("Removido com Sucesso!")   
-                this.router.navigate(["/cadastro_terceiro"]);         
-              }else{
-                console.warn("Falha no cadastro...");
-                this.showSpinner = false;
-              }
-            }catch{
-              console.warn("Falha de acesso ao servidor...");
-              this.showSpinner = false;
-            }
-            
-            this.showSpinner = false;
-          },
-          error: error => {
-              console.log(error.message);
-              console.error('Falha no cadastro...', error);
-            }
-      });
+      this.beneficiosService.deleteBeneficiarios(idBeneficiario)
+                            .pipe(first())
+                            .subscribe({
+                                next: data => {
+                                  try{
+                                    if(data){
+                                      console.warn("Removido com Sucesso!")   
+                                      this.router.navigate(["/cadastro_terceiro"]);         
+                                    }else{
+                                      console.warn("Falha no cadastro...");
+                                      this.showSpinner = false;
+                                    }
+                                  }catch{
+                                    console.warn("Falha de acesso ao servidor...");
+                                    this.showSpinner = false;
+                                  }
+                                  
+                                  this.showSpinner = false;
+                                },
+                                error: error => {
+                                    console.log(error.message);
+                                    console.error('Falha no cadastro...', error);
+                                  }
+                            });
   }
 }

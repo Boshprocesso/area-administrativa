@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LoginJSON } from './tiposJSON';
+import { linkServidor, LoginJSON } from './tiposJSON';
 import {Router} from '@angular/router';
 
 var linkBaseAPI = 'http://localhost:4200/assets/api/';
@@ -19,7 +19,10 @@ export class LoginService {
 
   postLogin(params: any) {
     var linkJSON = linkBaseAPI + 'login';
-    linkJSON = "http://localhost:5127/Login";
+    
+    if(linkServidor!=null){
+        linkJSON = linkServidor + "Login";
+    }
 
     console.log(params);
     //Teste enviar:

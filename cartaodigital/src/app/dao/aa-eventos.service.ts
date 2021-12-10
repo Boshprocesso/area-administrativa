@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BeneficiarioJSON, EventosBeneficioJSON, EventosJSON, EventosUsuariosJSON, LoginJSON, xlsxPayloadJSON } from './tiposJSON';
+import { BeneficiarioJSON, EventosBeneficioJSON, EventosJSON, EventosUsuariosJSON, linkServidor, LoginJSON , xlsxPayloadJSON} from './tiposJSON';
 import {Router} from '@angular/router';
 import { LoginService } from './login.service';
 
@@ -19,9 +19,13 @@ export class AaEventosService {
 
   //SERVICES PARA OS EVENTOS
   //Função para coletar todos os eventos do servidor
-  getEvento(){
+  getEvento(){                                                                              //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento';
 
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/eventos";
+    }
+    
     console.log("SERVICE - Evento GET:");
     console.warn(linkJSON);
 
@@ -29,10 +33,15 @@ export class AaEventosService {
   }
 
   //Função para editar os eventos
-  postEvento(bodyJSON: any){
+  postEvento(bodyJSON: any){                                                                //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'evento';
 
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/adicionarEvento";
+    }
+
     console.log("SERVICE - Evento POST:");
+    console.warn(linkJSON);
     console.warn(bodyJSON);
 
     return this.http.post<EventosJSON>(linkJSON, bodyJSON);
@@ -42,7 +51,12 @@ export class AaEventosService {
   putEvento(bodyJSON: any, idEvento?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento;
 
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/EditarEvento/evento/" + idEvento;
+    }
+
     console.log("SERVICE - Evento PUT:");
+    console.warn(linkJSON);
     console.warn(bodyJSON);
 
     return this.http.put<EventosJSON>(linkJSON, bodyJSON);
@@ -64,6 +78,10 @@ export class AaEventosService {
   getBeneficio(idEvento?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios';
 
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/beneficiosEvento/" + idEvento;
+    }
+
     console.log("SERVICE - Evento|Beneficio GET:");
     console.warn(linkJSON);
 
@@ -73,6 +91,10 @@ export class AaEventosService {
   //Função para coletar todos os eventos do servidor
   deleteBeneficio(idEvento?:string, idBeneficio?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios/' + idBeneficio;
+
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/deleteBeneficioEvento/evento/" + idEvento + "/beneficio/" + idBeneficio;
+    }
 
     console.log("SERVICE - Evento|Beneficio DELETE:");
     console.warn(linkJSON);
@@ -84,6 +106,10 @@ export class AaEventosService {
   postBeneficio(bodyJSON: any, idEvento?:string){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios';
 
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/adicionarBeneficioEvento/evento/" + idEvento;
+    }
+
     console.log("SERVICE - Evento|Beneficio POST:");
     console.warn(linkJSON);
     console.warn(bodyJSON);
@@ -94,6 +120,10 @@ export class AaEventosService {
   //Função para editar os eventos
   putBeneficio(bodyJSON: any, idEvento?:string, idBeneficio?:any){
     var linkJSON = linkBaseAPI + 'evento/' + idEvento + '/beneficios/' + idBeneficio;
+
+    if(linkServidor!=null){
+      linkJSON = linkServidor + "Admin/EditarBeneficio/evento/" + idEvento + "/beneficio/" + idBeneficio;
+    }
 
     console.log("SERVICE - Evento|Beneficio PUT:");
     console.warn(linkJSON);
