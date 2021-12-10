@@ -42,9 +42,9 @@ export class PageBeneficiosTerceiroComponent implements OnInit {
           try{
             //console.log("Recebido os seguintes beneficiarios");
             //console.warn(data);
-            if(data[0]){
+            if(data){
               
-              this.getBeneficiario = data[0];
+              this.getBeneficiario = data;
               //console.log(this.getBeneficiario);
             }
           }catch{

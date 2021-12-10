@@ -44,10 +44,8 @@ export class BeneficiosService {
     return this.http.get<BeneficioJSON[]>(linkJSON);
   }
 
-
-
   //Função para obter os beneficiarios Cadastrados
-  getBeneficiarios(){                                                              //************** Alterado servidor
+  getBeneficiarios(){                                                                //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'beneficiario';
     var linkJSONfinal = linkJSON + "/" + this.loginService.chaveLogin().headers.cod;
     
@@ -55,19 +53,22 @@ export class BeneficiosService {
       linkJSON = linkServidor + 'beneficiario/'+ this.loginService.chaveLogin().headers.cod;
     }
 
-    console.log("Será enviado o seguinte link para o servidor para solicitar o terceiro:");
-    console.warn(linkJSONfinal);
+    console.log("SERVICE - Beneficiario GET:");
+    console.warn(linkJSON);
 
-    return this.http.get<BeneficiarioJSON[]>(linkJSON);
+    return this.http.get<BeneficiarioJSON>(linkJSON);
   }
 
   //Função para obter os beneficiarios Cadastrados
-  postBeneficiarios(headers: any){
+  postBeneficiarios(headers: any){                                                  //************** Alterado servidor
     var linkJSON = linkBaseAPI + 'beneficiario';
 
     if(linkServidor!=null){
-      linkJSON = linkServidor + 'beneficiario/Terceiro'+ this.loginService.chaveLogin().headers.cod;
+      linkJSON = linkServidor + 'beneficiario/Terceiro';
     }
+    console.log("SERVICE - Beneficiario POST:");
+    console.warn(linkJSON);
+    console.warn(headers);
 
     return this.http.post<BeneficiarioJSON>(linkJSON, headers);
   }

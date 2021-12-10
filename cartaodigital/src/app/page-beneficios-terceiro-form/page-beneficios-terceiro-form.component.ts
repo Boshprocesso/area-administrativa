@@ -92,7 +92,10 @@ export class PageBeneficiosTerceiroFormComponent implements OnInit {
 
       headerMask.opcaoSelecionada = this.formEnvio.value.opcao;
       headerMask.identificacaoTerceiro = this.formEnvio.value.edv;
-      headerMask.nomeTerceiro = this.formEnvio.value.nome;
+
+      if(this.formEnvio.value.nome){
+        headerMask.nomeTerceiro = this.formEnvio.value.nome;
+      }
       console.warn("O que será enviado para o servidor?");
       console.warn(headerMask);
 
